@@ -1,12 +1,12 @@
 ---
 title: "Local volume fraction distributions of axons, astrocytes, and myelin in deep subcortical white matter"
 collection: publications
-permalink: /_publications/paper1
+permalink: /publication/2009-10-01-paper-title-number-1
 excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
 date: 2018
 venue: 'NeuroImage'
-paperurl: 'https://doi.org/10.1016/j.neuroimage.2018.06.040'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+paperurl: 'http://santiagocoelho.github.io/files/paper1.pdf'
+citation: 'Coelho et al., Local volume fraction distributions of axons, astrocytes, and myelin in deep subcortical white matter, NeuroImage, Volume 179, 2018, Pages 275-287.'
 ---
 
 This paper aims to statistically describe histologically stained white matter brain sections to subsequently inform and validate diffusion MRI techniques.
