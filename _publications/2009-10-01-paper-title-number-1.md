@@ -5,7 +5,7 @@ permalink: /publication/2009-10-01-paper-title-number-1
 excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
 date: 2018
 venue: 'NeuroImage'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
+paperurl: 'http://santiagocoelho.github.io/files/paper1.pdf'
 citation: 'Coelho et al., Local volume fraction distributions of axons, astrocytes, and myelin in deep subcortical white matter, NeuroImage, Volume 179, 2018, Pages 275-287.'
 ---
 
