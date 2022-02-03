@@ -9,10 +9,12 @@ redirect_from:
 
 {% include base_path %}
 
+
+
 Education
 ======
 * B.Eng. in Electrical Engineering, National University of La Plata (UNLP), Argentina, 2010-2014
-* Ph.D in Biomedical Engineering, The University of Sheffield -> University of Leeds, United Kingdom, 2015-2019
+* Ph.D in Biomedical Engineering, The University of Sheffield & University of Leeds, United Kingdom, 2015-2019
 
 Work experience
 ======
