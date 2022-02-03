@@ -6,7 +6,7 @@ excerpt: 'This paper is about the number 1. The number 2 is left for future work
 date: 2009-10-01
 venue: 'NeuroImage'
 paperurl: 'http://santiagocoelho.github.io/files/paper1.pdf'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+citation: 'Coelho et al., Local volume fraction distributions of axons, astrocytes, and myelin in deep subcortical white matter, NeuroImage, Volume 179, 2018, Pages 275-287.'
 ---
 This paper aims to statistically describe histologically stained white matter brain sections to subsequently inform and validate diffusion MRI techniques.
 
