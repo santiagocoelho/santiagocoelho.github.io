@@ -6,7 +6,7 @@ excerpt: 'This paper shows that incorporating double diffusion encoding (DDE) me
 date: 2019-02-01
 venue: 'Magnetic Resonance in Medicine'
 paperurl: 'http://santiagocoelho.github.io/files/paper2.pdf'
-citation: 'Coelhoet al. Resolving degeneracy in diffusion MRI biophysical model parameter estimation using double diffusion encoding. Magn Reson Med. 2019; 82: 395– 410.'
+citation: 'Coelho et al. Resolving degeneracy in diffusion MRI biophysical model parameter estimation using double diffusion encoding. Magn Reson Med. 2019; 82: 395– 410.'
 ---
 This paper shows that incorporating double diffusion encoding (DDE) measurements help resolve the degeneracy in the parameter estimation for the Standard Model of diffusion in white matter for a Watson fiber distribution function (ODF). This is also the case for an arbitrary ODF, as was later proved.
 
