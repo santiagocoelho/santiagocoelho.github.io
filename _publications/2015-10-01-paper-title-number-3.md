@@ -1,15 +1,17 @@
 ---
-title: "Paper Title Number 3"
+title: "Optimal Experimental Design for Biophysical Modelling in Multidimensional Diffusion MRI"
 collection: publications
 permalink: /publication/2015-10-01-paper-title-number-3
 excerpt: 'This paper is about the number 3. The number 4 is left for future work.'
-date: 2015-10-01
-venue: 'Journal 1'
-paperurl: 'http://academicpages.github.io/files/paper3.pdf'
-citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
+date: 2019-10-01
+venue: 'MICCAI'
+paperurl: 'http://santiagocoelho.github.io/files/paper3.pdf'
+citation: 'Coelho et al. (2019) Optimal Experimental Design for Biophysical Modelling in Multidimensional Diffusion MRI. In: Shen D. et al. (eds) Medical Image Computing and Computer Assisted Intervention – MICCAI 2019.'
 ---
 This paper is about the number 3. The number 4 is left for future work.
 
-[Download paper here](http://academicpages.github.io/files/paper3.pdf)
+A pdf of the paper can be downloaded [here](http://santiagocoelho.github.io/files/paper3.pdf)
 
-Recommended citation: Your Name, You. (2015). "Paper Title Number 3." <i>Journal 1</i>. 1(3).
+This paper shows that incorporating double diffusion encoding (DDE) measurements help resolve the degeneracy in the parameter estimation for the Standard Model of diffusion in white matter for a Watson fiber distribution function (ODF). This is also the case for an arbitrary ODF, as was later proved.
+
+Recommended citation: Coelho S., Pozo J.M., Jespersen S.N., Frangi A.F. (2019) Optimal Experimental Design for Biophysical Modelling in Multidimensional Diffusion MRI. In: Shen D. et al. (eds) Medical Image Computing and Computer Assisted Intervention – MICCAI 2019.
