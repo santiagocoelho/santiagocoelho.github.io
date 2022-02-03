@@ -19,8 +19,7 @@ Education
 
 Work experience
 ======
-* Jan 2020 - Present: Postdoctoral Research Fellow
-  * New York University Grossman School of Medicine, Department of Radiology
+* Jan 2020 - Present: Postdoctoral Research Fellow at New York University Grossman School of Medicine, Department of Radiology
   * MRI Biophysics Group, Center for Biomedical Imaging
   * PIs: Dmitry Novikov & Els Fieremans
 
