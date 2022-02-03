@@ -15,6 +15,7 @@ Education
 ======
 * B.Eng. in Electrical Engineering, National University of La Plata (UNLP), Argentina, 2010-2014
 * Ph.D in Biomedical Engineering, The University of Sheffield & University of Leeds, United Kingdom, 2015-2019
+  * Center for Computational Imaging & Simulation Technologies in Biomedicine (CISTIB) in Biomedical engineering under the supervision of Professor Alejandro Frangi and Dr. Jose Pozo
 
 Work experience
 ======
@@ -50,3 +51,4 @@ Awards & Distinctions
 * (2015) Annual Award given by the Professional Counsel of Mechanic and Electrical Engineering for achieving
 the highest GPA in one of their engineering specialities.
 * (2015) Best Graduated Awards given by the faculty of engineering (UNLP) for achieving the highest GPA in an engineering speciality.
+* (2015) J. V. Gonzalez Award given by La Plata City Council for achieving one of the highest GPAs in the faculty of engineering (UNLP).
