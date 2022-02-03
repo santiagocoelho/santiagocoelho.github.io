@@ -11,49 +11,39 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.Eng. in Electrical Engineering, National University of La Plata (UNLP), Argentina, 2010-2014
+* Ph.D in Biomedical Engineering, The University of Sheffield -> University of Leeds, United Kingdom, 2015-2019
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Jan 2020 - Present: Postdoctoral Research Fellow
+  * New York University Grossman School of Medicine, Department of Radiology, Center for Biomedical Imaging, MRI Biophysics Group
+  * PIs: Dmitry Novikov & Els Fieremans
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-  
+Teaching experience
+======
+* 2021 - Present: Teaching Assistant in Practical Magnetic Resonance Imaging (Ph.D. course). Radiology Department, New York University Grossman School of Medicine, New York, USA.
+* 2017-2018 - Graduate Teaching Assistant in Mathematics of Imaging Sciences (MSc course). EEE Department, The University of Sheffield, United Kingdom.
+* 2012-2015 - Teaching Assistant in Numerical Analysis. Faculty of Engineering UNLP, (FiUNLP), La Plata, Argentina.
+* 2015 - Teaching Assistant in Control and Servomecanisms, FiUNLP, La Plata, Argentina.
+* 2013 - Teaching Assistant in Electromagnetism, FiUNLP, La Plata, Argentina.
+* 2011 - Teaching Assistant in Mathematical Analysis, FiUNLP, La Plata, Argentina.
+
+
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
-Publications
-======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+* Physics
+* Statistics
+* Scientific programming
+* Machine learning
   
-Talks
+Awards & Distinctions
 ======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+* (2021) Best presentation award for ‘Fast acquisitions for mean kurtosis and microscopic fractional anisotropy’ at the ISMRM Diffusion Day trainee workshop.
+* (2021) Summa Cum Laude award for oral talk ‘How do we know we measure the tissue parameters, not the prior?’ at the ISMRM annual meeting.
+* (2017-2019-2020)Educational Stipend International Society for Magnetic Resonance in Medicine.
+* (2015) Luis Augusto Huergo Award from the College of Engineers of Buenos Aires for achieving the highest GPA in an engineering speciality dictated by the UNLP.
+* (2015) Award to the best graduate of Electrical Engineering given by the UNLP, La Plata, Argentina.
+* (2015) Annual Award given by the Professional Counsel of Mechanic and Electrical Engineering for achieving
+the highest GPA in one of their engineering specialities.
+* (2015) Best Graduated Awards given by the faculty of engineering (UNLP) for achieving the highest GPA in an engineering speciality.
