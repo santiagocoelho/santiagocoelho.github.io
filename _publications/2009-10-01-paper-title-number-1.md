@@ -16,11 +16,3 @@ A pdf of the paper can be downloaded [here](https://github.com/santiagocoelho/sa
 Recommended citation: Santiago Coelho, Jose M. Pozo, Marina Costantini, J. Robin Highley, Meghdoot Mozumder, Julie E. Simpson, Paul G. Ince, Alejandro F. Frangi, Local volume fraction distributions of axons, astrocytes, and myelin in deep subcortical white matter, NeuroImage, Volume 179, 2018, Pages 275-287.
 
 
-#collection: publications
-#permalink: /publication/2015-10-01-paper-title-number-3
-#excerpt: 'This paper is about the number 3. The number 4 is left for future work.'
-#date: 2015-10-01
-#venue: 'Journal 1'
-#paperurl: 'http://academicpages.github.io/files/paper3.pdf'
-#citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
-
