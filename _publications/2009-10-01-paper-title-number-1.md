@@ -11,6 +11,6 @@ citation: 'Coelho et al., Local volume fraction distributions of axons, astrocyt
 
 This paper aims to statistically describe histologically stained white matter brain sections to subsequently inform and validate diffusion MRI techniques.
 
-A pdf of the paper can be downloaded [here](http://academicpages.github.io/files/paper1.pdf)
+A pdf of the paper can be downloaded [here](http://santiagocoelho.github.io/files/paper1.pdf)
 
 Recommended citation: Santiago Coelho, Jose M. Pozo, Marina Costantini, J. Robin Highley, Meghdoot Mozumder, Julie E. Simpson, Paul G. Ince, Alejandro F. Frangi, Local volume fraction distributions of axons, astrocytes, and myelin in deep subcortical white matter, NeuroImage, Volume 179, 2018, Pages 275-287.
