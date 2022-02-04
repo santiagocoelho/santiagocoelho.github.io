@@ -19,9 +19,8 @@ Education
 
 Work experience
 ======
-* Jan 2020 - Present: Postdoctoral Research Fellow at New York University Grossman School of Medicine, Department of Radiology
-  * MRI Biophysics Group, Center for Biomedical Imaging (CBI)
-  * Principal Investigators: Dmitry Novikov & Els Fieremans
+* Jan 2020 - Present: Postdoctoral Research Fellow at [New York University Grossman School of Medicine](https://med.nyu.edu/our-community/about-us), [Department of Radiology](https://med.nyu.edu/departments-institutes/radiology/research), [Center for Biomedical Imaging (CBI)](https://cai2r.net/)
+  * [MRI Biophysics Group](https://www.diffusion-mri.com/), Principal Investigators: Dmitry Novikov & Els Fieremans
 
 Teaching experience
 ======
