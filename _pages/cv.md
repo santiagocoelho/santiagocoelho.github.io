@@ -13,13 +13,13 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Biomedical Engineering, The University of Sheffield & University of Leeds, United Kingdom, 2015-2019
-  * Center for Computational Imaging & Simulation Technologies in Biomedicine (CISTIB) in Biomedical engineering under the supervision of Professor Alejandro Frangi and Dr. Jose Pozo
-* B.Eng. in Electrical Engineering, National University of La Plata (UNLP), Argentina, 2010-2014
+* Ph.D in Biomedical Engineering, [School of Computing, University of Leeds](https://eps.leeds.ac.uk/computing), United Kingdom
+  * [Center for Computational Imaging & Simulation Technologies in Biomedicine (CISTIB)](http://www.cistib.org/) (2015-2019), under the supervision of Professor Alejandro Frangi and Dr. Jose Pozo
+* B.Eng. in Electrical Engineering, [Faculty of Engineering, National University of La Plata (UNLP)](https://www.ing.unlp.edu.ar/), Argentina, 2010-2014
 
 Work experience
 ======
-* Jan 2020 - Present: Postdoctoral Research Fellow at [New York University Grossman School of Medicine](https://med.nyu.edu/our-community/about-us), [Department of Radiology](https://med.nyu.edu/departments-institutes/radiology/research), [Center for Biomedical Imaging (CBI)](https://cai2r.net/)
+* Jan 2020 - Present: Postdoctoral Research Fellow at [New York University Grossman School of Medicine](https://med.nyu.edu/our-community/about-us), [Department of Radiology](https://med.nyu.edu/departments-institutes/radiology/research), [Center for Advanced Imaging Innovation and Research (CAI2R)](https://cai2r.net/)
   * [MRI Biophysics Group](https://www.diffusion-mri.com/), Principal Investigators: Dmitry Novikov & Els Fieremans
 
 Teaching experience
