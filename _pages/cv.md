@@ -13,9 +13,9 @@ redirect_from:
 
 Education
 ======
-* B.Eng. in Electrical Engineering, National University of La Plata (UNLP), Argentina, 2010-2014
 * Ph.D in Biomedical Engineering, The University of Sheffield & University of Leeds, United Kingdom, 2015-2019
   * Center for Computational Imaging & Simulation Technologies in Biomedicine (CISTIB) in Biomedical engineering under the supervision of Professor Alejandro Frangi and Dr. Jose Pozo
+* B.Eng. in Electrical Engineering, National University of La Plata (UNLP), Argentina, 2010-2014
 
 Work experience
 ======
