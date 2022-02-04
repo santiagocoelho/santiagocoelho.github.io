@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi, welcome to my personal website! I am a scientist working at the intersection of physics, computer science, and medicine. 
+Hi, welcome to my personal website! I am a scientist working at the intersection of physics and computer science with applications on magnetic resonance imaging (MRI). 
 
 My work focuses on investigating the advantages of the use of non-standard diffusion sequences for biophysical tissue models. My research interests are in the areas of diffusion in the brain, MRI biophysics, inverse problems, and machine learning for medical image analysis.
 
