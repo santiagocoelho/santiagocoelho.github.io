@@ -15,7 +15,4 @@ My work focuses on investigating the advantages of the use of non-standard diff
 
 
 
-<img width="1856" alt="SM_maps_github" src="https://user-images.githubusercontent.com/54751227/152456358-70e94975-9a88-41aa-8a92-b68ed7b624bf.png">
-
-![test_tracts](https://user-images.githubusercontent.com/54751227/152266921-aa6d7939-dbf6-43ef-be13-7895d52f7764.JPG)
-
+<img width="1061" alt="Screen Shot 2022-02-03 at 8 33 44 PM" src="https://user-images.githubusercontent.com/54751227/152457893-472a4e90-d90c-4e5d-88ed-3d44aa872438.png">
