@@ -84,7 +84,7 @@ author:
   avatar           : "profile.png"
   bio              : "Postdoctoral fellow at NYU School of Medicine, interested in biophysical modeling of diffusion in brain tissue and image processing"
   location         : "New York City, NY, USA"
-  employer         :
+  employer         : "https://cai2r.net/"
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "https://scholar.google.com/citations?user=SraRlxoAAAAJ&hl=en"
   email            : "santiago.coelho@nyulangone.org"
@@ -102,7 +102,7 @@ author:
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         :
+  linkedin         : "https://www.linkedin.com/in/santiago-coelho"
   orcid            : "http://orcid.org/0000-0002-1039-4803" #https://orcid.org/0000-0002-1039-4803
   pinterest        :
   soundcloud       :
