@@ -39,6 +39,7 @@ Skills
 * Statistics
 * Scientific programming
 * Machine learning
+
   
 Awards & Distinctions
 ======
@@ -51,3 +52,9 @@ Awards & Distinctions
 the highest GPA in one of their engineering specialities
 * (2015) Best Graduated Awards given by the faculty of engineering (UNLP) for achieving the highest GPA in an engineering speciality
 * (2015) J. V. Gonzalez Award given by La Plata City Council for achieving one of the highest GPAs in the faculty of engineering (UNLP)
+
+  
+Reviewer (technical journals)
+======
+* NeuroImage
+* Magnetic Resonance in Medicine
