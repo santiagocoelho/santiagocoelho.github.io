@@ -46,6 +46,7 @@ Awards & Distinctions
 * (2021) Best presentation award for ‘Fast acquisitions for mean kurtosis and microscopic fractional anisotropy’ at the [ISMRM](https://www.ismrm.org/) Diffusion Day trainee workshop
 * (2021) Summa Cum Laude award for oral talk ‘How do we know we measure the tissue parameters, not the prior?’ at the [ISMRM](https://www.ismrm.org/) annual meeting
 * (2017-2019-2020) Educational Stipend International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/))
+* (2019) Student Travel Award from the Medical Image Computing and Computer Assisted Intervention Society [MICCAI](http://www.miccai.org/about-miccai/awards/student-travel-awards/)
 * (2015) Luis Augusto Huergo Award from the College of Engineers of Buenos Aires for achieving the highest GPA in an engineering speciality dictated by the UNLP
 * (2015) Award to the best graduate of Electrical Engineering given by the UNLP, La Plata, Argentina
 * (2015) Annual Award given by the Professional Counsel of Mechanic and Electrical Engineering for achieving
