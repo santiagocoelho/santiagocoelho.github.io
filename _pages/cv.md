@@ -26,12 +26,12 @@ Education
 
 Teaching experience
 ======
-* 2021 - Present: Teaching Assistant in Practical Magnetic Resonance Imaging (Ph.D. course). Radiology Department, New York University Grossman School of Medicine, New York, USA
-* 2017-2018 - Graduate Teaching Assistant in Mathematics of Imaging Sciences (MSc course). EEE Department, The University of Sheffield, United Kingdom
-* 2012-2015 - Teaching Assistant in Numerical Analysis. Faculty of Engineering UNLP, (FiUNLP), La Plata, Argentina
-* 2015 - Teaching Assistant in Control and Servomecanisms, FiUNLP, La Plata, Argentina
-* 2013 - Teaching Assistant in Electromagnetism, FiUNLP, La Plata, Argentina
-* 2011 - Teaching Assistant in Mathematical Analysis, FiUNLP, La Plata, Argentina
+* 2021 - Present: Teaching Assistant in Practical Magnetic Resonance Imaging (Ph.D. course), Radiology Department, New York University Grossman School of Medicine, New York, USA
+* 2017-2018 - Graduate Teaching Assistant in Mathematics of Imaging Sciences (MSc course), EEE Department, The University of Sheffield, United Kingdom
+* 2012-2015 - Teaching Assistant in Numerical Analysis (undergraduate course), Faculty of Engineering UNLP, (FiUNLP), La Plata, Argentina
+* 2015 - Teaching Assistant in Control and Servomecanisms (undergraduate course), FiUNLP, La Plata, Argentina
+* 2013 - Teaching Assistant in Electromagnetism (undergraduate course), FiUNLP, La Plata, Argentina
+* 2011 - Teaching Assistant in Mathematical Analysis (undergraduate course), FiUNLP, La Plata, Argentina
 
 Skills
 ======
