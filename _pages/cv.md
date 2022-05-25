@@ -43,6 +43,9 @@ Skills
   
 Awards & Distinctions
 ======
+* (2022) ISMRM [Diffusion Study Group](https://groups.ismrm.org/diffusion/) trainee award for the best abstract selected for oral presentation for ‘[Fast acquisitions for mean kurtosis and microscopic fractional anisotropy](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0514.html)’.
+* (2022) ISMRM [White Matter Study Group](https://groups.ismrm.org/white-matter/) trainee award for the third-best abstract in the category of experienced ISMRM presenters for ‘[Reproducibility of white matter microstructure mapping with diffusion-relaxometry](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0697.html)’.
+* (2022) Magna Cum Laude award for oral talk ‘[Fast acquisitions for mean kurtosis and microscopic fractional anisotropy](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0514.html)’ at the [ISMRM](https://www.ismrm.org/) annual meeting
 * (2021) Best presentation award for ‘Fast acquisitions for mean kurtosis and microscopic fractional anisotropy’ at the [ISMRM](https://www.ismrm.org/) Diffusion Day trainee workshop
 * (2021) Summa Cum Laude award for oral talk ‘How do we know we measure the tissue parameters, not the prior?’ at the [ISMRM](https://www.ismrm.org/) annual meeting
 * (2017-2019-2020) Educational Stipend International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/))
