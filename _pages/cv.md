@@ -43,6 +43,7 @@ Skills
   
 Awards & Distinctions
 ======
+* (2022) Best presentation award for ‘Abandon All Shells: Rotational Invariants from Non-Rotationally-Invariant Acquisitions’ at the [ISMRM Diffusion Study Group workshop](https://www.ismrm.org/workshops/2022/Diffusion/program.php) held in Amsterdam.
 * (2022) ISMRM [Diffusion Study Group](https://groups.ismrm.org/diffusion/) trainee award for the best abstract selected for oral presentation for ‘[Fast acquisitions for mean kurtosis and microscopic fractional anisotropy](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0514.html)’.
 * (2022) ISMRM [White Matter Study Group](https://groups.ismrm.org/white-matter/) trainee award for the third-best abstract in the category of experienced ISMRM presenters for ‘[Reproducibility of white matter microstructure mapping with diffusion-relaxometry](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0697.html)’.
 * (2022) Magna Cum Laude award for oral talk ‘[Fast acquisitions for mean kurtosis and microscopic fractional anisotropy](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0514.html)’ at the [ISMRM](https://www.ismrm.org/) annual meeting
