@@ -61,7 +61,7 @@ the highest GPA in one of their engineering specialities.
 
 Patents
 ======
-* System, method and computer-accessible medium for determining rotational invariants of the cumulant expansion from one or more acquisitions which can be minima. US Patent provisional application (2022).
+* System, method and computer-accessible medium for determining rotational invariants of the cumulant expansion from one or more acquisitions which can be minimal. US Patent provisional application (2022).
 * System, method and computer-accessible medium for diffusion MRI withour shells. US Patent provisional application (2022).
 
 
