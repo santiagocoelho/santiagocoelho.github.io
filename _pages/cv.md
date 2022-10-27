@@ -67,9 +67,9 @@ Patents
 
 Reviewer (technical journals)
 ======
-* NeuroImage
-* Magnetic Resonance in Medicine
+* [NeuroImage](https://www.sciencedirect.com/journal/neuroimage)
+* [Magnetic Resonance in Medicine](https://onlinelibrary.wiley.com/journal/15222594)
 
 Miscellaneous
 ======
-* Trainee member of the International Society for Magnetic Resonance in Medicine.
+* Trainee member of the International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/)).
