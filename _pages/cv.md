@@ -58,7 +58,14 @@ the highest GPA in one of their engineering specialities
 * (2015) Best Graduated Awards given by the faculty of engineering (UNLP) for achieving the highest GPA in an engineering speciality
 * (2015) J. V. Gonzalez Award given by La Plata City Council for achieving one of the highest GPAs in the faculty of engineering (UNLP)
 
-  
+
+Patents
+======
+* SYSTEM, METHOD AND COMPUTER-ACCESSIBLE MEDIUM FOR DETERMINING ROTATIONAL INVARIANTS OF CUMULANT EXPANSION FROM
+ONE OR MORE ACQUISITIONS WHICH CAN BE MINIMAL. US Patent provisional application (2022).
+* SYSTEM, METHOD AND COMPUTER-ACCESSIBLE MEDIUM FOR DIFFUSION MRI WITHOUT SHELLS. US Patent provisional application (2022).
+
+
 Reviewer (technical journals)
 ======
 * NeuroImage
