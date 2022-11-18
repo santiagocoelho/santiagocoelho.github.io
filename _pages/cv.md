@@ -54,8 +54,8 @@ Awards & Distinctions
 * (2015) Luis Augusto Huergo Award from the College of Engineers of Buenos Aires for achieving the highest GPA in an engineering speciality dictated by the UNLP.
 * (2015) Award to the best graduate of Electrical Engineering given by the UNLP, La Plata, Argentina.
 * (2015) Annual Award given by the Professional Counsel of Mechanic and Electrical Engineering for achieving
-the highest GPA in one of their engineering specialities.
-* (2015) Best Graduated Awards given by the faculty of engineering (UNLP) for achieving the highest GPA in an engineering speciality.
+the highest GPA in one of their engineering specialties.
+* (2015) Best Graduated Awards given by the faculty of engineering (UNLP) for achieving the highest GPA in an engineering specialty.
 * (2015) J. V. Gonzalez Award given by La Plata City Council for achieving one of the highest GPAs in the faculty of engineering (UNLP).
 
 
