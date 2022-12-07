@@ -69,6 +69,7 @@ Reviewer (technical journals)
 ======
 * [NeuroImage](https://www.sciencedirect.com/journal/neuroimage)
 * [Magnetic Resonance in Medicine](https://onlinelibrary.wiley.com/journal/15222594)
+* [Scientific Reports](https://www.nature.com/srep/)
 
 Miscellaneous
 ======
