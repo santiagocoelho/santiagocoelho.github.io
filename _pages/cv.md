@@ -43,11 +43,8 @@ Skills
   
 Awards & Distinctions
 ======
-<<<<<<< HEAD
 * (2023) Summa Cum Laude award and AMPC top 100 selection for oral talk ‘What if every voxel was measured with a different diffusion protocol?’ at the [ISMRM](https://www.ismrm.org/) annual meeting
-=======
 * (2022) Best presentation award for ‘[Abandon All Shells: Rotational Invariants from Non-Rotationally-Invariant Acquisitions](https://cds.ismrm.org/protected/Diffusion22/abstracts/Coelho.pdf)’ at the [ISMRM Diffusion Study Group workshop](https://www.ismrm.org/workshops/2022/Diffusion/program.php) held in Amsterdam.
->>>>>>> 38c173e31a20fda132b8bb13f2786f953157d475
 * (2022) ISMRM [Diffusion Study Group](https://groups.ismrm.org/diffusion/) trainee award for the best abstract selected for oral presentation for ‘[Fast acquisitions for mean kurtosis and microscopic fractional anisotropy](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0514.html)’.
 * (2022) ISMRM [White Matter Study Group](https://groups.ismrm.org/white-matter/) trainee award for the third-best abstract in the category of experienced ISMRM presenters for ‘[Reproducibility of white matter microstructure mapping with diffusion-relaxometry](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0697.html)’.
 * (2022) Magna Cum Laude award for oral talk ‘[Fast acquisitions for mean kurtosis and microscopic fractional anisotropy](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0514.html)’ at the [ISMRM](https://www.ismrm.org/) annual meeting.
@@ -69,15 +66,12 @@ Patents
 * System, method and computer-accessible medium for diffusion MRI without shells. US Patent provisional application (2022).
 
 
-<<<<<<< HEAD
 Patents
 ======
 * (2022) U.S. Provisional Patent Application “SYSTEM, METHOD AND COMPUTER-ACCESSIBLE MEDIUM FOR
 DIFFUSION MRI WITHOUT SHELLS”
 * (2022) U.S. Provisional Patent Application “SYSTEM, METHOD AND COMPUTER-ACCESSIBLE MEDIUM FOR DETERMINING ROTATIONAL INVARIANTS OF CUMULANT EXPANSION FROM ONE OR MORE ACQUISITIONS WHICH CAN BE MINIMAL”
 
-=======
->>>>>>> 38c173e31a20fda132b8bb13f2786f953157d475
 Reviewer (technical journals)
 ======
 * [NeuroImage](https://www.sciencedirect.com/journal/neuroimage)
