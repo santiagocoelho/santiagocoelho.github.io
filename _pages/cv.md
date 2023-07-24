@@ -74,3 +74,4 @@ Reviewer (technical journals)
 Miscellaneous
 ======
 * Trainee member of the International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/)).
+* Chair of the 2023 Tissue Microstructure Imaging Gordon Research Seminar [(GRS)](https://www.grc.org/tissue-microstructure-imaging-grs-conference/2023/), associated to the corresponding Gordon Research Confreence [(GRC)](https://www.grc.org/tissue-microstructure-imaging-conference/2023/)
