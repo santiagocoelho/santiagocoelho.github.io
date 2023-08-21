@@ -70,8 +70,10 @@ Reviewer (technical journals)
 * [NeuroImage](https://www.sciencedirect.com/journal/neuroimage)
 * [Magnetic Resonance in Medicine](https://onlinelibrary.wiley.com/journal/15222594)
 * [Scientific Reports](https://www.nature.com/srep/)
+* [Imaging Neuroscience](https://janeway.imaging-neuroscience.org/)
 
 Miscellaneous
 ======
 * Trainee member of the International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/)).
+* Trainee representative of the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
 * Chair of the 2023 Tissue Microstructure Imaging Gordon Research Seminar [(GRS)](https://www.grc.org/tissue-microstructure-imaging-grs-conference/2023/), associated to the corresponding Gordon Research Confreence [(GRC)](https://www.grc.org/tissue-microstructure-imaging-conference/2023/)
