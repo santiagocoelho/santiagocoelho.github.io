@@ -19,7 +19,7 @@ Work experience
 
 Education
 ======
-* Ph.D in Biomedical Engineering, [School of Computing, University of Leeds](https://eps.leeds.ac.uk/computing), United Kingdom
+* Ph.D. in Biomedical Engineering, [School of Computing, University of Leeds](https://eps.leeds.ac.uk/computing), United Kingdom
   * [Center for Computational Imaging & Simulation Technologies in Biomedicine (CISTIB)](http://www.cistib.org/) (2015-2019), under the supervision of Prof. [Alejandro Frangi](http://www.cistib.org/index.php/members/core-academics/alejandro-frangi) and Dr. Jose Pozo.
 * B.Eng. in Electrical Engineering (Summa Cum Laude), [Faculty of Engineering, National University of La Plata (UNLP)](https://www.ing.unlp.edu.ar/), Argentina, 2010-2014.
 
@@ -37,8 +37,8 @@ Skills
 ======
 * Physics
 * Statistics
-* Scientific programming
-* Machine learning
+* Scientific Programming
+* Machine Learning
 
   
 Awards & Distinctions
@@ -52,7 +52,7 @@ Awards & Distinctions
 * (2021) Summa Cum Laude award for oral talk ‘How do we know we measure the tissue parameters, not the prior?’ at the [ISMRM](https://www.ismrm.org/) annual meeting.
 * (2017-2019-2020) Educational Stipend International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/)).
 * (2019) Student Travel Award from the Medical Image Computing and Computer Assisted Intervention Society ([MICCAI](http://www.miccai.org/about-miccai/awards/student-travel-awards/)).
-* (2015) Luis Augusto Huergo Award from the College of Engineers of Buenos Aires for achieving the highest GPA in an engineering speciality dictated by the UNLP.
+* (2015) Luis Augusto Huergo Award from the College of Engineers of Buenos Aires for achieving the highest GPA in an engineering specialty dictated by the UNLP.
 * (2015) Award to the best graduate of Electrical Engineering given by the UNLP, La Plata, Argentina.
 * (2015) Annual Award given by the Professional Counsel of Mechanic and Electrical Engineering for achieving
 the highest GPA in one of their engineering specialties.
@@ -76,4 +76,4 @@ Miscellaneous
 ======
 * Trainee member of the International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/)).
 * Trainee representative of the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
-* Chair of the 2023 Tissue Microstructure Imaging Gordon Research Seminar [(GRS)](https://www.grc.org/tissue-microstructure-imaging-grs-conference/2023/), associated to the corresponding Gordon Research Confreence [(GRC)](https://www.grc.org/tissue-microstructure-imaging-conference/2023/)
+* Chair of the 2023 Tissue Microstructure Imaging Gordon Research Seminar [(GRS)](https://www.grc.org/tissue-microstructure-imaging-grs-conference/2023/), associated to the corresponding Gordon Research Conference [(GRC)](https://www.grc.org/tissue-microstructure-imaging-conference/2023/)
