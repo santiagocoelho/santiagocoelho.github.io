@@ -78,4 +78,5 @@ Miscellaneous
 * Trainee member of the International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/)).
 * Trainee representative of the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
 * Chair of the 2023 Tissue Microstructure Imaging Gordon Research Seminar [(GRS)](https://www.grc.org/tissue-microstructure-imaging-grs-conference/2023/), associated to the corresponding Gordon Research Conference [(GRC)](https://www.grc.org/tissue-microstructure-imaging-conference/2023/)
+* Co-Chair of the [2024 Trainee Day: 24 hours of diffusion around the world](https://www.ismrm.org/virtual-meetings/diffusion-day-2024/) organized by the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
 * Guest editor of the [virtual special issue of Magnetic Resonance in Medicine on Diffusion MR](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1522-2594.diffusion)
