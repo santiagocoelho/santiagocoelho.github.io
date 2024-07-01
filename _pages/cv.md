@@ -10,7 +10,6 @@ redirect_from:
 {% include base_path %}
 
 
-
 Work experience
 ======
 * Jan 2020 - Present: Postdoctoral Research Fellow at [New York University Grossman School of Medicine](https://med.nyu.edu/our-community/about-us), [Department of Radiology](https://med.nyu.edu/departments-institutes/radiology/research), [Center for Advanced Imaging Innovation and Research (CAI2R)](https://cai2r.net/).
@@ -24,25 +23,9 @@ Education
 * B.Eng. in Electrical Engineering (Summa Cum Laude), [Faculty of Engineering, National University of La Plata (UNLP)](https://www.ing.unlp.edu.ar/), Argentina, 2010-2014.
 
 
-Teaching experience
-======
-* 2021 - Present: Teaching Assistant in Practical Magnetic Resonance Imaging (Ph.D. course), Radiology Department, New York University Grossman School of Medicine, New York, USA.
-* 2017-2018 - Graduate Teaching Assistant in Mathematics of Imaging Sciences (MSc course), EEE Department, The University of Sheffield, United Kingdom.
-* 2012-2015 - Teaching Assistant in Numerical Analysis (undergraduate course), Faculty of Engineering UNLP, (FiUNLP), La Plata, Argentina.
-* 2015 - Teaching Assistant in Control and Servomecanisms (undergraduate course), FiUNLP, La Plata, Argentina.
-* 2013 - Teaching Assistant in Electromagnetism (undergraduate course), FiUNLP, La Plata, Argentina.
-* 2011 - Teaching Assistant in Mathematical Analysis (undergraduate course), FiUNLP, La Plata, Argentina.
-
-Skills
-======
-* Physics
-* Statistics
-* Scientific Programming
-* Machine Learning
-
-  
 Awards & Distinctions
 ======
+* (2024) Magna Cum Laude award for oral talk ‘Cumulant tensors from the addition of angular momenta: All diffusion invariants in one abstract’ at the [ISMRM](https://www.ismrm.org/) annual meeting
 * (2023) Summa Cum Laude award and AMPC top 100 selection for oral talk ‘What if every voxel was measured with a different diffusion protocol?’ at the [ISMRM](https://www.ismrm.org/) annual meeting
 * (2022) Best presentation award for ‘[Abandon All Shells: Rotational Invariants from Non-Rotationally-Invariant Acquisitions](https://cds.ismrm.org/protected/Diffusion22/abstracts/Coelho.pdf)’ at the [ISMRM Diffusion Study Group workshop](https://www.ismrm.org/workshops/2022/Diffusion/program.php) held in Amsterdam.
 * (2022) ISMRM [Diffusion Study Group](https://groups.ismrm.org/diffusion/) trainee award for the best abstract selected for oral presentation for ‘[Fast acquisitions for mean kurtosis and microscopic fractional anisotropy](https://submissions.mirasmart.com/ISMRM2022/Itinerary/Files/PDFFiles/0514.html)’.
@@ -60,6 +43,26 @@ the highest GPA in one of their engineering specialties.
 * (2015) J. V. Gonzalez Award given by La Plata City Council for achieving one of the highest GPAs in the faculty of engineering (UNLP).
 
 
+Teaching experience
+======
+* 2021 - Present: Teaching Assistant in Practical Magnetic Resonance Imaging (Ph.D. course), Radiology Department, New York University Grossman School of Medicine, New York, USA.
+* 2017-2018 - Graduate Teaching Assistant in Mathematics of Imaging Sciences (MSc course), EEE Department, The University of Sheffield, United Kingdom.
+* 2012-2015 - Teaching Assistant in Numerical Analysis (undergraduate course), Faculty of Engineering UNLP, (FiUNLP), La Plata, Argentina.
+* 2015 - Teaching Assistant in Control and Servomecanisms (undergraduate course), FiUNLP, La Plata, Argentina.
+* 2013 - Teaching Assistant in Electromagnetism (undergraduate course), FiUNLP, La Plata, Argentina.
+* 2011 - Teaching Assistant in Mathematical Analysis (undergraduate course), FiUNLP, La Plata, Argentina.
+
+
+Skills
+======
+* Physics
+* Statistics
+* MRI
+* Inverse problems
+* Machine Learning
+* Scientific Programming
+
+
 Patents
 ======
 * (2022) U.S. Provisional Patent Application “SYSTEM, METHOD AND COMPUTER-ACCESSIBLE MEDIUM FOR DIFFUSION MRI WITHOUT SHELLS”
@@ -75,8 +78,7 @@ Reviewer (technical journals)
 
 Miscellaneous
 ======
-* Trainee member of the International Society for Magnetic Resonance in Medicine ([ISMRM](https://www.ismrm.org/)).
-* Trainee representative of the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
+* 2023-2025 Trainee representative of the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
 * Chair of the 2023 Tissue Microstructure Imaging Gordon Research Seminar [(GRS)](https://www.grc.org/tissue-microstructure-imaging-grs-conference/2023/), associated to the corresponding Gordon Research Conference [(GRC)](https://www.grc.org/tissue-microstructure-imaging-conference/2023/)
 * Co-Chair of the [2024 Trainee Day: 24 hours of diffusion around the world](https://www.ismrm.org/virtual-meetings/diffusion-day-2024/) organized by the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
 * Guest editor of the [virtual special issue of Magnetic Resonance in Medicine on Diffusion MR](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1522-2594.diffusion)
