@@ -65,8 +65,8 @@ Skills
 
 Patents
 ======
-* (2022) U.S. Provisional Patent Application “SYSTEM, METHOD AND COMPUTER-ACCESSIBLE MEDIUM FOR DIFFUSION MRI WITHOUT SHELLS”
-* (2022) U.S. Provisional Patent Application “SYSTEM, METHOD AND COMPUTER-ACCESSIBLE MEDIUM FOR DETERMINING ROTATIONAL INVARIANTS OF CUMULANT EXPANSION FROM ONE OR MORE ACQUISITIONS WHICH CAN BE MINIMAL”
+* S Coelho, E Fieremans, DS Novikov. System, method and computer-accessible medium for determining rotational invariants of cumulant expansion from one or more acquisitions which can be minimal. US Provisional Application 63333856, filed April 22, 2022; converted to full PCT application April 25, 2023.
+* S Coelho, E Fieremans, DS Novikov. System, method and computer-accessible medium for diffusion MRI without shells. Provisional patent application 63/412,181, filed September 30, 2022; converted to full PCT application September 30, 2023.
 
 Reviewer (technical journals)
 ======
