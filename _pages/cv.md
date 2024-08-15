@@ -22,6 +22,9 @@ Education
   * [Center for Computational Imaging & Simulation Technologies in Biomedicine (CISTIB)](http://www.cistib.org/) (2015-2019), under the supervision of Prof. [Alejandro Frangi](http://www.cistib.org/index.php/members/core-academics/alejandro-frangi) and Dr. Jose Pozo.
 * B.Eng. in Electrical Engineering (Summa Cum Laude), [Faculty of Engineering, National University of La Plata (UNLP)](https://www.ing.unlp.edu.ar/), Argentina, 2010-2014.
 
+Funding
+======
+* K99/R00 Pathway to Independence Award (5 years funding, ~1M), supported by the National Institute of Biomedical Imaging and Bioengineering (NIBIB), National Institutes of Health (NIH). Project: Fast High-Resolution Microstructure Diffusion MRI Exploiting Data Redundancy.
 
 Awards & Distinctions
 ======
