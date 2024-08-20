@@ -12,6 +12,5 @@ Hi, welcome to my personal website! I am a postdoctoral research fellow at the [
 
 My focus is on investigating the advantages of non-standard diffusion MRI encodings for biophysical tissue models, understanding all the rotationally invariant information in the diffusion signals, developing new data acquisition strategies for faster scans, and performing joint undersampling of diffusion and image spaces for fast high-resolution microstructural imaging. My research interests are in the areas of diffusion in the brain, MRI biophysics, inverse problems, and machine learning for medical image analysis.
 
-![mybrain](https://github.com/user-attachments/assets/3178dd83-04a5-46b3-afd7-9b6b52b0cf7d)
-
+![mybrain](https://github.com/user-attachments/assets/8f0736c3-6438-497a-b961-6fc069cae6ee)
 
