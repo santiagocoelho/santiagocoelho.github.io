@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-<! -- You can find a pdf with my full academic CV [here](https://github.com/user-attachments/files/16731553/Santiago.Coelho_CV_2024_Aug_23.pdf). -->
+<!-- You can find a pdf with my full academic CV [here](https://github.com/user-attachments/files/16731553/Santiago.Coelho_CV_2024_Aug_23.pdf). -->
 
 
 Work experience
