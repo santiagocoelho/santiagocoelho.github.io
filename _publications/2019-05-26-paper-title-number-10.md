@@ -2,7 +2,7 @@
 title: "Population-based Bayesian regularization for microstructural diffusion MRI with NODDIDA"
 collection: publications
 permalink: /publication/2019-05-26-paper-title-number-10
-excerpt: 'This paper compares the detailed immunoreactive profile of three classic microglial markers, namely Iba-1, CD68 and MHCII.'
+excerpt: 'This paper proposed the use of a Bayesian population-based prior for robust estimation of NODDIDA parameters with limited acquisition protocols.'
 date: 2019-05-26
 venue: 'Magnetic Resonance in Medicine'
 paperurl: 'https://onlinelibrary.wiley.com/doi/10.1002/mrm.27831'
