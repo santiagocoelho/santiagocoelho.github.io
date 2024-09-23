@@ -1,0 +1,16 @@
+---
+title: "Iba-1-/CD68+ microglia are a prominent feature of age-associated deep subcortical white matter lesions"
+collection: publications
+permalink: /publication/2019-01-25-paper-title-number-9
+excerpt: 'This paper compares the detailed immunoreactive profile of three classic microglial markers, namely Iba-1, CD68 and MHCII.'
+date: 2019-01-25
+venue: 'PLoS One'
+paperurl: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0210888'
+citation: 'Rachel Waller, Lynne Baxter, Daniel J Fillingham, Santiago Coelho, Jose M Pozo, Meghdoot Mozumder, Alejandro F Frangi, Paul G Ince, Julie E Simpson, J Robin Highley (2019). Iba-1-/CD68+ microglia are a prominent feature of age-associated deep subcortical white matter lesions. PLoS One. 14(1):e0210888.'
+---
+
+Deep subcortical lesions (DSCL) of the brain, are present in ~60% of the ageing population, and are linked to cognitive decline and depression. DSCL are associated with demyelination, blood brain barrier (BBB) dysfunction, and microgliosis. Microglia are the main immune cell of the brain. Under physiological conditions microglia have a ramified morphology, and react to pathology with a change to a more rounded morphology as well as showing protein expression alterations. This study builds on previous characterisations of DSCL and radiologically ‘normal-appearing’ white matter (NAWM) by performing a detailed characterisation of a range of microglial markers in addition to markers of vascular integrity. The Cognitive Function and Ageing Study (CFAS) provided control white matter (WM), NAWM and DSCL human post mortem tissue for immunohistochemistry using microglial markers (Iba-1, CD68 and MHCII), a vascular basement membrane marker (collagen IV) and markers of BBB integrity (fibrinogen and aquaporin 4). The immunoreactive profile of CD68 increased in a stepwise manner from control WM to NAWM to DSCL. This correlated with a shift from small, ramified cells, to larger, more rounded microglia. While there was greater Iba-1 immunoreactivity in NAWM compared to controls, in DSCL, Iba-1 levels were reduced to control levels. A prominent feature of these DSCL was a population of Iba-1-/CD68+ microglia. There were increases in collagen IV, but no change in BBB integrity. Overall the study shows significant differences in the immunoreactive profile of microglial markers. Whether this is a cause or effect of lesion development remains to be elucidated. Identifying microglia subpopulations based on their morphology and molecular markers may ultimately help decipher their function and role in neurodegeneration. Furthermore, this study demonstrates that Iba-1 is not a pan-microglial marker, and that a combination of several microglial markers is required to fully characterise the microglial phenotype.
+
+The paper can be accessed [here](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0210888)
+
+Recommended citation: Rachel Waller, Lynne Baxter, Daniel J Fillingham, Santiago Coelho, Jose M Pozo, Meghdoot Mozumder, Alejandro F Frangi, Paul G Ince, Julie E Simpson, J Robin Highley (2019). Iba-1-/CD68+ microglia are a prominent feature of age-associated deep subcortical white matter lesions. PLoS One. 14(1):e0210888.

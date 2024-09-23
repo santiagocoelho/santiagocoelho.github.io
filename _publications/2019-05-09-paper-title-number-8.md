@@ -1,0 +1,16 @@
+---
+title: "Quantitative histomorphometry of capillary microstructure in deep white matter"
+collection: publications
+permalink: /publication/2019-05-09-paper-title-number-8
+excerpt: 'This paper reports microvascular characteristics from deep white matter tissue, obtained with a novel feature extraction method.'
+date: 2019-05-09
+venue: 'NeuroImage: Clinical'
+paperurl: 'https://www.sciencedirect.com/science/article/pii/S2213158219301895'
+citation: 'Meghdoot Mozumder, Jose M Pozo, Santiago Coelho, Marina Costantini, Julie Simpson, J Robin Highley, Paul G Ince, Alejandro F Frangi (2019). Quantitative histomorphometry of capillary microstructure in deep white matter. NeuroImage: Clinical. (23):101839.'
+---
+
+White matter lesions represent a major risk factor for dementia in elderly people. Magnetic Resonance Imaging (MRI) studies have demonstrated cerebral blood flow reduction in age-related white matter lesions, indicating that vascular alterations are involved in developing white matter lesions. Hypoperfusion and changes in capillary morphology are generally linked to dementia. However, a quantitative study describing these microvascular alterations in white matter lesions is missing in the literature; most previous microvascular studies being on the cortex. The aim of this work is to identify and quantify capillary microstructural changes involved in the appearance of deep subcortical lesions (DSCL). We characterize the distribution of capillary diameter, thickness, and density in the deep white matter in a population of 75 elderly subjects, stratified into three equal groups according to DSCL: Control (subject without DSCL), Lesion (sample presenting DSCL), and Normal Appearing White Matter (NAWM, the subject presented DSCL but not at the sampled tissue location). Tissue samples were selected from the Cognitive Function and Aging Study (CFAS), a cohort representative of an aging population, from which immunohistochemically-labeled histological images were acquired. To accurately estimate capillary diameters and thicknesses from the 2D histological images, we also introduce a novel semi-automatic method robust to non-perpendicular incidence angle of capillaries into the imaging plane, and to non-circular deformations of capillary cross sections. Subjects with DSCL presented a significant increase in capillary wall thickness, a decrease in the diameter intra-subject variability (but not in the mean), and a decrease in capillary density. No significant difference was observed between controls and NAWM. Both capillary wall thickening and reduction in capillary density contribute to the reduction of cerebral blood flow previously reported for white matter lesions. The obtained distributions provide reliable statistics of capillary microstructure useful to inform the modeling of human cerebral blood flow, for instance to define microcirculation models for their estimation from MRI or to perform realistic cerebral blood flow simulations.
+
+The paper can be accessed [here](https://www.sciencedirect.com/science/article/pii/S2213158219301895)
+
+Recommended citation: Meghdoot Mozumder, Jose M Pozo, Santiago Coelho, Marina Costantini, Julie Simpson, J Robin Highley, Paul G Ince, Alejandro F Frangi (2019). Quantitative histomorphometry of capillary microstructure in deep white matter. NeuroImage: Clinical. (23):101839.
