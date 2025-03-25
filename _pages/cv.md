@@ -47,7 +47,6 @@ the highest GPA in one of their engineering specialties.
 * (2015) Best Graduated Awards given by the faculty of engineering (UNLP) for achieving the highest GPA in an engineering specialty.
 * (2015) J. V. Gonzalez Award given by La Plata City Council for achieving one of the highest GPAs in the faculty of engineering (UNLP).
 
-
 Teaching experience
 ======
 * 2021 - Present: Teaching Assistant in Practical Magnetic Resonance Imaging (Ph.D. course), Radiology Department, New York University Grossman School of Medicine, New York, USA.
@@ -57,6 +56,10 @@ Teaching experience
 * 2013 - Teaching Assistant in Electromagnetism (undergraduate course), FiUNLP, La Plata, Argentina.
 * 2011 - Teaching Assistant in Mathematical Analysis (undergraduate course), FiUNLP, La Plata, Argentina.
 
+Patents
+======
+* S Coelho, E Fieremans, DS Novikov. System, method and computer-accessible medium for determining rotational invariants of cumulant expansion from one or more acquisitions which can be minimal. US Provisional Application 63333856, filed April 22, 2022; converted to [full PCT application]([https://patents.google.com/patent/WO2024073122A1/en?q=(santiago+coelho%2c+System%2c+method+and+computer-accessible+medium+for+diffusion+mri+shells)&oq=santiago+coelho%2c+System%2c+method+and+computer-accessible+medium+for+diffusion+mri+without+shells+](https://patents.google.com/patent/WO2023205506A2/en?q=(santiago+coelho%2c+System%2c+method+and+computer-accessible+medium+for+diffusion+mri+shells)&oq=santiago+coelho%2c+System%2c+method+and+computer-accessible+medium+for+diffusion+mri+without+shells+)) April 25, 2023.
+* S Coelho, E Fieremans, DS Novikov. System, method and computer-accessible medium for diffusion MRI without shells. Provisional patent application 63/412,181, filed September 30, 2022; converted to [full PCT application](https://patents.google.com/patent/WO2024073122A1/en?q=(santiago+coelho%2c+System%2c+method+and+computer-accessible+medium+for+diffusion+mri+shells)&oq=santiago+coelho%2c+System%2c+method+and+computer-accessible+medium+for+diffusion+mri+without+shells+) September 30, 2023.
 
 Skills
 ======
@@ -66,13 +69,7 @@ Skills
 * Inverse problems
 * Machine Learning
 * Scientific Programming
-
-
-Patents
-======
-* S Coelho, E Fieremans, DS Novikov. System, method and computer-accessible medium for determining rotational invariants of cumulant expansion from one or more acquisitions which can be minimal. US Provisional Application 63333856, filed April 22, 2022; converted to full PCT application April 25, 2023.
-* S Coelho, E Fieremans, DS Novikov. System, method and computer-accessible medium for diffusion MRI without shells. Provisional patent application 63/412,181, filed September 30, 2022; converted to full PCT application September 30, 2023.
-
+  
 Reviewer (technical journals)
 ======
 * [NeuroImage](https://www.sciencedirect.com/journal/neuroimage)
@@ -86,4 +83,5 @@ Miscellaneous
 * 2023-2025 Trainee representative of the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
 * Chair of the 2023 Tissue Microstructure Imaging Gordon Research Seminar [(GRS)](https://www.grc.org/tissue-microstructure-imaging-grs-conference/2023/), associated to the corresponding Gordon Research Conference [(GRC)](https://www.grc.org/tissue-microstructure-imaging-conference/2023/)
 * Co-Chair of the [2024 Trainee Day: 24 hours of diffusion around the world](https://www.ismrm.org/virtual-meetings/diffusion-day-2024/) organized by the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
+* Co-Chair of the Educational & Historical Perspective Programs of the [2025 ISMRM Workshop on 40 Years of Diffusion: Past, Present & Future Perspectives](https://www.ismrm.org/workshops/2025/Diffusion40/) organized by the Diffusion Study Group of the ISMRM ([DSG-ISMRM](https://groups.ismrm.org/diffusion/)).
 * Guest editor of the [virtual special issue of Magnetic Resonance in Medicine on Diffusion MR](https://onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1522-2594.diffusion)
