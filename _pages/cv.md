@@ -30,6 +30,7 @@ Funding
 
 Awards & Distinctions
 ======
+* (2025) Named [ISMRM](https://www.ismrm.org/) Junior Fellow.
 * (2024) Magna Cum Laude award for oral talk ‘Cumulant tensors from the addition of angular momenta: All diffusion invariants in one abstract’ at the [ISMRM](https://www.ismrm.org/) annual meeting
 * (2023) Summa Cum Laude award and AMPC top 100 selection for oral talk ‘What if every voxel was measured with a different diffusion protocol?’ at the [ISMRM](https://www.ismrm.org/) annual meeting
 * (2022) Best presentation award for ‘[Abandon All Shells: Rotational Invariants from Non-Rotationally-Invariant Acquisitions](https://cds.ismrm.org/protected/Diffusion22/abstracts/Coelho.pdf)’ at the [ISMRM Diffusion Study Group workshop](https://www.ismrm.org/workshops/2022/Diffusion/program.php) held in Amsterdam.
