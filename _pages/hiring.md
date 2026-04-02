@@ -10,4 +10,4 @@ I am recruiting postdoctoral researchers and students interested in diffusion MR
 
 You can find the full position announcement here:
 
-[Download the PDF offer](/files/postdoc_offer.pdf)
+[Download the PDF offer](/files/Postdoc_Position_Coelho.pdf)
