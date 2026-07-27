@@ -107,8 +107,23 @@ img { max-width: 100%; display: block; }
     radial-gradient(700px 500px at 0% 110%, rgba(37,99,201,.30), transparent 55%),
     linear-gradient(160deg, #0b1f3f 0%, #081831 100%);
 }
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: url("../../files/fullbrain.png") no-repeat;
+  background-position: right -60px center;
+  background-size: auto 130%;
+  opacity: .5;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+/* Fade the brain image out toward the left so hero text stays readable */
+.hero-bg::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, #0b1f3f 22%, rgba(11,31,63,.55) 55%, rgba(11,31,63,.15) 100%);
+  pointer-events: none;
+}
 .hero-inner {
-  position: relative; display: grid; grid-template-columns: 1fr 340px;
+  position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 340px;
   gap: 56px; align-items: center; padding: 84px 24px 96px;
 }
 .hero-eyebrow { color: #7fb0f2; font-weight: 600; letter-spacing: .04em; margin: 0 0 10px; }
@@ -256,6 +271,8 @@ a.contact-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba
   .hero-inner { grid-template-columns: 1fr; gap: 36px; padding: 60px 24px 72px; }
   .hero-photo { order: -1; }
   .hero-photo img { width: 200px; height: 200px; }
+  .hero-bg::after { background-position: center top; background-size: auto 100%; opacity: .28; }
+  .hero-bg::before { background: linear-gradient(180deg, rgba(11,31,63,.35) 0%, rgba(11,31,63,.75) 60%, #0b1f3f 100%); }
   .research-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
