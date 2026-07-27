@@ -202,10 +202,10 @@ img { max-width: 100%; display: block; }
 /* ---------- Publications ---------- */
 .pub-layout { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
 .pub-main { min-width: 0; }
-.pub-aside { position: sticky; top: calc(var(--header-h) + 24px); }
+.pub-aside { position: sticky; top: calc(var(--header-h) + 24px); padding-left: 1cm; }
 .pub-figure { margin: 0; }
 .pub-figure img {
-  width: 118%; max-width: none; margin-left: -18%; display: block;
+  width: 112%; max-width: none; margin-left: -6%; display: block;
 }
 .pub-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .pub-item {
