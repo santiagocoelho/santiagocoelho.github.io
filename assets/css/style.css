@@ -109,7 +109,7 @@ img { max-width: 100%; display: block; }
 }
 .hero-bg::after {
   content: ""; position: absolute; inset: 0; z-index: 0;
-  background: url("../../files/fullbrain.png") no-repeat;
+  background: url("../../files/fullbrain_coronal.jpg") no-repeat;
   background-position: right -60px center;
   background-size: auto 130%;
   opacity: .5;
