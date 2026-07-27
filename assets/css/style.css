@@ -191,8 +191,7 @@ img { max-width: 100%; display: block; }
   padding: 22px 4px; border-bottom: 1px solid var(--border);
 }
 .pub-item.is-extra { display: none; }
-.pub-list.show-all .pub-item.is-extra { display: grid; }
-.pub-year {
+.pub-list.show-all .pub-item.is-extra { display: grid; }.pub-year {
   font-weight: 700; color: var(--accent); font-size: .95rem;
   font-variant-numeric: tabular-nums; padding-top: 2px;
 }
@@ -211,6 +210,8 @@ img { max-width: 100%; display: block; }
   display: grid; grid-template-columns: 110px 1fr; gap: 20px;
   padding: 18px 4px; border-bottom: 1px solid var(--border);
 }
+.talk-item.is-extra { display: none; }
+.talk-list.show-all .talk-item.is-extra { display: grid; }
 .talk-date {
   font-weight: 600; color: var(--accent); font-size: .9rem;
   font-variant-numeric: tabular-nums;

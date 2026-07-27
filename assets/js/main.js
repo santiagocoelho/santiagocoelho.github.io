@@ -21,16 +21,19 @@
     });
   }
 
-  // Show all publications toggle
-  var pubToggle = document.getElementById("pubToggle");
-  var pubList = document.getElementById("pubList");
-  if (pubToggle && pubList) {
-    pubToggle.addEventListener("click", function () {
-      var expanded = pubList.classList.toggle("show-all");
-      pubToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-      pubToggle.textContent = expanded ? "Show fewer publications" : "Show all publications";
+  // "Read more / Read less" toggles for long lists (publications, talks)
+  function wireToggle(toggleId, listId) {
+    var toggle = document.getElementById(toggleId);
+    var list = document.getElementById(listId);
+    if (!toggle || !list) return;
+    toggle.addEventListener("click", function () {
+      var expanded = list.classList.toggle("show-all");
+      toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+      toggle.textContent = expanded ? "Read less" : "Read more";
     });
   }
+  wireToggle("pubToggle", "pubList");
+  wireToggle("talkToggle", "talkList");
 
   // Scrollspy — highlight active nav link
   var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]"));
