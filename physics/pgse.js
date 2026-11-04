@@ -4,7 +4,17 @@ const defaults={delta:15,Delta:40,g:40,angle:0,parallel:2,perp:.3,radius:6,intri
 const params={...defaults};let result=null,worker=null,timer=null,frameIndex=100,playing=false,animation=0,lastTick=0;
 const colors={free:'#377fdf',disk:'#0d9993'};
 function phaseColor(phi){return `hsl(${((phi+Math.PI)/(2*Math.PI)*360%360+360)%360} 75% 65%)`;}
-function setupCanvas(id){const c=$(id),ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);return [ctx,c.width,c.height];}
+// Keep drawing coordinates stable while matching each canvas to its display pixels.
+const canvasSizes=new WeakMap();
+function setupCanvas(id){
+ const c=$(id),ctx=c.getContext('2d');
+ if(!canvasSizes.has(c)){canvasSizes.set(c,[c.width,c.height]);c.style.aspectRatio=`${c.width} / ${c.height}`;}
+ const [w,h]=canvasSizes.get(c),ratio=Math.max(2,window.devicePixelRatio||1);
+ const pixels=Math.max(w,Math.round(c.getBoundingClientRect().width*ratio)),height=Math.round(pixels*h/w);
+ if(c.width!==pixels||c.height!==height){c.width=pixels;c.height=height;}
+ ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,c.width,c.height);
+ ctx.setTransform(c.width/w,0,0,c.height/h,0,0);return [ctx,w,h];
+}
 function line(ctx,pts,color,width=2){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();pts.forEach(([x,y],i)=>ctx[i?'lineTo':'moveTo'](x,y));ctx.stroke();}
 function text(ctx,s,x,y,color='#58677d',size=14,align='left'){ctx.fillStyle=color;ctx.font=`${size}px system-ui`;ctx.textAlign=align;ctx.fillText(s,x,y);}
 function sync(){for(const key of Object.keys(params)){$(key).value=params[key];$(key+'Value').textContent=params[key]+(['delta','Delta'].includes(key)?' ms':key==='g'?' mT/m':key==='angle'?'°':key==='radius'?' µm':' µm²/ms');}$('Delta').min=params.delta+2;$('bValue').textContent=Math.round(bValue(params)).toLocaleString();$('echoTime').textContent=`Echo at ${10+params.Delta+params.delta} ms`;}
@@ -57,3 +67,10 @@ $('play').onclick=()=>{if(playing){stop();return;}if(!result)return;if(frameInde
 function preset(values){clearTimeout(timer);Object.assign(params,values);sync();calculate();}
 $('noGradients').onclick=()=>preset({g:0});$('stationary').onclick=()=>preset({parallel:0,perp:0,intrinsic:0});$('resetPhysics').onclick=()=>preset(defaults);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});sync();sequence();calculate();
+
+// Redraw on responsive layout changes and when moving between display densities.
+let resizeFrame=0;function redrawCanvases(){cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{if(result)draw();else sequence();});}
+const canvasObserver=new ResizeObserver(redrawCanvases);document.querySelectorAll('canvas').forEach(c=>canvasObserver.observe(c));
+window.addEventListener('resize',redrawCanvases);
+let densityQuery;function watchDensity(){if(densityQuery)densityQuery.removeEventListener('change',densityChanged);densityQuery=matchMedia(`(resolution: ${window.devicePixelRatio||1}dppx)`);densityQuery.addEventListener('change',densityChanged);}
+function densityChanged(){watchDensity();redrawCanvases();}watchDensity();
