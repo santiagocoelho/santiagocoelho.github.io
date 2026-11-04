@@ -2,7 +2,8 @@
 // Units: ms, µm, mT/m; gamma is radians/s/T. Rectangular ideal PGSE.
 const GAMMA=267.52218744e6;
 function bValue({delta,Delta,g}) {return GAMMA**2*1e-21*g*g*delta*delta*(Delta-delta/3);}
-function gaussianEcho(p){const a=p.angle*Math.PI/180,D=p.parallel*Math.cos(a)**2+p.perp*Math.sin(a)**2;return Math.exp(-bValue(p)*D/1000);}
+function normalizeDirection(v){if(!Array.isArray(v)||v.length!==3||!v.every(Number.isFinite))throw new Error('Enter three finite direction components.');const scale=Math.max(...v.map(Math.abs));if(!scale)throw new Error('Direction must be nonzero.');const scaled=v.map(x=>x/scale),norm=Math.hypot(...scaled);return scaled.map(x=>x/norm);}
+function gaussianEcho(p){const [gx,gy,gz]=normalizeDirection(p.direction),D=p.parallel*gx*gx+p.perp*(gy*gy+gz*gz);return Math.exp(-bValue(p)*D/1000);}
 function random(seed){let s=seed>>>0;return ()=>{s+=0x6D2B79F5;let t=s;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;};}
 // Specular reflection of each short Brownian step at an impermeable circle.
 function reflect(x,y,dx,dy,R){
@@ -18,10 +19,11 @@ function reflect(x,y,dx,dy,R){
  throw new Error('Reflection failed to converge; reduce the integration step.');
 }
 function simulate(p,options={}){
+ p={...p,direction:normalizeDirection(p.direction)};
  const N=options.N||1200,dt=options.dt||.1,visible=Math.min(80,N),frames=[],rng=random(options.seed||20261104);
- if(!(p.delta>0&&p.Delta>=p.delta+2&&p.g>=0&&p.radius>0))throw new Error('Invalid PGSE timing or substrate.');
- const TE=10+p.Delta+p.delta,nsteps=Math.ceil(TE/dt),h=TE/nsteps,a=p.angle*Math.PI/180,gx=Math.cos(a),gy=Math.sin(a);
- const arrays=()=>({x:new Float64Array(N),y:new Float64Array(N),phase:new Float64Array(N)}),free=arrays(),disk=arrays();
+ if(!(p.delta>0&&p.Delta>=p.delta+1&&p.g>=0&&p.radius>0))throw new Error('Invalid PGSE timing or substrate.');
+ const TE=10+p.Delta+p.delta,nsteps=Math.ceil(TE/dt),h=TE/nsteps,[gx,gy,gz]=p.direction;
+ const arrays=()=>({x:new Float64Array(N),y:new Float64Array(N),z:new Float64Array(N),phase:new Float64Array(N)}),free=arrays(),disk=arrays();
  for(let i=0;i<N;i++){const r=p.radius*Math.sqrt(rng()),th=2*Math.PI*rng();free.x[i]=disk.x[i]=r*Math.cos(th);free.y[i]=disk.y[i]=r*Math.sin(th);}
  function capture(t){const sample=m=>{let re=0,im=0;const pts=[];for(let i=0;i<N;i++){re+=Math.cos(m.phase[i]);im+=Math.sin(m.phase[i]);if(i<visible)pts.push(m.x[i],m.y[i],m.phase[i]);}return {points:pts,re:re/N,im:im/N,magnitude:Math.hypot(re,im)/N};};frames.push({t,free:sample(free),disk:sample(disk)});}
  capture(0);let next=TE/100;
@@ -38,9 +40,13 @@ function simulate(p,options={}){
    r=Math.sqrt(-2*Math.log(Math.max(rng(),1e-15)));th=2*Math.PI*rng();
    const [nx,ny]=reflect(disk.x[i],disk.y[i],sr*r*Math.cos(th),sr*r*Math.sin(th),p.radius);
    disk.phase[i]+=factor*(gx*(disk.x[i]+nx)/2+gy*(disk.y[i]+ny)/2);disk.x[i]=nx;disk.y[i]=ny;
+   r=Math.sqrt(-2*Math.log(Math.max(rng(),1e-15)));th=2*Math.PI*rng();
+   const dzFree=sy*r*Math.cos(th),dzDisk=sr*r*Math.sin(th);
+   free.phase[i]+=factor*gz*(free.z[i]+dzFree/2);disk.phase[i]+=factor*gz*(disk.z[i]+dzDisk/2);
+   free.z[i]+=dzFree;disk.z[i]+=dzDisk;
   }
   if(hi>=next-1e-8||step===nsteps-1){capture(hi);next+=TE/100;}
  }
  return {frames,N,dt:h,TE,b:bValue(p),analytic:gaussianEcho(p),uncertainty:1/Math.sqrt(N),params:p};
 }
-if(typeof module!=='undefined')module.exports={simulate,bValue,gaussianEcho,reflect};
+if(typeof module!=='undefined')module.exports={simulate,bValue,gaussianEcho,reflect,normalizeDirection};
