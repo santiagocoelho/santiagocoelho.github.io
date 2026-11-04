@@ -66,7 +66,7 @@ img { max-width: 100%; display: block; }
 .navmenu ul { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
 .navmenu a {
   color: var(--text-soft); font-weight: 500; font-size: .95rem;
-  padding: 8px 12px; border-radius: 8px; position: relative;
+  padding: 8px 8px; border-radius: 8px; position: relative;
 }
 .navmenu a:hover { color: var(--text); background: var(--bg-alt); }
 .navmenu a.active { color: var(--accent); }
@@ -275,7 +275,7 @@ a.contact-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba
 .to-top:hover { background: var(--accent); color: #fff; }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .hero-inner { grid-template-columns: 1fr; gap: 36px; padding: 60px 24px 72px; }
   .hero-photo { order: -1; }
   .hero-photo img { width: 200px; height: 200px; }
