@@ -51,3 +51,13 @@ The source fODF MIF header confirms `dwi2fod csd ... response_b3000.txt ... -lma
 
 
 The 1.25 mm generated maps are kept outside the website repository at `/Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm`. Only one slice is shipped. Re-export using `python3 physics/scripts/export_phantom.py /Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm --z-mm 18`, followed by `python3 physics/scripts/fit_tensor.py`. The exporter selects the closest axial slice to the requested world z coordinate. Crosshair placement and initial voxel selection adapt to exported dimensions.
+
+## Teaching hub and PGSE visual experiment
+
+`/teaching/` links to the brain phantom and `physics/pgse.html`. The phantom defaults and resets to A–P (azimuth 90°, polar angle 90°). Its section 3 decay chart has a fixed 0–1 axis and clips out-of-range nonphysical values only for drawing.
+
+The PGSE page is a fast educational visualization, not a research or scanner sequence tool. Vanilla JS and a worker keep it dependency-free. `pgse-engine.js` uses 1,200 seeded walkers/environment, 0.1 ms steps, and 101 playback snapshots with 80 visible trajectories. Gaussian echo is analytic; circle restriction is a finite-sample illustration. Changing controls cancels prior computation and debounces updates. Typical local updates are ~0.1–0.2 s, depending on hardware.
+
+Physical units are ms, µm, mT/m, and µm²/ms internally. b is displayed in s/mm² (unit conversions included in phase and attenuation). Physical PGSE lobes share a sign; the effective gradient changes sign after RF refocusing. The 2D reflecting disk uses specular reflection of short increments. Finite-step and finite-sample errors are disclosed on the page. No export, scanner prescription, optimization, or fitting features are intended.
+
+Run `node physics/scripts/check_pgse.cjs` to verify zero-gradient signal, stationary refocusing, G² scaling, Gaussian agreement, boundary containment, timestep stability, and a large-circle free-diffusion limit. Research examples and the user-supplied ISMRM course are linked in the page's further-exploration section.

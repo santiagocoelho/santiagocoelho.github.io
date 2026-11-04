@@ -9,7 +9,7 @@
 <script src="diffSim.js" defer></script>
 </head>
 <body>
-<header><a class="brand" href="../index.html">Santiago Coelho<span>.</span></a><a href="../index.html">← Back to website</a></header>
+<header><a class="brand" href="../index.html">Santiago Coelho<span>.</span></a><a href="../teaching/">← Teaching</a></header>
 <main>
 <div class="intro"><p class="eyebrow">The Physics of Diffusion MRI: Interactive Phantom</p><h1>Synthetic Brain Diffusion MRI Phantom</h1><p>Explore how diffusion weighting and directional fiber architecture influence image contrast, then take the signal apart with spherical harmonics.</p></div>
 <div id="status" role="status">Loading the phantom slice…</div>
@@ -19,9 +19,9 @@
 <label>Diffusion weighting <span class="unit">s/mm²</span></label>
 <div class="segmented" id="shells" aria-label="b-value"><button data-b="0">b₀</button><button data-b="1000">1,000</button><button data-b="2000">2,000</button><button data-b="3000" class="active">3,000</button></div>
 <label for="mode">Image contrast</label><select id="mode"><option value="direction">Single gradient direction</option><option value="mean">Spherical mean</option><option value="tissue">Tissue segmentation</option></select>
-<div class="directions"><label>Gradient direction</label><div class="segmented" id="axes"><button data-axis="x">R–L</button><button data-axis="y">A–P</button><button data-axis="z" class="active">S–I</button></div>
-<label for="azimuth">Azimuth <output id="azimuthValue">0°</output></label><input id="azimuth" type="range" min="0" max="180" value="0" step="5">
-<label for="polar">Polar angle <output id="polarValue">0°</output></label><input id="polar" type="range" min="0" max="180" value="0" step="5">
+<div class="directions"><label>Gradient direction</label><div class="segmented" id="axes"><button data-axis="x">R–L</button><button data-axis="y" class="active">A–P</button><button data-axis="z">S–I</button></div>
+<label for="azimuth">Azimuth <output id="azimuthValue">90°</output></label><input id="azimuth" type="range" min="0" max="180" value="90" step="5">
+<label for="polar">Polar angle <output id="polarValue">90°</output></label><input id="polar" type="range" min="0" max="180" value="90" step="5">
 </div>
 <label for="gain">Display gain <output id="gainValue">3.0×</output></label><input id="gain" type="range" min="0.5" max="6" value="3" step="0.1">
 
@@ -35,7 +35,7 @@
 <section class="voxel-panel panel"><div class="section-label">03 / LOOKING AT INDIVIDUAL VOXELS</div><h2>Voxel signal</h2><div class="glyph-pair"><div><canvas id="tensor" width="300" height="300" role="img" aria-label="Diffusion tensor ellipsoid fitted to the simulated b1000 shell"></canvas><h3>Diffusion tensor · O(b)</h3><p id="tensorNote">b = 1,000 fit</p></div><div><canvas id="fod" width="300" height="300" role="img" aria-label="Three dimensional fibre orientation distribution"></canvas><h3>fODF · CSD</h3><p>b = 3,000 · ℓ ≤ 6</p></div><div><canvas id="signal" width="300" height="300" role="img" aria-label="Three dimensional diffusion signal profile"></canvas><h3>Diffusion signal</h3><p>S(g) / S₀ · selected shell</p></div></div>
 <p class="glyph-hint">Drag any shape to rotate all three · <span style="color:#c73552">R–L</span> / <span style="color:#21804d">A–P</span> / <span style="color:#326cc5">S–I</span></p><p class="note"><strong>Faster diffusion → lower signal.</strong> The tensor’s long axis and fODF peaks usually align with fibre directions, while diffusion-weighted signal is attenuated most strongly along them. The signal therefore has an opposite directional profile—not a mathematical reciprocal. A single tensor cannot resolve crossing fibres.</p><p id="voxelExplanation" class="note"></p>
 <div class="metric-row"><div><span>Selected direction</span><strong id="signalValue"></strong></div><div><span>Spherical mean</span><strong id="meanValue"></strong></div></div>
-<h3 class="chart-title">Signal across the three shells</h3><canvas id="decay" width="560" height="215" role="img" aria-label="Selected voxel signal and spherical mean at b zero and all three shells"></canvas><div class="legend"><span class="blue">● Selected direction</span><span class="teal">● Spherical mean</span></div>
+<h3 class="chart-title">Signal across the three shells</h3><p class="small">Fixed S/S₀ axis: 0–1. Nonphysical values outside this range are clipped in this plot; voxel readouts retain them.</p><canvas id="decay" width="560" height="215" role="img" aria-label="Selected voxel signal and spherical mean at b zero and all three shells"></canvas><div class="legend"><span class="blue">● Selected direction</span><span class="teal">● Spherical mean</span></div>
 </section>
 <section class="sh-panel panel"><div class="panel-head"><div><div class="section-label">04 / SPHERICAL HARMONICS</div><h2>Build the angular signal, one order at a time.</h2></div><div class="order-control"><label for="order">Maximum order ℓ</label><select id="order"><option value="0">0 · 1 coefficient</option><option value="2">2 · 6 coefficients</option><option value="4">4 · 15 coefficients</option><option value="6" selected>6 · 28 coefficients</option></select></div></div>
 <p>The isotropic term sets the mean. Higher even orders describe finer angular structure. The fODF stays fixed; this control truncates the <strong>signal</strong> reconstruction.</p>
