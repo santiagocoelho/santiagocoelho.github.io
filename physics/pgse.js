@@ -20,17 +20,17 @@ function text(ctx,s,x,y,color='#58677d',size=14,align='left'){ctx.fillStyle=colo
 function sync(){for(const key of Object.keys(params).filter(k=>k!=='direction')){$(key).value=params[key];$(key+'Value').textContent=params[key]+(['delta','Delta'].includes(key)?' ms':key==='g'?' mT/m':key==='radius'?' µm':' µm²/ms');}$('Delta').min=params.delta+1;$('bValue').textContent=Math.round(bValue(params)).toLocaleString();$('echoTime').textContent=`Echo at ${10+params.Delta+params.delta} ms`;}
 function sequence(time=0){const [ctx,w,h]=setupCanvas('sequence'),TE=10+params.Delta+params.delta,X=t=>135+(w-180)*t/TE;
  const first=5,second=5+params.Delta,t180=TE/2,axes=['Gₓ(t)','Gᵧ(t)','G𝓏(t)'],axisColors=['#2563c9','#087f83','#9160b5'];
- line(ctx,[[135,60],[w-35,60]],'#ccd6e2',1);text(ctx,'RF',8,65,'#58677d',16);
- for(const [t,label] of [[0,'90°'],[t180,'180°']]){line(ctx,[[X(t),60],[X(t),25]],'#152e50',3);text(ctx,label,X(t)+6,27,'#16233a',15);}
- for(let i=0;i<3;i++){const baseline=175+i*95,component=params.g*params.direction[i],amp=component/200*33;
+ line(ctx,[[135,30],[w-35,30]],'#ccd6e2',1);text(ctx,'RF',8,35,'#58677d',16);
+ for(const [t,label] of [[0,'90°'],[t180,'180°']]){line(ctx,[[X(t),30],[X(t),10]],'#152e50',3);text(ctx,label,X(t)+6,12,'#16233a',15);}
+ for(let i=0;i<3;i++){const baseline=115+i*55,component=params.g*params.direction[i],amp=component/200*19;
   line(ctx,[[135,baseline],[w-35,baseline]],'#ccd6e2',1);text(ctx,axes[i],8,baseline-7,axisColors[i],17);text(ctx,component.toFixed(1)+' mT/m',8,baseline+15,axisColors[i],13);
   const pts=[[X(0),baseline]];for(const t of [first,second])pts.push([X(t),baseline],[X(t),baseline-amp],[X(t+params.delta),baseline-amp],[X(t+params.delta),baseline]);pts.push([X(TE),baseline]);line(ctx,pts,axisColors[i],3);
  }
- line(ctx,[[X(first),96],[X(second),96]],'#8393aa',1);[first,second].forEach(t=>line(ctx,[[X(t),91],[X(t),101]],'#8393aa',1));text(ctx,`Δ = ${params.Delta} ms`,(X(first)+X(second))/2,87,'#58677d',15,'center');
- line(ctx,[[X(first),118],[X(first+params.delta),118]],'#8393aa',1);text(ctx,`δ = ${params.delta} ms`,(X(first)+X(first+params.delta))/2,138,'#58677d',15,'center');
- ctx.setLineDash([4,4]);line(ctx,[[X(TE),20],[X(TE),h-30]],'#8799b0',1);ctx.setLineDash([]);text(ctx,'Echo',X(TE)-3,15,'#16233a',14,'right');
+ line(ctx,[[X(first),51],[X(second),51]],'#8393aa',1);[first,second].forEach(t=>line(ctx,[[X(t),46],[X(t),56]],'#8393aa',1));text(ctx,`Δ = ${params.Delta} ms`,(X(first)+X(second))/2,44,'#58677d',15,'center');
+ line(ctx,[[X(first),65],[X(first+params.delta),65]],'#8393aa',1);text(ctx,`δ = ${params.delta} ms`,(X(first)+X(first+params.delta))/2,87,'#58677d',15,'center');
+ ctx.setLineDash([4,4]);line(ctx,[[X(TE),20],[X(TE),h-15]],'#8799b0',1);ctx.setLineDash([]);text(ctx,'Echo',X(TE)-3,15,'#16233a',14,'right');
  const tick=TE>100?20:10;for(let t=0;t<=TE;t+=tick)text(ctx,String(t),X(t),h-8,'#58677d',14,'center');text(ctx,'ms',w-5,h-8,'#58677d',14,'right');
- line(ctx,[[X(time),34],[X(time),h-30]],'#e08f39',2);
+ line(ctx,[[X(time),34],[X(time),h-15]],'#e08f39',2);
 }
 function motion(id,kind,f){const [ctx,w,h]=setupCanvas(id),p=result.params;
  const span=kind==='disk'?p.radius*1.35:Math.max(15,p.radius+2.5*Math.sqrt(2*Math.max(p.parallel,p.perp)*result.TE));
@@ -49,7 +49,7 @@ function motion(id,kind,f){const [ctx,w,h]=setupCanvas(id),p=result.params;
  const [gx,gy,gz]=p.direction,ax=38,ay=43;line(ctx,[[ax-22*gx,ay+22*gy],[ax+22*gx,ay-22*gy]],'#f3ba6c',2);text(ctx,`G xy · n𝓏=${gz.toFixed(2)}`,ax+28,ay+5,'#f3ba6c',12);
  const bar=kind==='disk'?p.radius:Math.ceil(span/3/5)*5;line(ctx,[[22,h-18],[22+bar*scale,h-18]],'#b8c9df',2);text(ctx,bar+' µm',22,h-30,'#b8c9df',11);text(ctx,'x →',w-20,h-15,'#b8c9df',11,'right');
 }
-function phasors(f){const [ctx,w,h]=setupCanvas('phasors');['free','disk'].forEach((kind,j)=>{const x=w*(j?.75:.25),y=h/2,r=76,m=f[kind];ctx.strokeStyle='#d7e1ee';ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,r,0,2*Math.PI);ctx.stroke();for(let i=0;i<80;i++){const phi=m.points[i*3+2];line(ctx,[[x,y],[x+r*Math.cos(phi),y-r*Math.sin(phi)]],'#91a4bb40',1);}line(ctx,[[x,y],[x+r*m.re,y-r*m.im]],colors[kind],5);text(ctx,`${kind==='free'?'Gaussian':'Restricted'}: |mean| = ${m.magnitude.toFixed(3)}`,x,h-12,colors[kind],15,'center');text(ctx,'Im',x+5,y-r-7,'#8393aa',11);text(ctx,'Re',x+r+8,y+4,'#8393aa',11);});}
+function phasors(f){const [ctx,w,h]=setupCanvas('phasors');['free','disk'].forEach((kind,j)=>{const x=w*(j?.75:.25),y=h/2,r=54,m=f[kind];ctx.strokeStyle='#d7e1ee';ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,r,0,2*Math.PI);ctx.stroke();for(let i=0;i<80;i++){const phi=m.points[i*3+2];line(ctx,[[x,y],[x+r*Math.cos(phi),y-r*Math.sin(phi)]],'#91a4bb40',1);}line(ctx,[[x,y],[x+r*m.re,y-r*m.im]],colors[kind],5);text(ctx,`${kind==='free'?'Gaussian':'Restricted'}: |mean| = ${m.magnitude.toFixed(3)}`,x,h-12,colors[kind],15,'center');text(ctx,'Im',x+5,y-r-7,'#8393aa',11);text(ctx,'Re',x+r+8,y+4,'#8393aa',11);});}
 function coherence(f){const [ctx,w,h]=setupCanvas('coherence'),left=50,right=w-25,top=20,bottom=h-40,X=t=>left+(right-left)*t/result.TE,Y=v=>bottom-(bottom-top)*v;
  for(let i=0;i<=4;i++){const v=i/4;line(ctx,[[left,Y(v)],[right,Y(v)]],'#e3eaf3',1);text(ctx,v.toFixed(2),left-9,Y(v)+4,'#58677d',12,'right');}
  for(let t=0;t<=result.TE;t+=10)text(ctx,t,X(t),bottom+20,'#58677d',12,'center');text(ctx,'Time (ms)',w/2,h-2,'#58677d',12,'center');text(ctx,'|S/S₀|',left,12,'#58677d',12);
@@ -59,7 +59,7 @@ function coherence(f){const [ctx,w,h]=setupCanvas('coherence'),left=50,right=w-2
 function draw(){if(!result)return;frameIndex=Math.max(0,Math.min(result.frames.length-1,frameIndex));const f=result.frames[frameIndex];$('time').value=Math.round(frameIndex/(result.frames.length-1)*100);$('timeValue').textContent=f.t.toFixed(1)+' ms';sequence(f.t);motion('freeMotion','free',f);motion('diskMotion','disk',f);phasors(f);coherence(f);}
 function stop(){playing=false;cancelAnimationFrame(animation);$('play').textContent='▶ Play sequence';}
 function animate(now){if(!playing)return;if(!lastTick)lastTick=now;const step=Math.floor((now-lastTick)/65);if(step){frameIndex+=step;lastTick=now;draw();if(frameIndex>=result.frames.length-1){stop();return;}}animation=requestAnimationFrame(animate);}
-function calculate(){stop();if(worker)worker.terminate();worker=new Worker('pgse-worker.js?v=20261104-direction-fix');result=null;$('play').disabled=$('time').disabled=true;$('simStatus').textContent='Updating the visual experiment…';$('freeEcho').textContent=$('diskEcho').textContent='…';const started=performance.now();
+function calculate(){stop();if(worker)worker.terminate();worker=new Worker('pgse-worker.js?v=20261104-compact');result=null;$('play').disabled=$('time').disabled=true;$('simStatus').textContent='Updating the visual experiment…';$('freeEcho').textContent=$('diskEcho').textContent='…';const started=performance.now();
  worker.onmessage=({data})=>{if(data.error){$('simStatus').textContent=data.error;return;}result=data.result;frameIndex=result.frames.length-1;const end=result.frames[frameIndex];$('freeEcho').textContent=result.analytic.toFixed(3);$('diskEcho').textContent=end.disk.magnitude.toFixed(3);$('freeEstimate').textContent=`Small-ensemble illustration: ${end.free.magnitude.toFixed(3)} (analytic value above).`;$('simStatus').textContent=`Ready · ${Math.round(performance.now()-started)} ms to update · scrub time or press Play.`;$('play').disabled=$('time').disabled=false;
  $('lesson').textContent=params.g===0?'With no gradients, moving spins accumulate no diffusion-encoding phase: both signals remain 1.':params.parallel===0&&params.perp===0&&params.intrinsic===0?'Stationary spins dephase during the first pulse, then fully refocus at the echo. Play the sequence to see the phase vectors come back together.':'Compare [1, 0, 0], [0, 1, 0], and [0, 0, 1]. Gaussian diffusion is fastest along x by default. The cylinder restricts x and y but allows free diffusion along z. Small x–y differences reflect the finite illustrative ensemble.';
  draw();worker.terminate();worker=null;};worker.onerror=()=>{$('simStatus').textContent='The visual experiment could not start. Reload this page to retry.';};worker.postMessage({...params});
