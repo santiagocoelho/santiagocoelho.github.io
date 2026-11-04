@@ -71,3 +71,7 @@
 .physics-page .playback input{flex-basis:40%}
 .physics-page .sequence-panel .panel-head{flex-wrap:wrap}
 }
+
+/* Enlarge the data within the compact panels, retaining shared playback visibility. */
+@media(min-width:761px){.physics-page .signal-plots canvas{max-height:130px}}
+@media(min-width:1100px) and (max-height:850px){.physics-page .signal-plots canvas{max-height:110px}.physics-page #phasors{max-height:125px}}
