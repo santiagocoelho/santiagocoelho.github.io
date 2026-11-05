@@ -2,7 +2,7 @@
 // Orthonormal, real, even MRtrix3 SH: negative m = sqrt(2) Im(Y_l^|m|).
 const $ = id => document.getElementById(id);
 const bands = [[0,1],[1,6],[6,15],[15,28]], orders=[0,2,4,6];
-const state = {b:3000, az:90, polar:90, gain:3, order:6, mode:'direction', normalized:false, x:45,y:45, yaw:.5,pitch:.35};
+const state = {b:3000, az:90, polar:90, gain:3, order:6, mode:'direction', normalized:false, logSignal:false, x:45,y:45, yaw:.5,pitch:.35};
 let tensorData, meta, data, selected, sphere, basisSphere, lastValues;
 const factorial=n=>{let v=1;for(let i=2;i<=n;i++)v*=i;return v;};
 function shBasis(v){
@@ -23,7 +23,17 @@ function dot(a,b,n=28){let s=0;for(let j=0;j<n;j++)s+=a[j]*b[j];return s;}
 function count(order){return (order+1)*(order+2)/2;}
 function project(v){let [x,y,z]=v;const a=state.yaw,p=state.pitch;[x,y]=[Math.cos(a)*x-Math.sin(a)*y,Math.sin(a)*x+Math.cos(a)*y];return [x,Math.cos(p)*z-Math.sin(p)*y,Math.sin(p)*z+Math.cos(p)*y];}
 function buildSphere(){const verts=[],faces=[],nt=24,np=48;for(let i=0;i<=nt;i++)for(let j=0;j<np;j++){const t=Math.PI*i/nt,p=2*Math.PI*j/np;verts.push([Math.sin(t)*Math.cos(p),Math.sin(t)*Math.sin(p),Math.cos(t)]);}for(let i=0;i<nt;i++)for(let j=0;j<np;j++){const a=i*np+j,b=i*np+(j+1)%np,c=a+np,d=b+np;faces.push([a,b,c],[b,d,c]);}sphere={verts,faces};basisSphere=verts.map(shBasis);}
-function glyph(id,c,n,isFod,tensor=null){const canvas=$(id),ctx=canvas.getContext('2d'),w=canvas.width;ctx.clearRect(0,0,w,w);const vals=basisSphere.map(y=>Math.max(0,dot(c,y,n))),max=Math.max(...vals,1e-8);let vertices;
+// Retain logical drawing coordinates while rendering at display pixel density.
+const plotSizes=new WeakMap();
+function plotCanvas(id){
+ const canvas=$(id),ctx=canvas.getContext('2d');
+ if(!plotSizes.has(canvas)){plotSizes.set(canvas,[canvas.width,canvas.height]);canvas.style.aspectRatio=`${canvas.width} / ${canvas.height}`;}
+ const [w,h]=plotSizes.get(canvas),ratio=Math.max(2,window.devicePixelRatio||1),pixels=Math.max(w,Math.round(canvas.getBoundingClientRect().width*ratio)),height=Math.round(pixels*h/w);
+ if(canvas.width!==pixels||canvas.height!==height){canvas.width=pixels;canvas.height=height;}
+ ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.setTransform(canvas.width/w,0,0,canvas.height/h,0,0);
+ return [ctx,w,h];
+}
+function glyph(id,c,n,isFod,tensor=null){const [ctx,w]=plotCanvas(id);ctx.clearRect(0,0,w,w);const vals=basisSphere.map(y=>Math.max(0,dot(c,y,n))),max=Math.max(...vals,1e-8);let vertices;
  if(tensor){const [xx,yy,zz,xy,xz,yz]=tensor;const points=sphere.verts.map(([x,y,z])=>[xx*x+xy*y+xz*z,xy*x+yy*y+yz*z,xz*x+yz*y+zz*z]);const scale=Math.max(...points.map(v=>Math.hypot(...v)),1e-8);vertices=points.map(v=>project(v.map(x=>x/scale)));}
  else vertices=sphere.verts.map((v,i)=>project(v.map(x=>x*vals[i]/max)));
  const faces=sphere.faces.map(f=>({f,z:f.reduce((s,i)=>s+vertices[i][2],0)/3})).sort((a,b)=>a.z-b.z);
@@ -33,7 +43,7 @@ function glyph(id,c,n,isFod,tensor=null){const canvas=$(id),ctx=canvas.getContex
 
 const shSurfaceBasis = typeof SH_MESH === 'undefined' ? [] : SH_MESH.verts.map(shBasis);
 function angularSurface(c){
- const canvas=$('angular'),ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
+ const [ctx,w,h]=plotCanvas('angular');
  ctx.clearRect(0,0,w,h);
  const full=shSurfaceBasis.map(y=>dot(c,y)),partial=shSurfaceBasis.map(y=>dot(c,y,count(state.order)));
  const scale=Math.max(1e-8,...full.map(Math.abs),...partial.map(Math.abs));
@@ -61,14 +71,35 @@ function image(){const cvs=$('brain'),ctx=cvs.getContext('2d'),off=document.crea
  $('imageBadge').textContent=`b = ${state.b.toLocaleString()} s/mm² · z = ${meta.slices[0].z_mm} mm`;
  $('imageTitle').textContent=state.mode==='tissue'?'Tissue segmentation':state.mode==='mean'?'Spherical-mean signal':state.b===0?'Baseline signal · b₀':'Diffusion-weighted signal';
 }
-function chart(canvasId,series,{xmin=0,xmax=360,ymin=0,ymax=1,xticks=[0,90,180,270,360],xlabel='φ (degrees)'}={}){const canvas=$(canvasId),ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height,p={l:48,r:15,t:16,b:42},X=x=>p.l+(w-p.l-p.r)*(x-xmin)/(xmax-xmin),Y=y=>h-p.b-(h-p.t-p.b)*(y-ymin)/(ymax-ymin);ctx.clearRect(0,0,w,h);ctx.font='12px system-ui';ctx.lineWidth=1;for(let k=0;k<=4;k++){const v=ymin+(ymax-ymin)*k/4;ctx.strokeStyle='#e5eaf2';ctx.beginPath();ctx.moveTo(p.l,Y(v));ctx.lineTo(w-p.r,Y(v));ctx.stroke();ctx.fillStyle='#65758b';ctx.textAlign='right';ctx.fillText(v.toFixed(2),p.l-7,Y(v)+4);}ctx.textAlign='center';for(const x of xticks){ctx.fillStyle='#65758b';ctx.fillText(x,X(x),h-p.b+19);}ctx.fillText(xlabel,w/2,h-3);ctx.save();ctx.beginPath();ctx.rect(p.l,p.t,w-p.l-p.r,h-p.t-p.b);ctx.clip();for(const s of series){ctx.strokeStyle=s.color;ctx.lineWidth=s.width||2.5;ctx.setLineDash(s.dash||[]);ctx.beginPath();s.points.forEach(([x,y],i)=>ctx[i?'lineTo':'moveTo'](X(x),Y(y)));ctx.stroke();ctx.setLineDash([]);if(s.dots)for(const [x,y] of s.points){ctx.fillStyle=s.color;ctx.beginPath();ctx.arc(X(x),Y(y),3.5,0,Math.PI*2);ctx.fill();}}ctx.restore();}
+// Equal-area Fibonacci sampling over the full sphere; fixed as the selected g changes.
+const spreadDirections=Array.from({length:30},(_,i)=>{const z=1-2*(i+.5)/30,phi=i*Math.PI*(3-Math.sqrt(5)),r=Math.sqrt(1-z*z);return [r*Math.cos(phi),r*Math.sin(phi),z];});
+const spreadBasis=spreadDirections.map(shBasis);
+function chart(canvasId,series,{xmin=0,xmax=360,ymin=0,ymax=1,xticks=[0,90,180,270,360],xlabel='φ (degrees)',logY=false}={}){
+ const [ctx,w,h]=plotCanvas(canvasId),p={l:48,r:15,t:16,b:42};
+ const transform=y=>logY?Math.log10(y):y,low=transform(ymin),high=transform(ymax);
+ const X=x=>p.l+(w-p.l-p.r)*(x-xmin)/(xmax-xmin),Y=y=>h-p.b-(h-p.t-p.b)*(transform(y)-low)/(high-low);
+ ctx.clearRect(0,0,w,h);ctx.font='12px system-ui';ctx.lineWidth=1;
+ const yticks=logY?[.01,.03,.1,.3,1]:Array.from({length:5},(_,k)=>ymin+(ymax-ymin)*k/4);
+ for(const v of yticks){ctx.strokeStyle='#e5eaf2';ctx.beginPath();ctx.moveTo(p.l,Y(v));ctx.lineTo(w-p.r,Y(v));ctx.stroke();ctx.fillStyle='#65758b';ctx.textAlign='right';ctx.fillText(logY?String(v):v.toFixed(2),p.l-7,Y(v)+4);}
+ ctx.textAlign='center';for(const x of xticks){ctx.fillStyle='#65758b';ctx.fillText(x,X(x),h-p.b+19);}ctx.fillText(xlabel,w/2,h-3);
+ ctx.save();ctx.beginPath();ctx.rect(p.l,p.t,w-p.l-p.r,h-p.t-p.b);ctx.clip();
+ for(const s of series){ctx.strokeStyle=s.color;ctx.lineWidth=s.width||2.5;ctx.setLineDash(s.dash||[]);ctx.beginPath();let connected=false;
+  for(const [x,y] of s.points){if(!Number.isFinite(y)||(logY&&y<=0)){connected=false;continue;}ctx[connected?'lineTo':'moveTo'](X(x),Y(y));connected=true;}
+  ctx.stroke();ctx.setLineDash([]);
+  if(s.dots)for(const [x,y] of s.points){if(!Number.isFinite(y)||(logY&&y<=0))continue;ctx.fillStyle=s.color;ctx.beginPath();ctx.arc(X(x),Y(y),3.5,0,Math.PI*2);ctx.fill();}
+ }ctx.restore();
+}
+
 function details(){selected=voxel(state.y*meta.width+state.x);const label=['Background','White matter','Gray matter','CSF'][selected[0]],c=coeff(selected),y=shBasis(direction());$('voxelLabel').textContent=`${label} · (${state.x}, ${state.y})`;
  $('signalValue').textContent=dot(c,y).toFixed(3);$('meanValue').textContent=(c[0]/Math.sqrt(4*Math.PI)).toFixed(3);
  const ti=(state.y*meta.width+state.x)*8,t=tensorData.subarray(ti,ti+8);glyph('tensor',new Float64Array(28),28,true,t[6]?t:null);$('tensorNote').textContent=t[6]?`b = 1,000 fit${t[7]? ' · '+t[7]+' invalid samples omitted':''}`:selected[0]?'Non-positive-definite fit':'Outside brain';
  const fod=selected.subarray(7,35);glyph('fod',selected[0]===1?fod:new Float64Array(28),28,true);glyph('signal',c,count(state.order),false);
  $('voxelExplanation').textContent=selected[0]===1?'The tensor and CSD fODF stay fixed as you change shells. The signal surface changes with b-value; all three views share the same orientation.':selected[0]===0?'Outside the brain. Select a tissue voxel to explore its signal.':selected[0]===2?'Gray matter uses the phantom’s NEXI exchange response. The fODF display is reserved for white matter; the GM signal uses its stored orientation coefficients.':'CSF is modeled as freely diffusing isotropic water. Its signal is direction independent and decays rapidly with b-value.';
- const shells=[0,...meta.shells],dir= shells.map(b=>[b,dot(coeff(selected,b),y)]),mean=shells.map(b=>[b,coeff(selected,b)[0]/Math.sqrt(4*Math.PI)]);
- chart('decay',[{points:dir,color:'#2563c9',dots:true},{points:mean,color:'#087f83',dash:[5,4],dots:true}],{xmax:3000,xticks:shells,xlabel:'b (s/mm²)',ymin:0,ymax:1});
+ const shells=[0,...meta.shells],shellCoeffs=shells.map(b=>coeff(selected,b)),dir=shells.map((b,i)=>[b,dot(shellCoeffs[i],y)]),mean=shells.map((b,i)=>[b,shellCoeffs[i][0]/Math.sqrt(4*Math.PI)]);
+ const spread=spreadBasis.map(basis=>({points:shells.map((b,i)=>[b,dot(shellCoeffs[i],basis)]),color:'#cbd0d8',width:1}));
+ chart('decay',[...spread,{points:mean,color:'#087f83',dash:[5,4],dots:true},{points:dir,color:'#2563c9',dots:true}],{xmax:3000,xticks:shells,xlabel:'b (s/mm²)',ymin:state.logSignal?.01:0,ymax:1,logY:state.logSignal});
+ $('logSignal').setAttribute('aria-pressed',String(state.logSignal));$('logSignal').textContent=state.logSignal?'Y axis: log':'Y axis: linear';
+ $('decayNote').textContent=state.logSignal?'Fixed S/S₀ axis: 0.01–1 (log). Values outside the axis limits are clipped; nonpositive samples are omitted. Voxel readouts retain the original values.':'Fixed S/S₀ axis: 0–1 (linear). Values outside the axis limits are clipped; voxel readouts retain the original values.';
  angularSurface(c);
  const energy=bands.map(([a,b])=>c.slice(a,b).reduce((s,x)=>s+x*x,0)),total=energy.reduce((a,b)=>a+b,0),omitted=energy.reduce((s,e,i)=>s+(orders[i]>state.order?e:0),0);
  $('bands').innerHTML=energy.map((e,i)=>`<div class="band ${orders[i]>state.order?'disabled':''}"><span>ℓ = ${orders[i]}</span><div class="track"><div class="bar" style="width:${total?100*e/total:0}%"></div></div><span>${total?(100*e/total).toFixed(1):'0.0'}%</span></div>`).join('');
@@ -76,11 +107,18 @@ function details(){selected=voxel(state.y*meta.width+state.x);const label=['Back
 }
 function sync(){document.querySelectorAll('[data-b]').forEach(el=>{const active=+el.dataset.b===state.b;el.classList.toggle('active',active);el.setAttribute('aria-pressed',active);});$('azimuth').value=state.az;$('polar').value=state.polar;$('gain').value=state.gain;$('order').value=state.order;$('mode').value=state.mode;$('normalize').textContent=state.normalized?'b₀ normalization: on · S/S₀':'b₀ normalization: off · S';$('normalize').setAttribute('aria-pressed',state.normalized);$('normalize').disabled=state.mode==='tissue';$('azimuthValue').textContent=state.az+'°';$('polarValue').textContent=state.polar+'°';$('gainValue').textContent=state.gain.toFixed(1)+'×';const d=direction();document.querySelectorAll('[data-axis]').forEach((el,i)=>{const active=Math.abs(d[i])>.999;el.classList.toggle('active',active);el.setAttribute('aria-pressed',active);});}
 let scheduled=false;function render(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;sync();image();details();});}
-function bind(){ $('angular').onkeydown=e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();state.yaw+=(e.key==='ArrowRight'?.12:e.key==='ArrowLeft'?-.12:0);state.pitch+=(e.key==='ArrowDown'?.12:e.key==='ArrowUp'?-.12:0);details();};document.querySelectorAll('[data-b]').forEach(el=>el.onclick=()=>{state.b=+el.dataset.b;render();});document.querySelectorAll('[data-axis]').forEach(el=>el.onclick=()=>{state.az=el.dataset.axis==='y'?90:0;state.polar=el.dataset.axis==='z'?0:90;render();});for(const [id,key] of [['azimuth','az'],['polar','polar'],['gain','gain'],['order','order']])$(id).oninput=()=>{state[key]=+$(id).value;render();};$('mode').onchange=()=>{state.mode=$('mode').value;render();};$('normalize').onclick=()=>{state.normalized=!state.normalized;render();};$('reset').onclick=()=>{Object.assign(state,{b:3000,az:90,polar:90,gain:3,order:6,mode:'direction',normalized:false,yaw:.5,pitch:.35});pickInitial();render();};
+function bind(){ $('logSignal').onclick=()=>{state.logSignal=!state.logSignal;details();}; $('angular').onkeydown=e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();state.yaw+=(e.key==='ArrowRight'?.12:e.key==='ArrowLeft'?-.12:0);state.pitch+=(e.key==='ArrowDown'?.12:e.key==='ArrowUp'?-.12:0);details();};document.querySelectorAll('[data-b]').forEach(el=>el.onclick=()=>{state.b=+el.dataset.b;render();});document.querySelectorAll('[data-axis]').forEach(el=>el.onclick=()=>{state.az=el.dataset.axis==='y'?90:0;state.polar=el.dataset.axis==='z'?0:90;render();});for(const [id,key] of [['azimuth','az'],['polar','polar'],['gain','gain'],['order','order']])$(id).oninput=()=>{state[key]=+$(id).value;render();};$('mode').onchange=()=>{state.mode=$('mode').value;render();};$('normalize').onclick=()=>{state.normalized=!state.normalized;render();};$('reset').onclick=()=>{Object.assign(state,{b:3000,az:90,polar:90,gain:3,order:6,mode:'direction',normalized:false,logSignal:false,yaw:.5,pitch:.35});pickInitial();render();};
  $('brain').onclick=e=>{const r=$('brain').getBoundingClientRect();state.x=Math.min(meta.width-1,Math.max(0,Math.floor((e.clientX-r.left)/r.width*meta.width)));state.y=Math.min(meta.height-1,Math.max(0,Math.floor((e.clientY-r.top)/r.height*meta.height)));render();};
  $('brain').onkeydown=e=>{const steps={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};if(!steps[e.key])return;e.preventDefault();state.x=Math.max(0,Math.min(meta.width-1,state.x+steps[e.key][0]));state.y=Math.max(0,Math.min(meta.height-1,state.y+steps[e.key][1]));render();};
  for(const id of ['tensor','fod','signal','angular']){let drag=null;$(id).onpointerdown=e=>{drag=[e.clientX,e.clientY];$(id).setPointerCapture(e.pointerId);};$(id).onpointermove=e=>{if(!drag)return;state.yaw+=(e.clientX-drag[0])*.012;state.pitch+=(e.clientY-drag[1])*.012;drag=[e.clientX,e.clientY];details();};$(id).onpointerup=$(id).onpointercancel=()=>drag=null;}
 }
 function pickInitial(){let best=-Infinity;for(let y=Math.floor(meta.height*28/109);y<meta.height*65/109;y++)for(let x=Math.floor(meta.width*25/91);x<meta.width*65/91;x++){const v=voxel(y*meta.width+x);if(v[0]!==1)continue;const c=coeff(v,3000);if(basisSphere.some((b,i)=>i%12===0 && (dot(c,b)<0 || dot(c,b)>1)))continue;const anis=Array.from(v.subarray(8,13)).reduce((s,c)=>s+c*c,0),score=anis-.002*((x*91/meta.width-45)**2+(y*109/meta.height-43)**2);if(score>best){best=score;state.x=x;state.y=y;}}}
 async function init(){try{const responses=await Promise.all([fetch('data/phantom.json',{cache:'no-store'}),fetch('data/phantom.bin',{cache:'no-store'}),fetch('data/tensor.bin',{cache:'no-store'})]);if(responses.some(r=>!r.ok))throw new Error('Could not load phantom files');meta=await responses[0].json();data=new Float32Array(await responses[1].arrayBuffer());tensorData=new Float32Array(await responses[2].arrayBuffer());if(tensorData.length!==meta.width*meta.height*8)throw new Error('Unexpected tensor data size');if(data.length!==meta.width*meta.height*meta.stride)throw new Error('Unexpected phantom data size');$('brain').width=meta.width*4;$('brain').height=meta.height*4;buildSphere();pickInitial();bind();$('lab').hidden=false;$('status').hidden=true;render();}catch(e){$('status').textContent='Unable to load the phantom. Serve this folder over HTTP and reload. '+e.message;}}
+let plotResizeFrame=0;
+function redrawPlots(){if(!selected)return;cancelAnimationFrame(plotResizeFrame);plotResizeFrame=requestAnimationFrame(details);}
+const plotObserver=new ResizeObserver(redrawPlots);
+for(const id of ['tensor','fod','signal','decay','angular'])plotObserver.observe($(id));
+window.addEventListener('resize',redrawPlots);
+let densityQuery;function watchDensity(){if(densityQuery)densityQuery.removeEventListener('change',densityChanged);densityQuery=matchMedia(`(resolution: ${window.devicePixelRatio||1}dppx)`);densityQuery.addEventListener('change',densityChanged);}
+function densityChanged(){watchDensity();redrawPlots();}watchDensity();
 init();
