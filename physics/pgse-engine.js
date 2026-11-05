@@ -20,7 +20,7 @@ function reflect(x,y,dx,dy,R){
 }
 function simulate(p,options={}){
  p={...p,direction:normalizeDirection(p.direction)};
- const N=options.N||1200,dt=options.dt||.1,visible=Math.min(80,N),frames=[],rng=random(options.seed||20261104);
+ const N=options.N||1200,dt=options.dt||.1,visible=Math.min(options.visible||80,N),frames=[],rng=random(options.seed||20261104);
  if(!(p.delta>0&&p.Delta>=p.delta+1&&p.g>=0&&p.radius>0))throw new Error('Invalid PGSE timing or substrate.');
  const TE=10+p.Delta+p.delta,nsteps=Math.ceil(TE/dt),h=TE/nsteps,[gx,gy,gz]=p.direction;
  const arrays=()=>({x:new Float64Array(N),y:new Float64Array(N),z:new Float64Array(N),phase:new Float64Array(N)}),free=arrays(),disk=arrays();

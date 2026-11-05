@@ -87,3 +87,5 @@
 .motion-directions{display:flex;align-items:center;gap:6px;margin:8px 0 3px;font-size:11px;color:var(--soft)}.motion-directions button{min-width:34px;padding:5px 10px;border:1px solid var(--line);border-radius:6px;background:#f5f7fb;color:var(--ink);cursor:pointer}.motion-directions button[aria-pressed="true"]{background:#e7effb;border-color:#9ab6e3;color:var(--blue);font-weight:700}.physics-page .axis-key{font-size:10px;color:var(--soft);margin:3px 0 8px}
 
 .motion-zoom{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:6px 0;font-size:11px;color:var(--soft)}.motion-zoom button{padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:#f5f7fb;color:var(--ink);cursor:pointer}.motion-zoom button:disabled{opacity:.4;cursor:default}.motion-zoom output{white-space:nowrap}
+
+.motion-zoom button[aria-pressed="true"]{background:#e7effb;border-color:#9ab6e3;color:var(--blue);font-weight:700}
