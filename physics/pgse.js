@@ -47,13 +47,28 @@ function motion(id,kind,f){const [ctx,w,h]=setupCanvas(id),p=result.params;
   const a=f[kind].points,x=cx+a[spin*3]*scale,y=cy-a[spin*3+1]*scale;ctx.fillStyle=phaseColor(a[spin*3+2]);ctx.beginPath();ctx.arc(x,y,3.2,0,Math.PI*2);ctx.fill();
  }
  ctx.restore();
- const [gx,gy,gz]=p.direction,ax=38,ay=43;line(ctx,[[ax-22*gx,ay+22*gy],[ax+22*gx,ay-22*gy]],'#f3ba6c',2);text(ctx,`G xy · n𝓏=${gz.toFixed(2)}`,ax+28,ay+5,'#f3ba6c',12);
  line(ctx,[[22,h-18],[22+barPixels,h-18]],'#b8c9df',2);text(ctx,bar+' µm',22,h-30,'#b8c9df',11);// Fixed right-handed orientation triad: x right, y up, z out of screen.
- const ox=w-78,oy=h-42,c='#d7e5f7';ctx.fillStyle='#09182bcc';ctx.fillRect(w-108,h-105,104,100);
+ const ox=w-160,oy=h-42,c='#d7e5f7';ctx.fillStyle='#09182bcc';ctx.fillRect(w-190,h-105,186,100);
  line(ctx,[[ox,oy],[ox+43,oy]],c,2);line(ctx,[[ox+36,oy-4],[ox+43,oy],[ox+36,oy+4]],c,2);
  line(ctx,[[ox,oy],[ox,oy-43]],c,2);line(ctx,[[ox-4,oy-36],[ox,oy-43],[ox+4,oy-36]],c,2);
  text(ctx,'x',ox+49,oy+4,c,15);text(ctx,'y',ox-4,oy-52,c,15);
  ctx.fillStyle='#09182b';ctx.strokeStyle=c;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(ox,oy,7,0,2*Math.PI);ctx.fill();ctx.stroke();ctx.fillStyle=c;ctx.beginPath();ctx.arc(ox,oy,2,0,2*Math.PI);ctx.fill();text(ctx,'z out',ox-12,oy+24,c,13);
+ // Gradient orientation sits to the right of the fixed coordinate axes.
+ const [gx,gy,gz]=p.direction,ax=w-42,ay=h-59,orange='#f3ba6c',xy=Math.hypot(gx,gy);
+ if(xy>1e-6){
+  const ux=gx/xy,uy=-gy/xy,length=24*xy;
+  line(ctx,[[ax-length*ux,ay-length*uy],[ax+length*ux,ay+length*uy]],orange,2);
+  for(const sign of [-1,1]){const dx=sign*ux,dy=sign*uy,x=ax+length*dx,y=ay+length*dy,head=Math.min(8,length);
+   ctx.fillStyle=orange;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-head*dx+4*dy,y-head*dy-4*dx);ctx.lineTo(x-head*dx-4*dy,y-head*dy+4*dx);ctx.closePath();ctx.fill();
+  }
+ }
+ if(Math.abs(gz)>1e-6){
+  ctx.fillStyle='#09182b';ctx.strokeStyle=orange;ctx.lineWidth=2;ctx.beginPath();ctx.arc(ax,ay,8,0,2*Math.PI);ctx.fill();ctx.stroke();
+  if(gz>0){ctx.fillStyle=orange;ctx.beginPath();ctx.arc(ax,ay,2.5,0,2*Math.PI);ctx.fill();}
+  else{line(ctx,[[ax-4,ay-4],[ax+4,ay+4]],orange,2);line(ctx,[[ax-4,ay+4],[ax+4,ay-4]],orange,2);}
+ }
+ text(ctx,xy<1e-6?(gz>0?'G out':'G in'):'G',ax,h-18,orange,13,'center');
+
 }
 function phasors(f){const [ctx,w,h]=setupCanvas('phasors');['free','disk'].forEach((kind,j)=>{const x=w*(j?.75:.25),y=94,r=80,m=f[kind];ctx.strokeStyle='#d7e1ee';ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,r,0,2*Math.PI);ctx.stroke();for(let i=0;i<Math.min(visibleSpins,m.points.length/3);i++){const phi=m.points[i*3+2];line(ctx,[[x,y],[x+r*Math.cos(phi),y-r*Math.sin(phi)]],'#91a4bb40',1);}line(ctx,[[x,y],[x+r*m.re,y-r*m.im]],colors[kind],5);text(ctx,`${kind==='free'?'Gaussian':'Restricted'}: |mean| = ${m.magnitude.toFixed(3)}`,x,h-7,colors[kind],14,'center');text(ctx,'Im',x+5,y-r-5,'#8393aa',11);text(ctx,'Re',x+r+8,y+4,'#8393aa',11);});}
 function coherence(f){const [ctx,w,h]=setupCanvas('coherence'),left=50,right=w-25,top=20,bottom=h-40,X=t=>left+(right-left)*t/result.TE,Y=v=>bottom-(bottom-top)*v;
@@ -65,7 +80,7 @@ function coherence(f){const [ctx,w,h]=setupCanvas('coherence'),left=50,right=w-2
 function draw(){if(!result)return;frameIndex=Math.max(0,Math.min(result.frames.length-1,frameIndex));const f=result.frames[frameIndex];$('time').value=Math.round(frameIndex/(result.frames.length-1)*100);$('timeValue').textContent=f.t.toFixed(1)+' ms';sequence(f.t);motion('freeMotion','free',f);motion('diskMotion','disk',f);phasors(f);coherence(f);}
 function stop(){playing=false;cancelAnimationFrame(animation);$('play').textContent='▶ Play sequence';}
 function animate(now){if(!playing)return;if(!lastTick)lastTick=now;const step=Math.floor((now-lastTick)/65);if(step){frameIndex+=step;lastTick=now;draw();if(frameIndex>=result.frames.length-1){stop();return;}}animation=requestAnimationFrame(animate);}
-function calculate(){stop();if(worker)worker.terminate();worker=new Worker('pgse-worker.js?v=20261105-more-spins');result=null;$('play').disabled=$('time').disabled=true;$('simStatus').textContent='Updating the visual experiment…';$('freeEcho').textContent=$('diskEcho').textContent='…';const started=performance.now();
+function calculate(){stop();if(worker)worker.terminate();worker=new Worker('pgse-worker.js?v=20261105-gradient-arrow');result=null;$('play').disabled=$('time').disabled=true;$('simStatus').textContent='Updating the visual experiment…';$('freeEcho').textContent=$('diskEcho').textContent='…';const started=performance.now();
  worker.onmessage=({data})=>{if(data.error){$('simStatus').textContent=data.error;return;}result=data.result;frameIndex=result.frames.length-1;const end=result.frames[frameIndex];$('freeEcho').textContent=result.analytic.toFixed(3);$('diskEcho').textContent=end.disk.magnitude.toFixed(3);$('freeEstimate').textContent=`Small-ensemble illustration: ${end.free.magnitude.toFixed(3)} (analytic value above).`;$('simStatus').textContent=`Ready · ${Math.round(performance.now()-started)} ms to update · scrub time or press Play.`;$('play').disabled=$('time').disabled=false;
  $('lesson').textContent=params.g===0?'With no gradients, moving spins accumulate no diffusion-encoding phase: both signals remain 1.':params.parallel===0&&params.perp===0&&params.intrinsic===0?'Stationary spins dephase during the first pulse, then fully refocus at the echo. Play the sequence to see the phase vectors come back together.':'Compare [1, 0, 0], [0, 1, 0], and [0, 0, 1]. Gaussian diffusion is fastest along x by default. The cylinder restricts x and y but allows free diffusion along z. Small x–y differences reflect the finite illustrative ensemble.';
  draw();worker.terminate();worker=null;};worker.onerror=()=>{$('simStatus').textContent='The visual experiment could not start. Reload this page to retry.';};worker.postMessage({...params});
