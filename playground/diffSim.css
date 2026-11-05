@@ -7,3 +7,7 @@
 #logSignal{white-space:nowrap;padding:6px 10px;font-size:12px}#logSignal[aria-pressed="true"]{background:#e7effb;border-color:#9ab6e3}.legend .spread-key{color:#7b8490}.voxel-panel .legend{flex-wrap:wrap}
 
 .map-selector{max-width:320px;margin:10px 0}.normalize[hidden]{display:none}
+
+.axis-scale{display:flex;align-items:center;gap:10px;flex-shrink:0;font-size:.85rem}.axis-scale .segmented{display:flex;margin:0}.axis-scale button{min-width:64px}
+
+.color-key{display:flex;align-items:center;justify-content:center;gap:18px;background:#000;color:#fff;border-radius:10px;margin-top:10px;padding:10px}.color-key[hidden]{display:none}.color-key img{width:190px;max-width:48%;height:auto}.color-key p{color:#fff;font-size:12px;line-height:1.7}.color-key p span{color:#cbd3df}@media(max-width:500px){.color-key{gap:8px;padding:6px}.color-key p{font-size:10px}.axis-scale{gap:6px}.axis-scale button{min-width:48px}}
