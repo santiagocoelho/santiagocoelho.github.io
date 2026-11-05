@@ -83,3 +83,5 @@
 .physics-page .signal-plots canvas{max-height:none;height:auto}
 .physics-page .media-pair canvas{max-height:none;height:auto}
 }
+
+.motion-directions{display:flex;align-items:center;gap:6px;margin:8px 0 3px;font-size:11px;color:var(--soft)}.motion-directions button{min-width:34px;padding:5px 10px;border:1px solid var(--line);border-radius:6px;background:#f5f7fb;color:var(--ink);cursor:pointer}.motion-directions button[aria-pressed="true"]{background:#e7effb;border-color:#9ab6e3;color:var(--blue);font-weight:700}.physics-page .axis-key{font-size:10px;color:var(--soft);margin:3px 0 8px}
