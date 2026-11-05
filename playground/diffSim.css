@@ -11,3 +11,5 @@
 .axis-scale{display:flex;align-items:center;gap:10px;flex-shrink:0;font-size:.85rem}.axis-scale .segmented{display:flex;margin:0}.axis-scale button{min-width:64px}
 
 .color-key{position:absolute;right:8px;bottom:8px;width:clamp(72px,20%,120px);height:auto;z-index:2;pointer-events:none;background:#000}.color-key[hidden]{display:none}@media(max-width:500px){.axis-scale{gap:6px}.axis-scale button{min-width:48px}}
+
+.gradient-key{position:absolute;left:8px;bottom:8px;width:clamp(105px,23%,150px);height:auto;z-index:2;pointer-events:none;background:#000;border-radius:6px;font-family:Arial,sans-serif}.gradient-key[hidden]{display:none}
