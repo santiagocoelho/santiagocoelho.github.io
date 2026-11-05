@@ -22,7 +22,7 @@ function coeff(v,b=state.b){const c=new Float64Array(28);if(!v[0])return c;if(!b
 function dot(a,b,n=28){let s=0;for(let j=0;j<n;j++)s+=a[j]*b[j];return s;}
 function count(order){return (order+1)*(order+2)/2;}
 function project(v){let [x,y,z]=v;const a=state.yaw,p=state.pitch;[x,y]=[Math.cos(a)*x-Math.sin(a)*y,Math.sin(a)*x+Math.cos(a)*y];return [x,Math.cos(p)*z-Math.sin(p)*y,Math.sin(p)*z+Math.cos(p)*y];}
-function buildSphere(){const verts=[],faces=[],nt=24,np=48;for(let i=0;i<=nt;i++)for(let j=0;j<np;j++){const t=Math.PI*i/nt,p=2*Math.PI*j/np;verts.push([Math.sin(t)*Math.cos(p),Math.sin(t)*Math.sin(p),Math.cos(t)]);}for(let i=0;i<nt;i++)for(let j=0;j<np;j++){const a=i*np+j,b=i*np+(j+1)%np,c=a+np,d=b+np;faces.push([a,b,c],[b,d,c]);}sphere={verts,faces};basisSphere=verts.map(shBasis);}
+function buildSphere(){const verts=[],faces=[],nt=48,np=96;for(let i=0;i<=nt;i++)for(let j=0;j<np;j++){const t=Math.PI*i/nt,p=2*Math.PI*j/np;verts.push([Math.sin(t)*Math.cos(p),Math.sin(t)*Math.sin(p),Math.cos(t)]);}for(let i=0;i<nt;i++)for(let j=0;j<np;j++){const a=i*np+j,b=i*np+(j+1)%np,c=a+np,d=b+np;faces.push([a,b,c],[b,d,c]);}sphere={verts,faces};basisSphere=verts.map(shBasis);}
 // Retain logical drawing coordinates while rendering at display pixel density.
 const plotSizes=new WeakMap();
 function plotCanvas(id){
@@ -33,11 +33,23 @@ function plotCanvas(id){
  ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.setTransform(canvas.width/w,0,0,canvas.height/h,0,0);
  return [ctx,w,h];
 }
+// Matte lighting from the actual surface normal, with a fixed upper-left camera light.
+// A single intensity multiplier preserves RGB ratios and therefore direction colour.
+function surfaceLight(vertices,face){
+ const [a,b,c]=face.map(i=>vertices[i]),u=b.map((v,i)=>v-a[i]),v=c.map((v,i)=>v-a[i]);
+ let normal=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+ const length=Math.hypot(...normal);if(length<1e-12)return .45;
+ const center=a.map((x,i)=>(x+b[i]+c[i])/3);
+ const sign=normal.reduce((s,x,i)=>s+x*center[i],0)<0?-1:1;
+ normal=normal.map(x=>sign*x/length);
+ const light=[-.4,.5,.7681145748];
+ return .45+.55*Math.max(0,normal.reduce((s,x,i)=>s+x*light[i],0));
+}
 function glyph(id,c,n,isFod,tensor=null,tensorRGB=null){const [ctx,w]=plotCanvas(id);ctx.clearRect(0,0,w,w);const vals=basisSphere.map(y=>Math.max(0,dot(c,y,n))),max=Math.max(...vals,1e-8);let vertices;
  if(tensor){const [xx,yy,zz,xy,xz,yz]=tensor;const points=sphere.verts.map(([x,y,z])=>[xx*x+xy*y+xz*z,xy*x+yy*y+yz*z,xz*x+yz*y+zz*z]);const scale=Math.max(...points.map(v=>Math.hypot(...v)),1e-8);vertices=points.map(v=>project(v.map(x=>x/scale)));}
  else vertices=sphere.verts.map((v,i)=>project(v.map(x=>x*vals[i]/max)));
  const faces=sphere.faces.map(f=>({f,z:f.reduce((s,i)=>s+vertices[i][2],0)/3})).sort((a,b)=>a.z-b.z);
- for(const {f,z} of faces){const vec=sphere.verts[f[0]],light=.62+.28*(z+1)/2;const rgb=tensor&&tensorRGB?Array.from(tensorRGB):isFod?vec.map(x=>Math.round((40+205*Math.abs(x))*light)):[Math.round(48*light),Math.round(125*light),Math.round(215*light)];ctx.fillStyle=`rgb(${rgb})`;ctx.beginPath();f.forEach((i,j)=>{const p=vertices[i];ctx[j?'lineTo':'moveTo'](w/2+p[0]*w*.36,w/2-p[1]*w*.36);});ctx.closePath();ctx.fill();}
+ for(const {f,z} of faces){const vec=sphere.verts[f[0]],light=tensor||!isFod?surfaceLight(vertices,f):.62+.28*(z+1)/2;const rgb=tensor&&tensorRGB?Array.from(tensorRGB,x=>Math.round(x*light)):isFod?vec.map(x=>Math.round((40+205*Math.abs(x))*light)):[Math.round(48*light),Math.round(125*light),Math.round(215*light)];ctx.fillStyle=`rgb(${rgb})`;ctx.beginPath();f.forEach((i,j)=>{const p=vertices[i];ctx[j?'lineTo':'moveTo'](w/2+p[0]*w*.36,w/2-p[1]*w*.36);});ctx.closePath();ctx.fill();}
  const colors=['#cd4258','#2b965f','#387ee0'],labels=['R','A','S'];[[1,0,0],[0,1,0],[0,0,1]].forEach((v,i)=>{const p=project(v);ctx.strokeStyle=colors[i];ctx.beginPath();ctx.moveTo(32,w-30);ctx.lineTo(32+22*p[0],w-30-22*p[1]);ctx.stroke();ctx.fillStyle=colors[i];ctx.font='10px system-ui';if(Math.hypot(p[0],p[1])<.08){ctx.beginPath();ctx.arc(32,w-30,3.5,0,2*Math.PI);ctx.stroke();ctx.fillText((p[2]>=0?'⊙ ':'⊗ ')+labels[i],40,w-17);}else ctx.fillText(labels[i],32+28*p[0],w-30-28*p[1]);});
 }
 
