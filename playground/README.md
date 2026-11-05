@@ -14,7 +14,7 @@ Open http://localhost:8765/playground/diffSim.html. The page fetches a binary as
 
 ## Data
 
-One axial slice, z = 18 mm, 145 × 174 pixels at 1.25 mm isotropic, generated with `BrainDiffusionPhantom` from its original 1.25 mm fODFs and masks. The source was found under `/Volumes/labspace-1/Santiago/BasisMRI/BrainPhantom/` during development. No full volume or raw HCP DWI is included.
+One axial slice, z = 10.5 mm (slice 66), 145 × 174 pixels at 1.25 mm isotropic, generated with `BrainDiffusionPhantom` from its original 1.25 mm fODFs and masks. The source was found under `/Volumes/labspace-1/Santiago/BasisMRI/BrainPhantom/` during development. No full volume or raw HCP DWI is included.
 
 `data/phantom.bin` is a little-endian float32 array, pixel-major, with 47 floats per pixel (4,743,240 bytes). `phantom.json` describes dimensions, provenance and normalization. Fields:
 
@@ -50,7 +50,7 @@ Run `python3 playground/scripts/fit_tensor.py` after re-exporting phantom data. 
 The source fODF MIF header confirms `dwi2fod csd ... response_b3000.txt ... -lmax 6`. The website uses this CSD-derived result with the SH-only repair described below; it does not run a new CSD fit.
 
 
-The 1.25 mm generated maps are kept outside the website repository at `/Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm`. Only one slice is shipped. Re-export using `python3 playground/scripts/export_phantom.py /Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm --z-mm 18`, followed by `python3 playground/scripts/fit_tensor.py`. The exporter selects the closest axial slice to the requested world z coordinate. Crosshair placement and initial voxel selection adapt to exported dimensions.
+The 1.25 mm generated maps are kept outside the website repository at `/Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm`. Only one slice is shipped. Re-export using `python3 playground/scripts/export_phantom.py /Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm --z-mm 10.5`, followed by `python3 playground/scripts/fit_tensor.py`. The exporter selects the closest axial slice to the requested world z coordinate. Crosshair placement and initial voxel selection adapt to exported dimensions.
 
 ## Playground hub and PGSE visual experiment
 
@@ -64,20 +64,20 @@ Run `node playground/scripts/check_pgse.cjs` to verify zero-gradient signal, sta
 
 PGSE browser scripts, styles, worker, and worker engine imports use a shared release query string. Bump this version in `pgse.html`, `pgse.js`, and `pgse-worker.js` together when changing the engine/UI contract so cached assets cannot mix incompatible releases.
 
-## SH-only teaching-phantom repair and map views
+## Within-voxel SH repair and map views
 
-The published slice repairs 1,162 of 5,374 WM voxels by interpolating the normalized ground-truth fODF SH coefficients. Detection checks signal positivity, upper bounds, shell-to-shell monotonicity, and positive-definite b1000 tensors. Each replacement is an inverse-distance-squared average of up to eight valid same-tissue donors, also checked using the recipient’s unchanged response. b0, tissue labels, microstructure parameters, and response kernels are unchanged. All unflagged voxels are unchanged.
+Slice 66 uses the original voxel's orientation coefficients, with a common positive scale applied to every l>0 SH coefficient only where necessary. The l=0 term, tissue parameters, b0, labels and response kernels are unchanged. This preserves fODF angular extrema and each shell's spherical mean; it reduces anisotropy. No neighbour interpolation is used. The same repaired coefficients synthesize all three shells (1000, 2000, 3000).
 
-The repair passes an independent 10,000-direction full-sphere signal check and produces 10,692 valid tissue tensor fits. This is a teaching correction, not a new measured ground truth or a guarantee of globally nonnegative fODFs. About 22% of WM voxels change; the furthest donor is 13.15 voxels (~16.4 mm) away, so some local fibre detail can be smoothed. Lower-order SH truncations can still produce ringing.
+1,264 WM voxels were adjusted. An independent 30,000-direction check found no nonpositive, above-one, or shell-increasing full-order signals; all 11,142 tissue tensor fits are valid. In the previously invalid posterior callosal voxels, principal tensor direction changed by a median 0.119° (maximum 0.402°). This is a teaching correction, not measured ground truth or a guarantee of nonnegative fODFs. Lower-order truncation can still ring.
 
-Original `odf_sh.nii` is retained untouched. The separate `odf_sh_repaired_slice_z18.nii.gz` beside it stores only the repaired axial slice, in the source SH units and with its spatial affine. `playground_original_slice/` beside the source preserves the original website export; `playground_repaired_slice/` holds the staged assets, repair mask, and donor/weight report. Do not run repair on already repaired inputs.
+`data/anisotropy-scale.bin` stores one float32 scale per voxel; `repair-mask.bin` marks changed voxels. Original `odf_sh.nii` remains untouched. `odf_sh_local_repair_slice66.nii.gz` beside it contains the repaired slice in source SH units. Original and repaired exports are retained in `slice66_original/` and `slice66_local_sh/`; the earlier published slice is backed up in `published_slice72_backup/`.
 
 ```bash
-python3 playground/scripts/repair_sh.py --data-dir /path/to/playground_original_slice --source /path/to/phantom_1p25mm --out /path/to/playground_repaired_slice
-python3 playground/scripts/fit_tensor.py --data-dir /path/to/playground_repaired_slice
-python3 playground/scripts/check_model.py --data-dir /path/to/playground_repaired_slice
+python3 playground/scripts/repair_local_sh.py --data-dir /path/to/slice66_original --source /path/to/phantom_1p25mm --out /path/to/slice66_local_sh
+python3 playground/scripts/fit_tensor.py --data-dir /path/to/slice66_local_sh
+python3 playground/scripts/check_model.py --data-dir /path/to/slice66_local_sh
 ```
 
-Validate the staged assets before copying them into `playground/data`. The section 02 selector defaults to DWI and also offers b0 and color FA. Color FA uses the refitted b1000 tensor: RGB = FA × absolute principal eigenvector in RAS coordinates (red R–L, green A–P, blue S–I), stored as three uint8 channels per pixel in `color-fa.bin`. Its brightness is independent of display gain. Changing the map leaves the acquisition and selected voxel unchanged.
+The DWI / color FA / b0 selector defaults to DWI. Color FA uses the b1000 tensor: RGB = FA × absolute principal eigenvector in RAS coordinates. Its compact direction sphere overlays the image without changing the canvas layout. The signal chart offers explicit Linear (0–1) and Log (0.01–1) choices.
 
 The b0 map has its own display gain (default 1×, versus DWI 3×), giving it a threefold higher default upper display limit. Switching maps preserves each gain; Reset restores both defaults.

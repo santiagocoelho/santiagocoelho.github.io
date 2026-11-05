@@ -10,4 +10,4 @@
 
 .axis-scale{display:flex;align-items:center;gap:10px;flex-shrink:0;font-size:.85rem}.axis-scale .segmented{display:flex;margin:0}.axis-scale button{min-width:64px}
 
-.color-key{display:flex;align-items:center;justify-content:center;gap:18px;background:#000;color:#fff;border-radius:10px;margin-top:10px;padding:10px}.color-key[hidden]{display:none}.color-key img{width:190px;max-width:48%;height:auto}.color-key p{color:#fff;font-size:12px;line-height:1.7}.color-key p span{color:#cbd3df}@media(max-width:500px){.color-key{gap:8px;padding:6px}.color-key p{font-size:10px}.axis-scale{gap:6px}.axis-scale button{min-width:48px}}
+.color-key{position:absolute;right:8px;bottom:8px;width:clamp(72px,20%,120px);height:auto;z-index:2;pointer-events:none;background:#000}.color-key[hidden]{display:none}@media(max-width:500px){.axis-scale{gap:6px}.axis-scale button{min-width:48px}}

@@ -4,8 +4,8 @@
   "stride": 47,
   "slices": [
     {
-      "index": 72,
-      "z_mm": 18.0
+      "index": 66,
+      "z_mm": 10.5
     }
   ],
   "fields": [
@@ -96,14 +96,18 @@
       0.007018610009470362
     ]
   },
-  "b0_scale": 10876.2646484375,
+  "b0_scale": 10538.9013671875,
   "fallback_wm_voxels": 15,
-  "sh_repair": {
-    "method": "Inverse-distance-squared interpolation of normalized fODF SH from up to 8 nearest valid same-tissue voxels; donors also validated with recipient response. Tissue parameters and b0 unchanged.",
-    "voxels": 1162,
-    "max_donor_distance_voxels": 13.152946437965905,
-    "validation_directions": 10000,
-    "original_data": "playground/data",
-    "coefficients_file": "odf_sh_repaired_slice_z18.nii.gz"
+  "local_repair": {
+    "method": "Within-voxel isotropic mixing; common scale for all l>0 SH, angular extrema unchanged",
+    "changed": 1264,
+    "min_scale": 0.6384387967437387,
+    "validation_directions_independent": 30000,
+    "invalid_tensors": 0,
+    "callosal_hole_direction_change_degrees": {
+      "median": 0.118634,
+      "max": 0.401514
+    },
+    "note": "Preserves fODF angular extrema via common l>0 scale; reduces anisotropy. Validates full-order signals, not global fODF nonnegativity."
   }
 }
