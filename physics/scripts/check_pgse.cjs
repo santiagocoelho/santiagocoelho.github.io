@@ -20,3 +20,12 @@ const z=simulate({...p,direction:[0,0,1]},{N:12000});assert(Math.abs(end(z).free
 const neg=simulate({...p,direction:[-1,0,0]});assert(Math.abs(end(neg).free.magnitude-end(simulate(p)).free.magnitude)<1e-12);
 for(const timing of [{delta:1,Delta:2},{delta:30,Delta:31},{delta:30,Delta:100}]){const r=simulate({...p,...timing,g:200,direction:[1,1,1]});assert(r.frames.every(f=>Number.isFinite(f.free.magnitude)&&Number.isFinite(f.disk.magnitude)));}
 console.log('PASS: normalized 3D directions, invalid input, z diffusion, sign symmetry and expanded timing/gradient endpoints.');
+
+// No gradient-induced phase accrues during the gap, although particles keep moving.
+const gap=simulate(p).frames.filter(f=>f.t>5+p.delta+1&&f.t<5+p.Delta-1);
+assert(gap.length>2);
+for(const kind of ['free','disk']){
+ for(const f of gap){assert.equal(f[kind].re,gap[0][kind].re);assert.equal(f[kind].im,gap[0][kind].im);for(let i=2;i<f[kind].points.length;i+=3)assert.equal(f[kind].points[i],gap[0][kind].points[i]);}
+ assert(gap.at(-1)[kind].points.some((v,i)=>i%3!==2&&v!==gap[0][kind].points[i]));
+}
+console.log('PASS: phase remains fixed in the gradient-free gap while water continues moving.');
