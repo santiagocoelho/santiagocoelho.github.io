@@ -79,3 +79,5 @@ python3 playground/scripts/check_model.py --data-dir /path/to/playground_repaire
 ```
 
 Validate the staged assets before copying them into `playground/data`. The section 02 selector defaults to DWI and also offers b0 and color FA. Color FA uses the refitted b1000 tensor: RGB = FA × absolute principal eigenvector in RAS coordinates (red R–L, green A–P, blue S–I), stored as three uint8 channels per pixel in `color-fa.bin`. Its brightness is independent of display gain. Changing the map leaves the acquisition and selected voxel unchanged.
+
+The b0 map has its own display gain (default 1×, versus DWI 3×), giving it a threefold higher default upper display limit. Switching maps preserves each gain; Reset restores both defaults.
