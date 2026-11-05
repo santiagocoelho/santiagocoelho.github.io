@@ -2,6 +2,7 @@
 const $=id=>document.getElementById(id);
 const defaults={delta:15,Delta:40,g:80,direction:[1,0,0],parallel:2,perp:.3,radius:4,intrinsic:2};
 const params={...defaults};let result=null,worker=null,timer=null,frameIndex=100,playing=false,animation=0,lastTick=0;
+const zoomBars=[5,10,15];let zoomIndex=1;
 const colors={free:'#377fdf',disk:'#0d9993'};
 function phaseColor(phi){return `hsl(${((phi+Math.PI)/(2*Math.PI)*360%360+360)%360} 75% 65%)`;}
 // Keep drawing coordinates stable while matching each canvas to its display pixels.
@@ -33,8 +34,8 @@ function sequence(time=0){const [ctx,w,h]=setupCanvas('sequence'),TE=10+params.D
  line(ctx,[[X(time),34],[X(time),h-15]],'#e08f39',2);
 }
 function motion(id,kind,f){const [ctx,w,h]=setupCanvas(id),p=result.params;
- const span=Math.max(15,p.radius+1.6*Math.sqrt(2*Math.max(p.parallel,p.perp)*result.TE));
- const scale=(h-40)/(2*span),cx=w/2,cy=(h-28)/2;
+ // A fixed-length scale bar gives both views the same, parameter-independent zoom.
+ const bar=zoomBars[zoomIndex],barPixels=60,scale=barPixels/bar,cx=w/2,cy=(h-28)/2;
  ctx.fillStyle='#09182b';ctx.fillRect(0,0,w,h);
  ctx.strokeStyle=kind==='disk'?'#74c8c2':'#60748f';ctx.lineWidth=2;ctx.setLineDash(kind==='disk'?[]:[5,5]);ctx.beginPath();ctx.arc(cx,cy,p.radius*scale,0,2*Math.PI);ctx.stroke();ctx.setLineDash([]);
  // Short history trails follow the same sampled walkers; never wrap positions.
@@ -47,7 +48,7 @@ function motion(id,kind,f){const [ctx,w,h]=setupCanvas(id),p=result.params;
  }
  ctx.restore();
  const [gx,gy,gz]=p.direction,ax=38,ay=43;line(ctx,[[ax-22*gx,ay+22*gy],[ax+22*gx,ay-22*gy]],'#f3ba6c',2);text(ctx,`G xy · n𝓏=${gz.toFixed(2)}`,ax+28,ay+5,'#f3ba6c',12);
- const bar=Math.ceil(span/3/5)*5;line(ctx,[[22,h-18],[22+bar*scale,h-18]],'#b8c9df',2);text(ctx,bar+' µm',22,h-30,'#b8c9df',11);// Fixed right-handed orientation triad: x right, y up, z out of screen.
+ line(ctx,[[22,h-18],[22+barPixels,h-18]],'#b8c9df',2);text(ctx,bar+' µm',22,h-30,'#b8c9df',11);// Fixed right-handed orientation triad: x right, y up, z out of screen.
  const ox=w-78,oy=h-42,c='#d7e5f7';ctx.fillStyle='#09182bcc';ctx.fillRect(w-108,h-105,104,100);
  line(ctx,[[ox,oy],[ox+43,oy]],c,2);line(ctx,[[ox+36,oy-4],[ox+43,oy],[ox+36,oy+4]],c,2);
  line(ctx,[[ox,oy],[ox,oy-43]],c,2);line(ctx,[[ox-4,oy-36],[ox,oy-43],[ox+4,oy-36]],c,2);
@@ -64,7 +65,7 @@ function coherence(f){const [ctx,w,h]=setupCanvas('coherence'),left=50,right=w-2
 function draw(){if(!result)return;frameIndex=Math.max(0,Math.min(result.frames.length-1,frameIndex));const f=result.frames[frameIndex];$('time').value=Math.round(frameIndex/(result.frames.length-1)*100);$('timeValue').textContent=f.t.toFixed(1)+' ms';sequence(f.t);motion('freeMotion','free',f);motion('diskMotion','disk',f);phasors(f);coherence(f);}
 function stop(){playing=false;cancelAnimationFrame(animation);$('play').textContent='▶ Play sequence';}
 function animate(now){if(!playing)return;if(!lastTick)lastTick=now;const step=Math.floor((now-lastTick)/65);if(step){frameIndex+=step;lastTick=now;draw();if(frameIndex>=result.frames.length-1){stop();return;}}animation=requestAnimationFrame(animate);}
-function calculate(){stop();if(worker)worker.terminate();worker=new Worker('pgse-worker.js?v=20261105-axis-controls');result=null;$('play').disabled=$('time').disabled=true;$('simStatus').textContent='Updating the visual experiment…';$('freeEcho').textContent=$('diskEcho').textContent='…';const started=performance.now();
+function calculate(){stop();if(worker)worker.terminate();worker=new Worker('pgse-worker.js?v=20261105-motion-zoom');result=null;$('play').disabled=$('time').disabled=true;$('simStatus').textContent='Updating the visual experiment…';$('freeEcho').textContent=$('diskEcho').textContent='…';const started=performance.now();
  worker.onmessage=({data})=>{if(data.error){$('simStatus').textContent=data.error;return;}result=data.result;frameIndex=result.frames.length-1;const end=result.frames[frameIndex];$('freeEcho').textContent=result.analytic.toFixed(3);$('diskEcho').textContent=end.disk.magnitude.toFixed(3);$('freeEstimate').textContent=`Small-ensemble illustration: ${end.free.magnitude.toFixed(3)} (analytic value above).`;$('simStatus').textContent=`Ready · ${Math.round(performance.now()-started)} ms to update · scrub time or press Play.`;$('play').disabled=$('time').disabled=false;
  $('lesson').textContent=params.g===0?'With no gradients, moving spins accumulate no diffusion-encoding phase: both signals remain 1.':params.parallel===0&&params.perp===0&&params.intrinsic===0?'Stationary spins dephase during the first pulse, then fully refocus at the echo. Play the sequence to see the phase vectors come back together.':'Compare [1, 0, 0], [0, 1, 0], and [0, 0, 1]. Gaussian diffusion is fastest along x by default. The cylinder restricts x and y but allows free diffusion along z. Small x–y differences reflect the finite illustrative ensemble.';
  draw();worker.terminate();worker=null;};worker.onerror=()=>{$('simStatus').textContent='The visual experiment could not start. Reload this page to retry.';};worker.postMessage({...params});
@@ -73,11 +74,13 @@ for(const key of Object.keys(defaults).filter(k=>k!=='direction'))$(key).oninput
 $('time').oninput=()=>{stop();if(result){frameIndex=Math.round(+$('time').value/100*(result.frames.length-1));draw();}};
 $('play').onclick=()=>{if(playing){stop();return;}if(!result)return;if(frameIndex>=result.frames.length-1)frameIndex=0;playing=true;lastTick=0;$('play').textContent='Ⅱ Pause';draw();animation=requestAnimationFrame(animate);};
 function preset(values){clearTimeout(timer);Object.assign(params,values);sync();syncDirection();calculate();}
-$('noGradients').onclick=()=>preset({g:0});$('stationary').onclick=()=>preset({parallel:0,perp:0,intrinsic:0});$('resetPhysics').onclick=()=>preset(defaults);
+$('noGradients').onclick=()=>preset({g:0});$('stationary').onclick=()=>preset({parallel:0,perp:0,intrinsic:0});$('resetPhysics').onclick=()=>{setZoom(1);preset(defaults);};
 function syncDirection(){params.direction.forEach((v,i)=>$( ['gx','gy','gz'][i]).value=Number(v.toFixed(6)));$('directionStatus').textContent=`Unit direction: [${params.direction.map(v=>Number(v.toFixed(6))).join(', ')}]`;document.querySelectorAll('[data-direction-axis]').forEach(button=>{const axis=Number(button.dataset.directionAxis),active=params.direction.every((v,i)=>Math.abs(v-(i===axis?1:0))<1e-9);button.setAttribute('aria-pressed',String(active));});}
 $('directionForm').onsubmit=e=>{e.preventDefault();try{const direction=normalizeDirection(['gx','gy','gz'].map(id=>$(id).valueAsNumber));preset({direction});}catch(error){$('directionStatus').textContent=error.message;}};
 document.querySelectorAll('[data-direction-axis]').forEach(button=>button.onclick=()=>preset({direction:[0,1,2].map(i=>i===Number(button.dataset.directionAxis)?1:0)}));
-syncDirection();
+function setZoom(index){zoomIndex=Math.max(0,Math.min(zoomBars.length-1,index));$('zoomIn').disabled=zoomIndex===0;$('zoomOut').disabled=zoomIndex===zoomBars.length-1;$('zoomScale').textContent=`Scale bar: ${zoomBars[zoomIndex]} µm`;draw();}
+$('zoomIn').onclick=()=>setZoom(zoomIndex-1);$('zoomOut').onclick=()=>setZoom(zoomIndex+1);
+setZoom(1);syncDirection();
 document.addEventListener('visibilitychange' ,()=>{if(document.hidden)stop();});sync();sequence();calculate();
 
 // Redraw on responsive layout changes and when moving between display densities.
