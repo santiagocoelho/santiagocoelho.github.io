@@ -1,14 +1,15 @@
 """Check browser SH against SciPy and direct spherical convolution (numpy/scipy/node)."""
 from pathlib import Path
-import json, subprocess
+import json, subprocess, argparse
 import numpy as np
 from scipy.special import sph_harm_y
 from numpy.polynomial.legendre import leggauss
 root=Path(__file__).resolve().parents[1]
-meta=json.loads((root/'data/phantom.json').read_text())
-a=np.fromfile(root/'data/phantom.bin',dtype='<f4').reshape(-1,meta['stride'])
+parser=argparse.ArgumentParser();parser.add_argument('--data-dir',type=Path,default=root/'data');args=parser.parse_args()
+meta=json.loads((args.data_dir/'phantom.json').read_text())
+a=np.fromfile(args.data_dir/'phantom.bin',dtype='<f4').reshape(-1,meta['stride'])
 # Evaluate production JS math without DOM or network, using node's VM.
-js=r"""const fs=require('fs'),vm=require('vm');let src=fs.readFileSync(process.argv[1],'utf8').replace(/init\(\);\s*$/,'');let ctx={};vm.createContext(ctx);vm.runInContext(src,ctx);const result=vm.runInContext(`JSON.stringify([[1,0,0],[0,1,0],[0,0,1],[.6,0,.8]].map(shBasis))`,ctx);console.log(result);"""
+js=r"""const fs=require('fs'),vm=require('vm');let src=fs.readFileSync(process.argv[1],'utf8').split('let plotResizeFrame=0;')[0];let ctx={};vm.createContext(ctx);vm.runInContext(src,ctx);const result=vm.runInContext(`JSON.stringify([[1,0,0],[0,1,0],[0,0,1],[.6,0,.8]].map(shBasis))`,ctx);console.log(result);"""
 actual=np.array(json.loads(subprocess.check_output(['node','-e',js,str(root/'diffSim.js')],text=True)))
 dirs=np.array([[1,0,0],[0,1,0],[0,0,1],[.6,0,.8]])
 def basis(d):

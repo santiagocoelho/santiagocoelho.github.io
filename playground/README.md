@@ -47,7 +47,7 @@ Reference: https://mrtrix.readthedocs.io/en/dev/concepts/spherical_harmonics.htm
 
 Run `python3 playground/scripts/fit_tensor.py` after re-exporting phantom data. This fits a fixed-S0 log-linear tensor to the synthesized b1000 shell on the same 500 directions. `tensor.bin` has eight float32 fields per pixel: Dxx, Dyy, Dzz, Dxy, Dxz, Dyz (µm²/ms), positive-definite validity flag, omitted-sample count. Nonphysical signals outside (0,1] are excluded, and invalid fits are shown without an ellipsoid. An analytic CSF D=3 check runs during export. Tensor ellipsoid axes scale with eigenvalues, not their square roots; it is not a displacement propagator.
 
-The source fODF MIF header confirms `dwi2fod csd ... response_b3000.txt ... -lmax 6`. The website reuses this CSD result rather than estimating new fODFs.
+The source fODF MIF header confirms `dwi2fod csd ... response_b3000.txt ... -lmax 6`. The website uses this CSD-derived result with the SH-only repair described below; it does not run a new CSD fit.
 
 
 The 1.25 mm generated maps are kept outside the website repository at `/Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm`. Only one slice is shipped. Re-export using `python3 playground/scripts/export_phantom.py /Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm --z-mm 18`, followed by `python3 playground/scripts/fit_tensor.py`. The exporter selects the closest axial slice to the requested world z coordinate. Crosshair placement and initial voxel selection adapt to exported dimensions.
@@ -63,3 +63,19 @@ Physical units are ms, µm, mT/m, and µm²/ms internally. b is displayed in s/m
 Run `node playground/scripts/check_pgse.cjs` to verify zero-gradient signal, stationary refocusing, G² scaling, Gaussian agreement, boundary containment, timestep stability, and a large-circle free-diffusion limit. Research examples and the user-supplied ISMRM course are linked in the page's further-exploration section.
 
 PGSE browser scripts, styles, worker, and worker engine imports use a shared release query string. Bump this version in `pgse.html`, `pgse.js`, and `pgse-worker.js` together when changing the engine/UI contract so cached assets cannot mix incompatible releases.
+
+## SH-only teaching-phantom repair and map views
+
+The published slice repairs 1,162 of 5,374 WM voxels by interpolating the normalized ground-truth fODF SH coefficients. Detection checks signal positivity, upper bounds, shell-to-shell monotonicity, and positive-definite b1000 tensors. Each replacement is an inverse-distance-squared average of up to eight valid same-tissue donors, also checked using the recipient’s unchanged response. b0, tissue labels, microstructure parameters, and response kernels are unchanged. All unflagged voxels are unchanged.
+
+The repair passes an independent 10,000-direction full-sphere signal check and produces 10,692 valid tissue tensor fits. This is a teaching correction, not a new measured ground truth or a guarantee of globally nonnegative fODFs. About 22% of WM voxels change; the furthest donor is 13.15 voxels (~16.4 mm) away, so some local fibre detail can be smoothed. Lower-order SH truncations can still produce ringing.
+
+Original `odf_sh.nii` is retained untouched. The separate `odf_sh_repaired_slice_z18.nii.gz` beside it stores only the repaired axial slice, in the source SH units and with its spatial affine. `playground_original_slice/` beside the source preserves the original website export; `playground_repaired_slice/` holds the staged assets, repair mask, and donor/weight report. Do not run repair on already repaired inputs.
+
+```bash
+python3 playground/scripts/repair_sh.py --data-dir /path/to/playground_original_slice --source /path/to/phantom_1p25mm --out /path/to/playground_repaired_slice
+python3 playground/scripts/fit_tensor.py --data-dir /path/to/playground_repaired_slice
+python3 playground/scripts/check_model.py --data-dir /path/to/playground_repaired_slice
+```
+
+Validate the staged assets before copying them into `playground/data`. The section 02 selector defaults to DWI and also offers b0 and color FA. Color FA uses the refitted b1000 tensor: RGB = FA × absolute principal eigenvector in RAS coordinates (red R–L, green A–P, blue S–I), stored as three uint8 channels per pixel in `color-fa.bin`. Its brightness is independent of display gain. Changing the map leaves the acquisition and selected voxel unchanged.

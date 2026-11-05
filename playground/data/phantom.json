@@ -97,5 +97,13 @@
     ]
   },
   "b0_scale": 10876.2646484375,
-  "fallback_wm_voxels": 15
+  "fallback_wm_voxels": 15,
+  "sh_repair": {
+    "method": "Inverse-distance-squared interpolation of normalized fODF SH from up to 8 nearest valid same-tissue voxels; donors also validated with recipient response. Tissue parameters and b0 unchanged.",
+    "voxels": 1162,
+    "max_donor_distance_voxels": 13.152946437965905,
+    "validation_directions": 10000,
+    "original_data": "playground/data",
+    "coefficients_file": "odf_sh_repaired_slice_z18.nii.gz"
+  }
 }
