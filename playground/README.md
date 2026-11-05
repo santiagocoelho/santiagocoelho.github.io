@@ -1,6 +1,6 @@
 # Synthetic Brain Diffusion MRI Phantom
 
-Static, dependency-free prototype at `physics/diffSim.html`, linked from the homepage navigation. No build step; compatible with the existing GitHub Pages site. Published through the existing GitHub Pages workflow when changes are pushed to the publishing branch.
+Static, dependency-free prototype at `playground/diffSim.html`, linked from the homepage navigation. No build step; compatible with the existing GitHub Pages site. Published through the existing GitHub Pages workflow when changes are pushed to the publishing branch.
 
 ## Preview
 
@@ -10,7 +10,7 @@ From the website repository:
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open http://localhost:8765/physics/diffSim.html. The page fetches a binary asset, so use HTTP rather than opening the HTML with `file://`.
+Open http://localhost:8765/playground/diffSim.html. The page fetches a binary asset, so use HTTP rather than opening the HTML with `file://`.
 
 ## Data
 
@@ -33,9 +33,9 @@ Spatial arrays are reoriented to canonical RAS and displayed radiologically (rig
 Requires Python with numpy, scipy, nibabel; export also requires the local ARMNEXI-phantom source, and validation requires Node.
 
 ```bash
-python3 physics/scripts/export_phantom.py /path/to/generated/phantom --kernels /path/to/ARMNEXI-phantom
-python3 physics/scripts/check_model.py
-node --check physics/diffSim.js
+python3 playground/scripts/export_phantom.py /path/to/generated/phantom --kernels /path/to/ARMNEXI-phantom
+python3 playground/scripts/check_model.py
+node --check playground/diffSim.js
 ```
 
 The numerical check compares the production JavaScript SH basis to SciPy, compares WM SH synthesis to independent direct spherical quadrature for all three shells, and checks analytic CSF decay. Browser QA covers baseline normalization, shell/direction switching, spherical mean, slice normalization and SH truncation. No runtime CDN or external library is required. The LaTeX equation source is in `sh-equation.tex`, pre-rendered with Matplotlib mathtext into `sh-equation.svg`. `sphere500.js` stores the 500 directions and 996 triangle faces. The slice normalization toggle switches between S/S0 and the original b0-weighted display signal; it does not affect voxel readouts or SH surfaces.
@@ -45,21 +45,21 @@ Reference: https://mrtrix.readthedocs.io/en/dev/concepts/spherical_harmonics.htm
 
 ## Diffusion tensor comparison
 
-Run `python3 physics/scripts/fit_tensor.py` after re-exporting phantom data. This fits a fixed-S0 log-linear tensor to the synthesized b1000 shell on the same 500 directions. `tensor.bin` has eight float32 fields per pixel: Dxx, Dyy, Dzz, Dxy, Dxz, Dyz (µm²/ms), positive-definite validity flag, omitted-sample count. Nonphysical signals outside (0,1] are excluded, and invalid fits are shown without an ellipsoid. An analytic CSF D=3 check runs during export. Tensor ellipsoid axes scale with eigenvalues, not their square roots; it is not a displacement propagator.
+Run `python3 playground/scripts/fit_tensor.py` after re-exporting phantom data. This fits a fixed-S0 log-linear tensor to the synthesized b1000 shell on the same 500 directions. `tensor.bin` has eight float32 fields per pixel: Dxx, Dyy, Dzz, Dxy, Dxz, Dyz (µm²/ms), positive-definite validity flag, omitted-sample count. Nonphysical signals outside (0,1] are excluded, and invalid fits are shown without an ellipsoid. An analytic CSF D=3 check runs during export. Tensor ellipsoid axes scale with eigenvalues, not their square roots; it is not a displacement propagator.
 
 The source fODF MIF header confirms `dwi2fod csd ... response_b3000.txt ... -lmax 6`. The website reuses this CSD result rather than estimating new fODFs.
 
 
-The 1.25 mm generated maps are kept outside the website repository at `/Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm`. Only one slice is shipped. Re-export using `python3 physics/scripts/export_phantom.py /Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm --z-mm 18`, followed by `python3 physics/scripts/fit_tensor.py`. The exporter selects the closest axial slice to the requested world z coordinate. Crosshair placement and initial voxel selection adapt to exported dimensions.
+The 1.25 mm generated maps are kept outside the website repository at `/Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm`. Only one slice is shipped. Re-export using `python3 playground/scripts/export_phantom.py /Users/coelhs01/Documents/ChatGPT/LabWebsite/phantom_1p25mm --z-mm 18`, followed by `python3 playground/scripts/fit_tensor.py`. The exporter selects the closest axial slice to the requested world z coordinate. Crosshair placement and initial voxel selection adapt to exported dimensions.
 
-## Teaching hub and PGSE visual experiment
+## Playground hub and PGSE visual experiment
 
-`/teaching/` links to the brain phantom and `physics/pgse.html`. The phantom defaults and resets to A–P (azimuth 90°, polar angle 90°). Its section 3 decay chart has a fixed 0–1 axis and clips out-of-range nonphysical values only for drawing.
+`/playground/` links to the brain phantom and `playground/pgse.html`. The phantom defaults and resets to A–P (azimuth 90°, polar angle 90°). Its section 3 decay chart has a fixed 0–1 axis and clips out-of-range nonphysical values only for drawing.
 
 The PGSE page is a fast educational visualization, not a research or scanner sequence tool. Vanilla JS and a worker keep it dependency-free. `pgse-engine.js` uses 1,200 seeded walkers/environment, 0.1 ms steps, and 101 playback snapshots with 80 visible trajectories. Gaussian echo is analytic; cylinder restriction is a finite-sample illustration. Changing controls cancels prior computation and debounces updates. Typical local updates are ~0.1–0.2 s, depending on hardware.
 
 Physical units are ms, µm, mT/m, and µm²/ms internally. b is displayed in s/mm² (unit conversions included in phase and attenuation). Physical PGSE lobes share a sign; the effective gradient changes sign after RF refocusing. The cylinder uses specular reflection of short increments in x–y and free diffusion along z; animation shows the x–y projection. Gaussian diffusion has D_z = D_y. Direction inputs are normalized together on Apply (or Enter); the zero vector is rejected. Controls span δ = 1–30 ms, Δ = δ+1–100 ms, and G = 0–200 mT/m. The sequence displays the three physical gradient components G_i = G n_i. Finite-step and finite-sample errors are disclosed on the page. No export, scanner prescription, optimization, or fitting features are intended.
 
-Run `node physics/scripts/check_pgse.cjs` to verify zero-gradient signal, stationary refocusing, G² scaling, Gaussian agreement, boundary containment, timestep stability, and a large-circle free-diffusion limit. Research examples and the user-supplied ISMRM course are linked in the page's further-exploration section.
+Run `node playground/scripts/check_pgse.cjs` to verify zero-gradient signal, stationary refocusing, G² scaling, Gaussian agreement, boundary containment, timestep stability, and a large-circle free-diffusion limit. Research examples and the user-supplied ISMRM course are linked in the page's further-exploration section.
 
 PGSE browser scripts, styles, worker, and worker engine imports use a shared release query string. Bump this version in `pgse.html`, `pgse.js`, and `pgse-worker.js` together when changing the engine/UI contract so cached assets cannot mix incompatible releases.
