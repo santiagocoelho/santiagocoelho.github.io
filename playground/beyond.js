@@ -31,6 +31,7 @@ function svgElement(parent, name, attrs, label) {
 // The simplex vertices have eigenvalue ratios 1:0:0, 1:1:0 and 1:1:1.
 const referenceDash = { LTE: '', PTE: '6 3', STE: '2 3' };
 const corners = { LTE: [32,132], PTE: [224,132], STE: [128,32] };
+const diskElevation = 20 * Math.PI / 180;
 for (let row = 0; row <= 5; row++) {
   for (let col = 0; col <= row; col++) {
     const spherical = 1 - row / 5;
@@ -44,12 +45,12 @@ for (let row = 0; row <= 5; row++) {
     const glyphs = byId('shapeGlyphs');
     const radius = 15 * Math.sqrt(major);
     if (row === 5) {
-      // Face-on footprints in the b1–b2 plane; no lighting or implied thickness.
+      // Project the b1–b2 plane from 20° above it, keeping the major axis horizontal.
       if (col === 0) {
         svgElement(glyphs, 'line', {x1:x-radius, x2:x+radius, y1:y, y2:y, 'stroke-width':2});
       } else {
-        svgElement(glyphs, 'ellipse', {cx:x, cy:y, rx:radius, ry:15*Math.sqrt(middle),
-          fill:'#fff', stroke:'#893347', 'stroke-width':1.6});
+        svgElement(glyphs, 'ellipse', {cx:x, cy:y, rx:radius, ry:15 * Math.sqrt(middle) * Math.sin(diskElevation),
+          fill:'#f1c8ce', stroke:'#893347', 'stroke-width':1.2});
       }
     } else {
       svgElement(glyphs, 'ellipse', {cx:x, cy:y, rx:radius,

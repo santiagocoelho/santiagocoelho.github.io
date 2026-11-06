@@ -7,7 +7,7 @@
   <link rel="icon" href="../images/favicon.ico">
   <link rel="stylesheet" href="diffSim.css?v=30261105-wide-intro">
   <link rel="stylesheet" href="beyond.css?v=3">
-  <script src="beyond.js?v=4" defer></script>
+  <script src="beyond.js?v=5" defer></script>
 </head>
 <body>
 <header><a class="brand" href="../">Santiago Coelho<span>.</span></a><a href="./">← MRI Playground</a></header>
@@ -56,7 +56,7 @@
       </div></fieldset>
       <svg class="shape-map" viewBox="0 0 256 187" role="img" aria-labelledby="shapeTitle" aria-describedby="shapeDesc">
         <title id="shapeTitle">B-tensor shapes</title>
-        <desc id="shapeDesc">Along the bottom edge the third eigenvalue is zero. The face-on outlines widen from a line to a circular disk.</desc>
+        <desc id="shapeDesc">Along the bottom edge the third eigenvalue is zero. Viewed from 20 degrees above their plane, the shapes widen from a line to a flat disk.</desc>
         <defs><radialGradient id="glyphLight" cx="35%" cy="30%" r="72%">
           <stop stop-color="#efa0a6"/><stop offset=".48" stop-color="#ad364c"/><stop offset="1" stop-color="#692039"/>
         </radialGradient></defs>
@@ -66,7 +66,7 @@
         <g id="shapeGlyphs" fill="url(#glyphLight)" stroke="#7f2a40" stroke-width=".7"></g>
         <g text-anchor="middle" font-size="12" font-weight="600" fill="#334b67">
           <text x="128" y="11">Spherical</text><text x="32" y="159">Linear</text><text x="224" y="159">Planar</text>
-          <text x="128" y="175" font-weight="400">b₃ = 0 · shown face-on</text>
+          <text x="128" y="175" font-weight="400">b₃ = 0 · tilted view</text>
         </g>
       </svg>
       <label class="weight" for="weight">b-value <output id="weightValue" for="weight">2000 s/mm²</output></label>
