@@ -7,21 +7,21 @@
 .physics-page header{height:50px}
 .physics-page main{max-width:1510px;padding:16px 3vw 20px}
 .physics-page .intro{max-width:none;margin-bottom:14px}
-.physics-page .intro .eyebrow{margin:0;font-size:9px}
+.physics-page .intro .eyebrow{margin:0}
 .physics-page h1{font-size:32px;margin:5px 0}
 .physics-page .intro>p:last-child{max-width:1100px;margin:4px 0;font-size:12px}
 .physics-page .physics-layout{grid-template-columns:220px minmax(0,1fr);gap:12px}
 .physics-page .physics-main{gap:10px}
 .physics-page .panel{padding:12px;border-radius:10px}
 .physics-page h2{font-size:15px;margin:2px 0 6px}
-.physics-page .section-label{font-size:9px}
+
 .physics-page .controls label{margin:10px 0 3px;font-size:11px}
 .physics-page .direction-form{margin-top:12px}
 .physics-page .direction-form .small{margin:5px 0}
 .physics-page .direction-inputs{gap:5px}
 .physics-page .direction-inputs input{padding:6px 3px;font-size:10px}
 .physics-page .encoding{padding:7px;margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.physics-page .encoding strong{font-size:23px}
+.physics-page .encoding strong{font-size:27px}
 .physics-page .encoding span{font-size:9px}
 .physics-page .preset-buttons{margin-top:12px}
 .physics-page .preset-buttons button{padding:6px 8px;font-size:11px}
@@ -91,3 +91,6 @@
 .motion-zoom{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:6px 0;font-size:11px;color:var(--soft)}.motion-zoom button{padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:#f5f7fb;color:var(--ink);cursor:pointer}.motion-zoom button:disabled{opacity:.4;cursor:default}.motion-zoom output{white-space:nowrap}
 
 .motion-zoom button[aria-pressed="true"]{background:#e7effb;border-color:#9ab6e3;color:var(--blue);font-weight:700}
+
+.teaching-card strong { font-size: 1rem; }
+.motion-directions button, .motion-zoom button { font-size: 15px; }

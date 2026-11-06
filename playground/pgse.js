@@ -24,7 +24,7 @@ function sequence(time=0){const [ctx,w,h]=setupCanvas('sequence'),TE=10+params.D
  line(ctx,[[135,30],[w-35,30]],'#ccd6e2',1);text(ctx,'RF',8,35,'#58677d',16);
  for(const [t,label] of [[0,'90°'],[t180,'180°']]){line(ctx,[[X(t),30],[X(t),10]],'#152e50',3);text(ctx,label,X(t)+6,12,'#16233a',15);}
  for(let i=0;i<3;i++){const baseline=125+i*70,component=params.g*params.direction[i],amp=component/200*36;
-  line(ctx,[[135,baseline],[w-35,baseline]],'#ccd6e2',1);text(ctx,axes[i],8,baseline-7,axisColors[i],17);text(ctx,component.toFixed(1)+' mT/m',8,baseline+15,axisColors[i],13);
+  line(ctx,[[135,baseline],[w-35,baseline]],'#ccd6e2',1);text(ctx,axes[i],8,baseline-7,axisColors[i],20);text(ctx,component.toFixed(1)+' mT/m',8,baseline+15,axisColors[i],16);
   const pts=[[X(0),baseline]];for(const t of [first,second])pts.push([X(t),baseline],[X(t),baseline-amp],[X(t+params.delta),baseline-amp],[X(t+params.delta),baseline]);pts.push([X(TE),baseline]);line(ctx,pts,axisColors[i],3);
  }
  line(ctx,[[X(first),51],[X(second),51]],'#8393aa',1);[first,second].forEach(t=>line(ctx,[[X(t),46],[X(t),56]],'#8393aa',1));text(ctx,`Δ = ${params.Delta} ms`,(X(first)+X(second))/2,44,'#58677d',15,'center');
@@ -70,7 +70,7 @@ function motion(id,kind,f){const [ctx,w,h]=setupCanvas(id),p=result.params;
  text(ctx,xy<1e-6?(gz>0?'G out':'G in'):'G',ax,h-18,orange,13,'center');
 
 }
-function phasors(f){const [ctx,w,h]=setupCanvas('phasors');['free','disk'].forEach((kind,j)=>{const x=w*(j?.75:.25),y=94,r=80,m=f[kind];ctx.strokeStyle='#d7e1ee';ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,r,0,2*Math.PI);ctx.stroke();for(let i=0;i<Math.min(visibleSpins,m.points.length/3);i++){const phi=m.points[i*3+2];line(ctx,[[x,y],[x+r*Math.cos(phi),y-r*Math.sin(phi)]],'#91a4bb40',1);}line(ctx,[[x,y],[x+r*m.re,y-r*m.im]],colors[kind],5);text(ctx,`${kind==='free'?'Gaussian':'Restricted'}: |mean| = ${m.magnitude.toFixed(3)}`,x,h-7,colors[kind],14,'center');text(ctx,'Im',x+5,y-r-5,'#8393aa',11);text(ctx,'Re',x+r+8,y+4,'#8393aa',11);});}
+function phasors(f){const [ctx,w,h]=setupCanvas('phasors');['free','disk'].forEach((kind,j)=>{const x=w*(j?.75:.25),y=94,r=80,m=f[kind];ctx.strokeStyle='#d7e1ee';ctx.lineWidth=1;ctx.beginPath();ctx.arc(x,y,r,0,2*Math.PI);ctx.stroke();for(let i=0;i<Math.min(visibleSpins,m.points.length/3);i++){const phi=m.points[i*3+2];line(ctx,[[x,y],[x+r*Math.cos(phi),y-r*Math.sin(phi)]],'#91a4bb40',1);}line(ctx,[[x,y],[x+r*m.re,y-r*m.im]],colors[kind],5);text(ctx,`${kind==='free'?'Gaussian':'Restricted'}: |mean| = ${m.magnitude.toFixed(3)}`,x,h-7,colors[kind],17,'center');text(ctx,'Im',x+5,y-r-5,'#8393aa',11);text(ctx,'Re',x+r+8,y+4,'#8393aa',11);});}
 function coherence(f){const [ctx,w,h]=setupCanvas('coherence'),left=50,right=w-25,top=20,bottom=h-40,X=t=>left+(right-left)*t/result.TE,Y=v=>bottom-(bottom-top)*v;
  for(let i=0;i<=4;i++){const v=i/4;line(ctx,[[left,Y(v)],[right,Y(v)]],'#e3eaf3',1);text(ctx,v.toFixed(2),left-9,Y(v)+4,'#58677d',12,'right');}
  for(let t=0;t<=result.TE;t+=10)text(ctx,t,X(t),bottom+20,'#58677d',12,'center');text(ctx,'Time (ms)',w/2,h-2,'#58677d',12,'center');text(ctx,'|S/S₀|',left,12,'#58677d',12);

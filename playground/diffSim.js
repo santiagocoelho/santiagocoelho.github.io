@@ -50,7 +50,7 @@ function glyph(id,c,n,isFod,tensor=null,tensorRGB=null){const [ctx,w]=plotCanvas
  else vertices=sphere.verts.map((v,i)=>project(v.map(x=>x*vals[i]/max)));
  const faces=sphere.faces.map(f=>({f,z:f.reduce((s,i)=>s+vertices[i][2],0)/3})).sort((a,b)=>a.z-b.z);
  for(const {f,z} of faces){const vec=sphere.verts[f[0]],light=tensor||!isFod?surfaceLight(vertices,f):.62+.28*(z+1)/2;const rgb=tensor&&tensorRGB?Array.from(tensorRGB,x=>Math.round(x*light)):isFod?vec.map(x=>Math.round((40+205*Math.abs(x))*light)):[Math.round(48*light),Math.round(125*light),Math.round(215*light)];ctx.fillStyle=`rgb(${rgb})`;ctx.beginPath();f.forEach((i,j)=>{const p=vertices[i];ctx[j?'lineTo':'moveTo'](w/2+p[0]*w*.36,w/2-p[1]*w*.36);});ctx.closePath();ctx.fill();}
- const colors=['#cd4258','#2b965f','#387ee0'],labels=['R','A','S'];[[1,0,0],[0,1,0],[0,0,1]].forEach((v,i)=>{const p=project(v);ctx.strokeStyle=colors[i];ctx.beginPath();ctx.moveTo(32,w-30);ctx.lineTo(32+22*p[0],w-30-22*p[1]);ctx.stroke();ctx.fillStyle=colors[i];ctx.font='10px system-ui';if(Math.hypot(p[0],p[1])<.08){ctx.beginPath();ctx.arc(32,w-30,3.5,0,2*Math.PI);ctx.stroke();ctx.fillText((p[2]>=0?'⊙ ':'⊗ ')+labels[i],40,w-17);}else ctx.fillText(labels[i],32+28*p[0],w-30-28*p[1]);});
+ const colors=['#cd4258','#2b965f','#387ee0'],labels=['R','A','S'];[[1,0,0],[0,1,0],[0,0,1]].forEach((v,i)=>{const p=project(v);ctx.strokeStyle=colors[i];ctx.beginPath();ctx.moveTo(32,w-30);ctx.lineTo(32+22*p[0],w-30-22*p[1]);ctx.stroke();ctx.fillStyle=colors[i];ctx.font='14px system-ui';if(Math.hypot(p[0],p[1])<.08){ctx.beginPath();ctx.arc(32,w-30,3.5,0,2*Math.PI);ctx.stroke();ctx.fillText((p[2]>=0?'⊙ ':'⊗ ')+labels[i],40,w-17);}else ctx.fillText(labels[i],32+28*p[0],w-30-28*p[1]);});
 }
 
 const shSurfaceBasis = typeof SH_MESH === 'undefined' ? [] : SH_MESH.verts.map(shBasis);
@@ -71,6 +71,7 @@ function angularSurface(c){
   }
   ctx.fillStyle='#16233a';ctx.textAlign='center';ctx.font='16px system-ui';ctx.fillText(side?`Reconstruction · ℓ ≤ ${state.order}`:'Reference · ℓ ≤ 6',cx,27);
   ctx.font='12px system-ui';ctx.fillStyle='#58677d';ctx.fillText('500 directions',cx,h-15);
+  ctx.font='16px system-ui';
   [[1,0,0],[0,1,0],[0,0,1]].forEach((v,i)=>{const q=project(v),x=cx-w/4+40,y=h-48;ctx.strokeStyle=['#cd4258','#2b965f','#387ee0'][i];ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+25*q[0],y-25*q[1]);ctx.stroke();ctx.fillStyle=ctx.strokeStyle;ctx.fillText(['R','A','S'][i],x+34*q[0],y-34*q[1]);});
  });
  $('surfaceRange').textContent=`Reference range: ${Math.min(...full).toFixed(3)} to ${Math.max(...full).toFixed(3)} · Reconstruction: ${Math.min(...partial).toFixed(3)} to ${Math.max(...partial).toFixed(3)} (S/S₀).`;
