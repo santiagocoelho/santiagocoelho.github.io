@@ -18,3 +18,5 @@
 
 header > a:last-child, .methods a { font-size: 1rem; }
 .voxel-panel .panel-head { flex-wrap: wrap; }
+
+.intro-wide, .intro-wide > p:last-child { max-width: none; }
