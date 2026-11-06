@@ -30,3 +30,8 @@ legend, .weight { font-weight: 650; }
 .cumulants tbody th { font-weight: 500; }
 .scale { margin-bottom: 8px; }
 @media(max-width:700px) { .length-intro { grid-template-columns: 1fr; gap: 8px; } .length-intro svg { max-width: 270px; margin: auto; } }
+
+.encoding-choices { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-bottom: 0; }
+.encoding-choices label { padding-inline: 2px; text-align: center; white-space: nowrap; }
+.shape-map { display: block; width: min(100%, 245px); margin: 6px auto 12px; }
+.plot-note { color: var(--soft); margin: 0 0 10px; }

@@ -28,6 +28,27 @@ function svgElement(parent, name, attrs, label) {
   parent.appendChild(el);
 }
 
+// The simplex vertices have eigenvalue ratios 1:0:0, 1:1:0 and 1:1:1.
+const referenceDash = { LTE: '', PTE: '6 3', STE: '2 3' };
+const corners = { LTE: [32,132], PTE: [224,132], STE: [128,32] };
+for (let row = 0; row <= 5; row++) {
+  for (let col = 0; col <= row; col++) {
+    const spherical = 1 - row / 5;
+    const planar = col / 5;
+    const linear = 1 - spherical - planar;
+    const major = linear + planar / 2 + spherical / 3;
+    const middle = planar / 2 + spherical / 3;
+    const minor = spherical / 3;
+    // Oblique view of the middle/minor axes makes a planar disk visible edge-on at a slight tilt.
+    const x = 128 + (2 * col - row) * 19.2;
+    const y = 32 + row * 20;
+    svgElement(byId('shapeGlyphs'), 'ellipse', {
+      cx:x, cy:y, rx:15 * Math.sqrt(major),
+      ry:Math.max(1, 15 * Math.sqrt(.18 * middle + .82 * minor))
+    });
+  }
+}
+
 for (let i = 0; i < 24; i++) {
   const x = 22 + (i % 8) * 39;
   const y = 18 + Math.floor(i / 8) * 34;
@@ -93,6 +114,16 @@ function updatePlot() {
   drawAxes();
   byId('curveB').setAttribute('d', curve(apparent));
   shape = document.querySelector('input[name="shape"]:checked').value;
+  const [cx, cy] = corners[shape];
+  byId('shapeHalo').setAttribute('cx', cx);
+  byId('shapeHalo').setAttribute('cy', cy);
+  byId('shapeTitle').textContent = 'B-tensor shape triangle, ' + shape + ' selected';
+  const references = byId('otherCurves');
+  references.replaceChildren();
+  for (const encoding of Object.keys(diffusivities)) {
+    if (encoding !== shape) svgElement(references, 'path', {d:curve(diffusivities[encoding]), 'stroke-dasharray':referenceDash[encoding]});
+
+  }
   byId('curveA').setAttribute('d', curve(diffusivities[shape]));
   byId('lesson').textContent = lessons[shape];
   updateMarker();
