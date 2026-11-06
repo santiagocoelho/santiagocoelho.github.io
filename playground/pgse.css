@@ -72,7 +72,7 @@
 .physics-page #phasors{height:180px}
 .physics-page #coherence{height:185px}
 .physics-page .media-pair{grid-template-columns:1fr;gap:12px}
-.physics-page .media-pair canvas{height:160px;max-height:none;object-fit:contain}
+.physics-page .media-pair canvas{height:auto;max-height:275px;object-fit:contain}
 .physics-page .physics-main .section-label{display:block}
 .physics-page .physics-main h2{display:block;margin:0 0 5px}
 .physics-page .sequence-panel .section-label,.physics-page .sequence-panel h2{display:inline-block}
