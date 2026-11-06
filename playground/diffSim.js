@@ -98,7 +98,7 @@ function image(){const cvs=$('brain'),ctx=cvs.getContext('2d'),off=document.crea
 // Equal-area Fibonacci sampling over the full sphere; fixed as the selected g changes.
 const spreadDirections=Array.from({length:30},(_,i)=>{const z=1-2*(i+.5)/30,phi=i*Math.PI*(3-Math.sqrt(5)),r=Math.sqrt(1-z*z);return [r*Math.cos(phi),r*Math.sin(phi),z];});
 const spreadBasis=spreadDirections.map(shBasis);
-function chart(canvasId,series,{xmin=0,xmax=360,ymin=0,ymax=1,xticks=[0,90,180,270,360],xlabel='φ (degrees)',logY=false}={}){
+function chart(canvasId,series,{xmin=0,xmax=360,ymin=0,ymax=1,xticks=[0,90,180,270,360],xlabel='φ (degrees)',logY=false,selectedShell=0}={}){
  const [ctx,w,h]=plotCanvas(canvasId),p={l:48,r:15,t:16,b:42};
  const transform=y=>logY?Math.log10(y):y,low=transform(ymin),high=transform(ymax);
  const X=x=>p.l+(w-p.l-p.r)*(x-xmin)/(xmax-xmin),Y=y=>h-p.b-(h-p.t-p.b)*(transform(y)-low)/(high-low);
@@ -106,6 +106,18 @@ function chart(canvasId,series,{xmin=0,xmax=360,ymin=0,ymax=1,xticks=[0,90,180,2
  const yticks=logY?[.01,.03,.1,.3,1]:Array.from({length:5},(_,k)=>ymin+(ymax-ymin)*k/4);
  for(const v of yticks){ctx.strokeStyle='#e5eaf2';ctx.beginPath();ctx.moveTo(p.l,Y(v));ctx.lineTo(w-p.r,Y(v));ctx.stroke();ctx.fillStyle='#65758b';ctx.textAlign='right';ctx.fillText(logY?String(v):v.toFixed(2),p.l-7,Y(v)+4);}
  ctx.textAlign='center';for(const x of xticks){ctx.fillStyle='#65758b';ctx.fillText(x,X(x),h-p.b+19);}ctx.fillText(xlabel,w/2,h-3);
+ if(selectedShell > 0){
+  const x = X(selectedShell);
+  ctx.save();
+  ctx.strokeStyle = '#b8bfc8';
+  ctx.lineWidth = 1.5;
+  ctx.setLineDash([5, 4]);
+  ctx.beginPath();
+  ctx.moveTo(x, p.t);
+  ctx.lineTo(x, h - p.b);
+  ctx.stroke();
+  ctx.restore();
+ }
  ctx.save();ctx.beginPath();ctx.rect(p.l,p.t,w-p.l-p.r,h-p.t-p.b);ctx.clip();
  for(const s of series){ctx.strokeStyle=s.color;ctx.lineWidth=s.width||2.5;ctx.setLineDash(s.dash||[]);ctx.beginPath();let connected=false;
   for(const [x,y] of s.points){if(!Number.isFinite(y)||(logY&&y<=0)){connected=false;continue;}ctx[connected?'lineTo':'moveTo'](X(x),Y(y));connected=true;}
@@ -121,7 +133,7 @@ function details(){selected=voxel(state.y*meta.width+state.x);const label=['Back
  $('voxelExplanation').textContent=selected[0]===1?'The tensor and CSD fODF stay fixed as you change shells. The signal surface changes with b-value; all three views share the same orientation.':selected[0]===0?'Outside the brain. Select a tissue voxel to explore its signal.':selected[0]===2?'Gray matter uses the phantom’s NEXI exchange response. The fODF display is reserved for white matter; the GM signal uses its stored orientation coefficients.':'CSF is modeled as freely diffusing isotropic water. Its signal is direction independent and decays rapidly with b-value.';
  const shells=[0,...meta.shells],shellCoeffs=shells.map(b=>coeff(selected,b)),dir=shells.map((b,i)=>[b,dot(shellCoeffs[i],y)]),mean=shells.map((b,i)=>[b,shellCoeffs[i][0]/Math.sqrt(4*Math.PI)]);
  const spread=spreadBasis.map(basis=>({points:shells.map((b,i)=>[b,dot(shellCoeffs[i],basis)]),color:'#cbd0d8',width:1}));
- chart('decay',[...spread,{points:mean,color:'#087f83',dash:[5,4],dots:true},{points:dir,color:'#2563c9',dots:true}],{xmax:3000,xticks:shells,xlabel:'b (s/mm²)',ymin:state.logSignal?.01:0,ymax:1,logY:state.logSignal});
+ chart('decay',[...spread,{points:mean,color:'#087f83',dash:[5,4],dots:true},{points:dir,color:'#2563c9',dots:true}],{xmax:3000,xticks:shells,xlabel:'b (s/mm²)',ymin:state.logSignal?.01:0,ymax:1,logY:state.logSignal,selectedShell:state.b});
  document.querySelectorAll('[data-scale]').forEach(el=>{const active=(el.dataset.scale==='log')===state.logSignal;el.classList.toggle('active',active);el.setAttribute('aria-pressed',String(active));});
  $('decayNote').textContent=state.logSignal?'Fixed S/S₀ axis: 0.01–1 (log). Values outside the axis limits are clipped; nonpositive samples are omitted. Voxel readouts retain the original values.':'Fixed S/S₀ axis: 0–1 (linear). Values outside the axis limits are clipped; voxel readouts retain the original values.';
  angularSurface(c);
