@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>beyond the b-value · MRI Playground</title>
+  <link rel="icon" href="../images/favicon.ico">
+  <link rel="stylesheet" href="diffSim.css?v=20261105-wide-intro">
+  <link rel="stylesheet" href="beyond.css">
+  <script src="beyond.js" defer></script>
+</head>
+<body>
+<header><a class="brand" href="../">Santiago Coelho<span>.</span></a><a href="./">← MRI Playground</a></header>
+<main>
+  <div class="intro intro-wide"><p class="eyebrow">MRI PLAYGROUND</p><h1>beyond the b-value</h1><p>Two voxels give the same signal with linear encoding. Can you find a measurement that tells them apart?</p></div>
+  <div class="voxels">
+    <section class="panel voxel a"><p class="section-label">VOXEL A</p><h2>Dispersed orientations</h2>
+      <svg id="rods" viewBox="0 0 320 104" role="img" aria-label="Elongated diffusion tensors pointing in different directions"></svg>
+      <p>Each compartment has the same elongated diffusion tensor, rotated in a different direction.</p></section>
+    <section class="panel voxel b"><p class="section-label">VOXEL B</p><h2>Mixed diffusivities</h2>
+      <svg id="balls" viewBox="0 0 320 104" role="img" aria-label="Spherical diffusion tensors of different sizes"></svg>
+      <p>Each compartment diffuses equally in all directions. Larger spheres represent higher diffusivity.</p></section>
+  </div>
+  <section class="panel experiment">
+    <div class="settings"><h2>Shape the encoding</h2>
+      <fieldset><legend>Encoding shape</legend><div class="choices">
+        <label><input type="radio" name="shape" value="LTE" checked> LTE · Linear</label>
+        <label><input type="radio" name="shape" value="PTE"> PTE · Planar</label>
+        <label><input type="radio" name="shape" value="STE"> STE · Spherical</label>
+      </div></fieldset>
+      <label class="weight" for="weight">b-value <output id="weightValue" for="weight">2000 s/mm²</output></label>
+      <input id="weight" type="range" min="0" max="3000" step="50" value="2000">
+      <p id="lesson" class="note"></p>
+    </div>
+    <div class="plot"><h2>Signal across b-values</h2>
+      <div class="readouts"><span class="a">━ A <strong id="signalA"></strong></span><span class="b">┄ B <strong id="signalB"></strong></span></div>
+      <svg id="chart" viewBox="0 0 550 245" role="img" aria-label="Normalized signal versus b-value for both voxels"><g id="axes"></g>
+        <line id="cursor" y1="22" y2="196" stroke="#8b98aa" stroke-dasharray="3 4"/>
+        <path id="curveA" fill="none" stroke="#2563c9" stroke-width="4"/>
+        <path id="curveB" fill="none" stroke="#a34716" stroke-width="2.5" stroke-dasharray="6 5"/>
+        <circle id="pointA" r="6" fill="#2563c9"/><circle id="pointB" r="3.5" fill="#a34716"/>
+      </svg>
+    </div>
+  </section>
+  <details class="methods"><summary>How the two voxels are matched</summary><p>Both voxels are mixtures of non-exchanging Gaussian compartments. In A, the principal diffusivities are 1.8, 0.3 and 0.3 µm²/ms with uniformly distributed orientations. B samples the distribution of apparent diffusivities that LTE sees in A. This matches the entire LTE curve, including the mean diffusivity of 0.8 µm²/ms.</p><p>The signal is the average of exp(−B:D) across compartments. At fixed b, the encoding tensor assigns its weight to one axis (LTE), equally to two axes (PTE), or equally to three axes (STE). The drawings show representative diffusion tensors. <a href="https://doi.org/10.1038/s41467-026-70018-w">Read about multidimensional encoding and RICE</a>.</p></details>
+</main>
+</body></html>

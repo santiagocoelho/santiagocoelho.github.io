@@ -94,3 +94,6 @@
 
 .teaching-card strong { font-size: 1rem; }
 .motion-directions button, .motion-zoom button { font-size: 15px; }
+
+.encoding-art { background: #fbefe5; }
+@media (min-width: 1050px) { .teaching-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

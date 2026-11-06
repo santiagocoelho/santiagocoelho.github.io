@@ -1,0 +1,22 @@
+main { max-width: 1120px; }
+.voxels { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.voxel { padding: clamp(12px,2vw,24px); }
+.voxel p { margin: 0; }
+.voxel svg { display: block; width: 100%; max-height: 114px; margin: 6px auto 12px; }
+.voxel h2 { line-height: 1.25; }
+.a, .a .section-label { color: #2563c9; }
+.b, .b .section-label { color: #a34716; }
+.voxel h2 { color: var(--ink); }
+.voxel p:last-child { color: var(--soft); }
+.experiment { display: grid; grid-template-columns: minmax(220px,1fr) minmax(0,1.8fr); margin-top: 14px; gap: 28px; }
+fieldset { padding: 0; margin: 0; border: 0; }
+legend, .weight { font-weight: 650; }
+.choices { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0 18px; }
+.choices label { cursor: pointer; border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+.choices label:has(:checked) { background: #edf3fe; border-color: #9ab6e3; }
+.choices input { accent-color: var(--blue); margin: 0; }
+.weight { display: block; }
+.readouts { display: flex; gap: 22px; font-variant-numeric: tabular-nums; }
+.plot svg { display: block; width: 100%; }
+#axes text { fill: var(--soft); font: 14px system-ui; }
+@media(max-width:700px) { .experiment { grid-template-columns: 1fr; gap: 8px; } .voxels { gap: 8px; } .voxel h2 { font-size: 16px; } }
