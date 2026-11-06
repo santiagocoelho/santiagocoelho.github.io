@@ -39,13 +39,22 @@ for (let row = 0; row <= 5; row++) {
     const major = linear + planar / 2 + spherical / 3;
     const middle = planar / 2 + spherical / 3;
     const minor = spherical / 3;
-    // Oblique view of the middle/minor axes makes a planar disk visible edge-on at a slight tilt.
     const x = 128 + (2 * col - row) * 19.2;
     const y = 32 + row * 20;
-    svgElement(byId('shapeGlyphs'), 'ellipse', {
-      cx:x, cy:y, rx:15 * Math.sqrt(major),
-      ry:Math.max(1, 15 * Math.sqrt(.18 * middle + .82 * minor))
-    });
+    const glyphs = byId('shapeGlyphs');
+    const radius = 15 * Math.sqrt(major);
+    if (row === 5) {
+      // Face-on footprints in the b1–b2 plane; no lighting or implied thickness.
+      if (col === 0) {
+        svgElement(glyphs, 'line', {x1:x-radius, x2:x+radius, y1:y, y2:y, 'stroke-width':2});
+      } else {
+        svgElement(glyphs, 'ellipse', {cx:x, cy:y, rx:radius, ry:15*Math.sqrt(middle),
+          fill:'#fff', stroke:'#893347', 'stroke-width':1.6});
+      }
+    } else {
+      svgElement(glyphs, 'ellipse', {cx:x, cy:y, rx:radius,
+        ry:15 * Math.sqrt(.18 * middle + .82 * minor)});
+    }
   }
 }
 
