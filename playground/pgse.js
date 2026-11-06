@@ -23,7 +23,7 @@ function sequence(time=0){const [ctx,w,h]=setupCanvas('sequence'),TE=10+params.D
  const first=5,second=5+params.Delta,t180=TE/2,axes=['Gₓ(t)','Gᵧ(t)','G𝓏(t)'],axisColors=['#2563c9','#087f83','#9160b5'];
  line(ctx,[[135,30],[w-35,30]],'#ccd6e2',1);text(ctx,'RF',8,35,'#58677d',16);
  for(const [t,label] of [[0,'90°'],[t180,'180°']]){line(ctx,[[X(t),30],[X(t),10]],'#152e50',3);text(ctx,label,X(t)+6,12,'#16233a',15);}
- for(let i=0;i<3;i++){const baseline=115+i*55,component=params.g*params.direction[i],amp=component/200*36;
+ for(let i=0;i<3;i++){const baseline=125+i*70,component=params.g*params.direction[i],amp=component/200*36;
   line(ctx,[[135,baseline],[w-35,baseline]],'#ccd6e2',1);text(ctx,axes[i],8,baseline-7,axisColors[i],17);text(ctx,component.toFixed(1)+' mT/m',8,baseline+15,axisColors[i],13);
   const pts=[[X(0),baseline]];for(const t of [first,second])pts.push([X(t),baseline],[X(t),baseline-amp],[X(t+params.delta),baseline-amp],[X(t+params.delta),baseline]);pts.push([X(TE),baseline]);line(ctx,pts,axisColors[i],3);
  }

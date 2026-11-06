@@ -59,12 +59,14 @@
 }
 
 @media(min-width:761px){.physics-page #sequence{max-height:180px}.physics-page main{padding-top:10px}.physics-page .intro{margin-bottom:10px}}
-/* Sequence above the phase/signal and motion panels. */
+/* Sequence and phase panels share the left column; motion stays alongside. */
 .physics-page .phase-explanation{font-size:11px;line-height:1.5;color:var(--soft);margin:8px 0 4px}
 @media(min-width:950px){
 .physics-page .physics-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
-.physics-page .sequence-panel{grid-column:1/-1}
-.physics-page .phase-panel,.physics-page .motion-panel{grid-column:auto}
+.physics-page .sequence-panel{grid-column:1;grid-row:1}
+.physics-page #sequence{max-height:none;height:auto}
+.physics-page .phase-panel{grid-column:1;grid-row:2}
+.physics-page .motion-panel{grid-column:2;grid-row:1 / span 2}
 .physics-page .signal-plots{grid-template-columns:1fr;gap:8px}
 .physics-page .signal-plots canvas{max-height:none;height:auto;object-fit:contain}
 .physics-page #phasors{height:180px}
