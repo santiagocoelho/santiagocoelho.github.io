@@ -20,3 +20,13 @@ legend, .weight { font-weight: 650; }
 .plot svg { display: block; width: 100%; }
 #axes text { fill: var(--soft); font: 14px system-ui; }
 @media(max-width:700px) { .experiment { grid-template-columns: 1fr; gap: 8px; } .voxels { gap: 8px; } .voxel h2 { font-size: 16px; } }
+
+.length-intro { display: grid; grid-template-columns: minmax(180px, 27%) 1fr; gap: 24px; align-items: center; margin-bottom: 14px; }
+.length-intro svg { width: 100%; }
+.length-intro p, .cumulants p { margin: 8px 0 0; }
+.cumulants { margin-top: 14px; }
+.cumulants table { border-collapse: collapse; margin: 12px 0; }
+.cumulants th, .cumulants td { padding: 4px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+.cumulants tbody th { font-weight: 500; }
+.scale { margin-bottom: 8px; }
+@media(max-width:700px) { .length-intro { grid-template-columns: 1fr; gap: 8px; } .length-intro svg { max-width: 270px; margin: auto; } }

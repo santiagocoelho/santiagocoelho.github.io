@@ -3,16 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>beyond the b-value · MRI Playground</title>
+  <title>Beyond the b-value · MRI Playground</title>
   <link rel="icon" href="../images/favicon.ico">
   <link rel="stylesheet" href="diffSim.css?v=20261105-wide-intro">
-  <link rel="stylesheet" href="beyond.css">
-  <script src="beyond.js" defer></script>
+  <link rel="stylesheet" href="beyond.css?v=2">
+  <script src="beyond.js?v=2" defer></script>
 </head>
 <body>
 <header><a class="brand" href="../">Santiago Coelho<span>.</span></a><a href="./">← MRI Playground</a></header>
 <main>
-  <div class="intro intro-wide"><p class="eyebrow">MRI PLAYGROUND</p><h1>beyond the b-value</h1><p>Two voxels give the same signal with linear encoding. Can you find a measurement that tells them apart?</p></div>
+  <div class="intro intro-wide"><p class="eyebrow">MRI PLAYGROUND</p><h1>Beyond the b-value</h1></div>
+  <section class="panel length-intro">
+    <svg viewBox="0 0 270 130" role="img" aria-label="A small region of one voxel is magnified to show water paths in distinct tissue environments.">
+      <defs><pattern id="tissue" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M0 9L9 0" stroke="#c0d3e1" stroke-width="3"/></pattern></defs>
+      <rect x="5" y="12" width="86" height="86" rx="3" fill="url(#tissue)" stroke="#58677d"/>
+      <rect x="43" y="49" width="6" height="6" fill="#2563c9"/>
+      <path d="M49 49L148 12 M49 55L148 98" fill="none" stroke="#8695a6" stroke-dasharray="3 4"/>
+      <rect x="148" y="12" width="112" height="86" rx="3" fill="#f8eadd" stroke="#58677d"/>
+      <path d="M149 48Q194 21 259 37V64Q195 47 149 76Z" fill="#d7e9f5" stroke="#879fb2"/>
+      <g stroke-width="2" fill="none" stroke-linejoin="round">
+        <path d="M159 59l7 -7 -2 5 8 -7 3 3 6 -6 -1 5 9 -6 5 2" stroke="#2563c9"/>
+        <path d="M209 78l5 4 -2 -7 7 4 -3 -8 8 3 -3 4 8 2 -4 -5" stroke="#a34716"/>
+      </g>
+      <g font-size="13" font-family="system-ui" fill="#46576d" text-anchor="middle"><text x="48" y="119">One voxel</text><text x="204" y="119">Local water paths</text></g>
+    </svg>
+    <div><h2>How far does water explore?</h2><p>During the diffusion time, a water molecule typically moves only a few micrometres from where it started. A millimetre-wide voxel therefore collects signal from water exploring many different local environments.</p>
+    <p>If water mixes within each compartment and exchange between compartments is slow, we can describe each population by its own diffusion tensor. One voxel then contains a <strong>distribution of diffusion tensors</strong>. Compare two such distributions below. <a href="https://doi.org/10.1038/s41467-026-70018-w">RICE paper ↗</a></p></div>
+  </section>
   <div class="voxels">
     <section class="panel voxel a"><p class="section-label">VOXEL A</p><h2>Dispersed orientations</h2>
       <svg id="rods" viewBox="0 0 320 104" role="img" aria-label="Elongated diffusion tensors pointing in different directions"></svg>
@@ -21,6 +38,15 @@
       <svg id="balls" viewBox="0 0 320 104" role="img" aria-label="Spherical diffusion tensors of different sizes"></svg>
       <p>Each compartment diffuses equally in all directions. Larger spheres represent higher diffusivity.</p></section>
   </div>
+  <section class="panel cumulants">
+    <h2>Why do A and B agree with linear encoding?</h2>
+    <p>LTE measures the apparent diffusivity along one direction. In A it varies with compartment orientation. In B it varies with the size of the spherical tensor. At low b, the first two terms of the log signal measure the mean and variance of that apparent diffusivity.</p>
+    <table><thead><tr><th>LTE term</th><th>Voxel A</th><th>Voxel B</th></tr></thead><tbody>
+      <tr><th>O(b) · Mean diffusivity (µm²/ms)</th><td>0.80</td><td>0.80</td></tr>
+      <tr><th>O(b²) · Diffusivity variance ((µm²/ms)²)</th><td>0.20</td><td>0.20</td></tr>
+    </tbody></table>
+    <p>Both log signals start with the same slope and curvature: <em>ln(S/S₀) = −bμ + b²σ²/2 + O(b³)</em>, with b in ms/µm². Here the entire LTE diffusivity distribution matches, so the curves overlap even beyond second order. Try planar or spherical encoding to separate them.</p>
+  </section>
   <section class="panel experiment">
     <div class="settings"><h2>Shape the encoding</h2>
       <fieldset><legend>Encoding shape</legend><div class="choices">
@@ -33,6 +59,10 @@
       <p id="lesson" class="note"></p>
     </div>
     <div class="plot"><h2>Signal across b-values</h2>
+      <fieldset class="choices scale"><legend>Signal axis</legend>
+        <label><input type="radio" name="scale" value="log" checked> Log</label>
+        <label><input type="radio" name="scale" value="linear"> Linear</label>
+      </fieldset>
       <div class="readouts"><span class="a">━ A <strong id="signalA"></strong></span><span class="b">┄ B <strong id="signalB"></strong></span></div>
       <svg id="chart" viewBox="0 0 550 245" role="img" aria-label="Normalized signal versus b-value for both voxels"><g id="axes"></g>
         <line id="cursor" y1="22" y2="196" stroke="#8b98aa" stroke-dasharray="3 4"/>

@@ -41,17 +41,25 @@ for (let i = 0; i < 24; i++) {
 }
 
 const X = b => 49 + 478 * b / 3000;
-const Y = s => 196 - 174 * s;
-const axes = byId('axes');
-for (const tick of [0, 0.25, 0.5, 0.75, 1]) {
-  svgElement(axes, 'line', {x1:X(0), x2:X(3000), y1:Y(tick), y2:Y(tick), stroke:'#dfe6ee'});
-  svgElement(axes, 'text', {x:40, y:Y(tick)+5, 'text-anchor':'end'}, tick);
+let logScale = true;
+function Y(s) {
+  const fraction = logScale ? Math.log(s / 0.05) / Math.log(20) : s;
+  return 196 - 174 * fraction;
 }
-for (const b of [0, 1000, 2000, 3000]) {
-  svgElement(axes, 'text', {x:X(b), y:217, 'text-anchor':'middle'}, b);
+function drawAxes() {
+  const axes = byId('axes');
+  axes.replaceChildren();
+  const ticks = logScale ? [0.05, 0.1, 0.2, 0.5, 1] : [0, 0.25, 0.5, 0.75, 1];
+  for (const tick of ticks) {
+    svgElement(axes, 'line', {x1:X(0), x2:X(3000), y1:Y(tick), y2:Y(tick), stroke:'#dfe6ee'});
+    svgElement(axes, 'text', {x:40, y:Y(tick)+5, 'text-anchor':'end'}, tick);
+  }
+  for (const b of [0, 1000, 2000, 3000]) {
+    svgElement(axes, 'text', {x:X(b), y:217, 'text-anchor':'middle'}, b);
+  }
+  svgElement(axes, 'text', {x:10, y:13}, 'S/S₀');
+  svgElement(axes, 'text', {x:288, y:239, 'text-anchor':'middle'}, 'b (s/mm²)');
 }
-svgElement(axes, 'text', {x:10, y:13}, 'S/S₀');
-svgElement(axes, 'text', {x:288, y:239, 'text-anchor':'middle'}, 'b (s/mm²)');
 
 function curve(values) {
   return Array.from({length:121}, (_, i) => {
@@ -80,13 +88,15 @@ function updateMarker() {
   }
 }
 
-function updateEncoding() {
+function updatePlot() {
+  logScale = document.querySelector('input[name="scale"]:checked').value === 'log';
+  drawAxes();
+  byId('curveB').setAttribute('d', curve(apparent));
   shape = document.querySelector('input[name="shape"]:checked').value;
   byId('curveA').setAttribute('d', curve(diffusivities[shape]));
   byId('lesson').textContent = lessons[shape];
   updateMarker();
 }
-byId('curveB').setAttribute('d', curve(apparent));
-document.querySelectorAll('input[name="shape"]').forEach(input => input.addEventListener('change', updateEncoding));
+document.querySelectorAll('input[type="radio"]').forEach(input => input.addEventListener('change', updatePlot));
 byId('weight').addEventListener('input', updateMarker);
-updateEncoding();
+updatePlot();
