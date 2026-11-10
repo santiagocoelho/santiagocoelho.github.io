@@ -315,3 +315,34 @@ a.contact-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba
   html { scroll-behavior: auto; }
   [data-aos] { opacity: 1 !important; transform: none !important; }
 }
+
+/* Featured research and interactive teaching previews */
+.featured-project {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
+  gap: 28px;
+  align-items: center;
+  margin-top: 28px;
+  padding: 28px;
+}
+.featured-project h3 { font-family: var(--serif); font-size: 1.9rem; line-height: 1.2; margin: 8px 0 16px; }
+.featured-project p { color: var(--text-soft); }
+.featured-project .section-eyebrow { color: var(--accent); margin: 0; }
+.project-art { background: var(--bg-alt); border-radius: var(--radius-sm); }
+.project-art svg { display: block; width: 100%; }
+.project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.project-links .btn { padding: 9px 15px; }
+.playground-preview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.playground-preview-card { display: flex; flex-direction: column; padding: 22px; color: var(--text); }
+.playground-preview-card:hover { color: var(--text); border-color: var(--accent); }
+.preview-art { height: 125px; background: var(--bg-alt); border-radius: var(--radius-sm); }
+.preview-art svg { display: block; width: 100%; height: 100%; }
+.playground-preview-card h3 { font-size: 1.15rem; line-height: 1.35; margin: 20px 0 8px; }
+.playground-preview-card p { color: var(--text-soft); margin: 0 0 18px; }
+.preview-link { color: var(--accent); font-weight: 600; margin-top: auto; }
+.playground-preview-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 760px) {
+  .featured-project { grid-template-columns: 1fr; padding: 22px; gap: 18px; }
+  .project-art { max-width: 330px; width: 100%; margin: auto; }
+  .playground-preview-grid { grid-template-columns: 1fr; }
+}

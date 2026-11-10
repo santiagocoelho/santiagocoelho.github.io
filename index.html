@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Santiago Coelho, PhD</title>
-  <meta name="description" content="Santiago Coelho, PhD — Assistant Professor (starting Aug 2026), Department of Radiology, NYU Grossman School of Medicine. Diffusion MRI, microstructure imaging, quantitative MRI, inverse problems, and image reconstruction." />
+  <meta name="description" content="Santiago Coelho, PhD — Assistant Professor, Department of Radiology, NYU Grossman School of Medicine. Diffusion MRI, microstructure imaging, quantitative MRI, inverse problems, and image reconstruction." />
   <meta name="author" content="Santiago Coelho" />
 
   <!-- Open Graph -->
@@ -31,7 +31,7 @@
   <!-- AOS scroll animations -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20261105-playground" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110-featured" />
 </head>
 <body>
 
@@ -173,6 +173,64 @@
             <h3>Image reconstruction</h3>
             <p>I develop MRI reconstruction methods that exploit structure across image space and diffusion-encoding space to recover high-resolution microstructural information from undersampled data. The goal is faster imaging without sacrificing spatial resolution or quantitative accuracy.</p>
           </article>
+        </div>
+        <article class="card featured-project">
+          <div class="project-art" aria-hidden="true">
+            <svg viewBox="0 0 330 190" fill="none">
+              <g stroke="#2563c9" stroke-width="2" fill="#e7effb">
+                <ellipse cx="60" cy="55" rx="29" ry="8" transform="rotate(-35 60 55)"/>
+                <ellipse cx="119" cy="61" rx="25" ry="7" transform="rotate(60 119 61)"/>
+                <ellipse cx="66" cy="122" rx="25" ry="7" transform="rotate(32 66 122)"/>
+                <circle cx="124" cy="117" r="15"/>
+              </g>
+              <path d="M166 91H209M201 85l8 6-8 6" stroke="#55617a" stroke-width="2"/>
+              <g fill="#087f83"><rect x="228" y="72" width="12" height="57" rx="3"/><rect x="250" y="92" width="12" height="37" rx="3"/><rect x="272" y="55" width="12" height="74" rx="3"/></g>
+              <g fill="#55617a" font-family="system-ui,sans-serif" font-size="12" text-anchor="middle"><text x="92" y="167">Tensor distributions</text><text x="257" y="167">Invariants</text></g>
+            </svg>
+          </div>
+          <div>
+            <p class="section-eyebrow">Featured project · RICE</p>
+            <h3>What information is hidden in diffusion MRI?</h3>
+            <p>Different tissue environments can produce similar diffusion signals. RICE—the rotational invariants of the cumulant expansion—organizes the information available from multidimensional diffusion encoding into quantities independent of tissue orientation.</p>
+            <p>Explore the framework, use the toolbox, or compare two synthetic voxels in an interactive experiment.</p>
+            <div class="project-links">
+              <a class="btn btn-primary" href="https://www.nature.com/articles/s41467-026-70018-w">Read the paper</a>
+              <a class="btn btn-ghost" href="https://github.com/NYU-DiffusionMRI/RICE">RICE toolbox</a>
+              <a class="btn btn-ghost" href="playground/beyond.html">Try the experiment</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="playground-preview" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-eyebrow">MRI Playground</p>
+          <h2>Explore the ideas behind our research</h2>
+          <p class="section-lead">Interactive experiments for building intuition about diffusion and MRI.</p>
+        </div>
+        <div class="playground-preview-grid">
+          <a class="card playground-preview-card" href="playground/pgse.html">
+            <div class="preview-art" aria-hidden="true"><svg viewBox="0 0 500 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<text x="250" y="28" text-anchor="middle" fill="#087f83" font-family="Georgia,serif" font-size="27">φ = γ ∫ G<tspan baseline-shift="sub" font-size="16">eff</tspan><tspan baseline-shift="baseline">(t) · r(t) dt</tspan></text>
+<g stroke="#087f83" stroke-linecap="round" stroke-linejoin="round"><path d="M70 90H450 M70 151H450" stroke-width="1" opacity=".25"/><path d="M90 90V76 M265 90V66" stroke-width="3"/><path d="M70 151H125V112H177V151H320V112H372V151H450" stroke-width="3"/><path d="M438 69V159" stroke-width="1" stroke-dasharray="3 5" opacity=".5"/></g>
+<g fill="#087f83" font-family="system-ui,sans-serif" font-size="12"><text x="28" y="87">RF</text><text x="19" y="146">G(t)</text><text x="90" y="69" text-anchor="middle">90°</text><text x="265" y="60" text-anchor="middle">180°</text><text x="438" y="60" text-anchor="middle">Echo</text></g></svg></div>
+            <h3>Physics of diffusion MRI</h3><p>Follow water motion and spin phase as you change a diffusion-encoding experiment.</p><span class="preview-link">Explore →</span>
+          </a>
+          <a class="card playground-preview-card" href="playground/diffSim.html">
+            <div class="preview-art" aria-hidden="true"><svg viewBox="0 0 500 180" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="#3565b7" stroke-linecap="round" stroke-linejoin="round">
+<path d="M159 126C144 120 139 108 144 95C138 82 146 66 158 62C160 47 173 39 188 40C197 26 215 22 230 28C243 17 262 20 273 28C289 22 307 30 313 42C332 43 345 56 345 70C359 82 360 99 351 111C354 125 344 137 329 140C315 150 295 147 282 138L271 133L268 158L253 158L247 134C234 140 222 139 211 132C193 143 170 142 159 126Z" stroke-width="3.5" fill="#3565b708"/>
+<path d="M158 63C174 59 185 68 184 82M189 41C201 47 202 60 195 69M231 29C226 43 229 53 241 59M273 29C264 42 268 55 282 58M313 43C300 51 298 64 304 75M345 71C331 67 319 76 318 88M351 111C334 104 321 113 320 129M160 126C174 124 181 113 178 102M211 132C211 116 222 110 237 114M282 138C283 124 295 115 307 116M184 82C198 78 210 85 211 99M210 57C218 65 218 78 210 85M241 59C252 65 253 79 245 88M282 58C287 70 282 82 270 84M245 88C229 84 219 91 219 102M270 84C285 89 291 101 285 111M157 91C166 84 177 88 178 102M304 75C304 87 298 93 289 96M237 114C250 107 261 111 267 121" stroke-width="2.5" opacity=".75"/>
+</g></svg></div>
+            <h3>Brain synthetic diffusion MRI phantom</h3><p>Explore image contrast, fiber orientations, and signal inside a synthetic brain.</p><span class="preview-link">Explore →</span>
+          </a>
+          <a class="card playground-preview-card" href="playground/beyond.html">
+            <div class="preview-art" aria-hidden="true"><svg viewBox="0 0 400 160" fill="none" stroke="#a34716" stroke-width="3">
+<path d="M55 104l43-48"/><ellipse cx="200" cy="80" rx="36" ry="12" transform="rotate(-30 200 80)"/>
+<circle cx="318" cy="80" r="29"/><ellipse cx="318" cy="80" rx="12" ry="29"/><ellipse cx="318" cy="80" rx="29" ry="9"/></svg></div>
+            <h3>Beyond the b-value</h3><p>Compare two voxels using linear, planar, and spherical tensor encoding.</p><span class="preview-link">Explore →</span>
+          </a>
         </div>
       </div>
     </section>
