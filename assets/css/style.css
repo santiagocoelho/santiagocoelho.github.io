@@ -351,3 +351,7 @@ a.contact-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba
 .project-studies p { margin: 0; font-size: .95rem; }
 .project-studies .study-venue { font-size: .82rem; font-weight: 600; }
 .project-studies li > a { display: inline-block; margin-top: 10px; }
+
+.research-figure { margin: 0 0 18px; }
+.research-figure img { width: 100%; height: auto; border-radius: var(--radius-sm); }
+.research-figure figcaption { font-size: .83rem; line-height: 1.5; color: var(--text-soft); margin-top: 8px; }

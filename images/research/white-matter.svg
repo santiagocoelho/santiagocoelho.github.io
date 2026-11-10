@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 260" fill="none"><rect width="480" height="260" rx="16" fill="#f5f7fb"/><g font-family="Arial,sans-serif" font-size="20" fill="none">
+<path d="M30 42H450V184H30Z" fill="#e0eeec"/>
+<g fill="#c5dafa" stroke="#3565b7" stroke-width="2">
+<path d="M48 69Q240 35 432 69V94Q240 60 48 94Z"/>
+<path d="M48 136Q240 102 432 136V161Q240 127 48 161Z"/>
+</g>
+<g stroke="#2563c9" stroke-width="3" stroke-linejoin="round">
+<path d="M90 72l16 -3 -6 4 24 -6 -7 3 24 -6 -5 4 25 -6"/>
+<path d="M281 132l18 1 -7 -4 26 5 -10 -1 28 6 -8 -3 20 4"/>
+</g>
+<g stroke="#087f83" stroke-width="3" stroke-linejoin="round">
+<path d="M204 80l8 9 -12 6 20 2 -6 8 20 -3 -5 7"/>
+<path d="M350 100l-7 6 11 4 -14 7 5 6"/>
+</g>
+<g stroke="#55617a" stroke-width="1.5"><path d="M123 82V202H90"/><path d="M225 96L271 213H289"/></g>
+<text x="38" y="231" fill="#2563c9">Inside axons</text>
+<text x="282" y="239" fill="#087f83">Outside axons</text>
+</g></svg>
