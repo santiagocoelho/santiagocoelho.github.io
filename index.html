@@ -31,7 +31,7 @@
   <!-- AOS scroll animations -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20261110-featured" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110-research-components" />
 </head>
 <body>
 
@@ -174,32 +174,69 @@
             <p>I develop MRI reconstruction methods that exploit structure across image space and diffusion-encoding space to recover high-resolution microstructural information from undersampled data. The goal is faster imaging without sacrificing spatial resolution or quantitative accuracy.</p>
           </article>
         </div>
-        <article class="card featured-project">
-          <div class="project-art" aria-hidden="true">
-            <svg viewBox="0 0 330 190" fill="none">
-              <g stroke="#2563c9" stroke-width="2" fill="#e7effb">
-                <ellipse cx="60" cy="55" rx="29" ry="8" transform="rotate(-35 60 55)"/>
-                <ellipse cx="119" cy="61" rx="25" ry="7" transform="rotate(60 119 61)"/>
-                <ellipse cx="66" cy="122" rx="25" ry="7" transform="rotate(32 66 122)"/>
-                <circle cx="124" cy="117" r="15"/>
-              </g>
-              <path d="M166 91H209M201 85l8 6-8 6" stroke="#55617a" stroke-width="2"/>
-              <g fill="#087f83"><rect x="228" y="72" width="12" height="57" rx="3"/><rect x="250" y="92" width="12" height="37" rx="3"/><rect x="272" y="55" width="12" height="74" rx="3"/></g>
-              <g fill="#55617a" font-family="system-ui,sans-serif" font-size="12" text-anchor="middle"><text x="92" y="167">Tensor distributions</text><text x="257" y="167">Invariants</text></g>
-            </svg>
-          </div>
-          <div>
-            <p class="section-eyebrow">Featured project · RICE</p>
-            <h3>What information is hidden in diffusion MRI?</h3>
-            <p>Different tissue environments can produce similar diffusion signals. RICE—the rotational invariants of the cumulant expansion—organizes the information available from multidimensional diffusion encoding into quantities independent of tissue orientation.</p>
-            <p>Explore the framework, use the toolbox, or compare two synthetic voxels in an interactive experiment.</p>
-            <div class="project-links">
-              <a class="btn btn-primary" href="https://www.nature.com/articles/s41467-026-70018-w">Read the paper</a>
-              <a class="btn btn-ghost" href="https://github.com/NYU-DiffusionMRI/RICE">RICE toolbox</a>
-              <a class="btn btn-ghost" href="playground/beyond.html">Try the experiment</a>
+        <div class="featured-research" aria-labelledby="featured-title">
+          <h3 id="featured-title" class="featured-heading">Featured research</h3>
+          <article class="card featured-project">
+            <div class="project-summary">
+              <h4>White matter biophysical modeling</h4>
+              <p>Using the motion of water to estimate the microscopic properties of white matter, and designing measurements that make those estimates reliable.</p>
+              <a href="playground/diffSim.html">Explore the brain phantom →</a>
             </div>
-          </div>
-        </article>
+            <ul class="project-studies">
+              <li>
+                <p class="study-venue">NeuroImage · 2022</p>
+                <h5><a href="https://arxiv.org/abs/2202.02399">Reproducibility of the Standard Model of diffusion in white matter on clinical MRI systems</a></h5>
+                <p>Optimized 15-minute scans produced repeatable estimates of white matter properties across two clinical scanners, supporting comparisons across scans and sites.</p>
+              </li>
+              <li>
+                <p class="study-venue">Human Brain Mapping · 2024</p>
+                <h5><a href="https://doi.org/10.1002/hbm.26725">Assessment of precision and accuracy of brain white matter microstructure using combined diffusion MRI and relaxometry</a></h5>
+                <p>Combining water-motion measurements with signal relaxation helps distinguish tissue water populations and estimate their properties more accurately.</p>
+              </li>
+              <li>
+                <p class="study-venue">Magnetic Resonance in Medicine · 2026</p>
+                <h5><a href="https://doi.org/10.1002/mrm.70144">What if each voxel were measured with a different diffusion protocol?</a></h5>
+                <p>PIPE estimates tissue properties efficiently even when the scanner’s gradients produce a different set of diffusion measurements at each location in the brain.</p>
+              </li>
+            </ul>
+          </article>
+          <article class="card featured-project">
+            <div class="project-summary">
+              <h4>RICE</h4>
+              <p>Rotational invariants of the cumulant expansion organize diffusion MRI information into quantities independent of tissue orientation.</p>
+              <div class="project-links">
+                <a href="https://github.com/NYU-DiffusionMRI/RICE">RICE toolbox →</a>
+                <a href="playground/beyond.html">Try Beyond the b-value →</a>
+              </div>
+            </div>
+            <ul class="project-studies">
+              <li>
+                <p class="study-venue">Nature Communications · 2026</p>
+                <h5><a href="https://www.nature.com/articles/s41467-026-70018-w">Geometry of the cumulant series in diffusion MRI</a></h5>
+                <p>Changing the shape of diffusion encoding reveals additional information about tissue. RICE provides a systematic way to extract and compare that information regardless of how the tissue is oriented.</p>
+              </li>
+            </ul>
+          </article>
+          <article class="card featured-project">
+            <div class="project-summary">
+              <h4>q-space and joint k–q-space undersampling</h4>
+              <p>Making better use of scan time by collecting fewer diffusion measurements in q-space and fewer spatial measurements in k-space, then reconstructing their shared information.</p>
+            </div>
+            <ul class="project-studies">
+              <li>
+                <p class="study-venue">ISMRM · 2023 conference study</p>
+                <h5><a href="https://archive.ismrm.org/2023/0972.html">Zero-shell diffusion MRI: Focus on microstructure by decoupling fiber orientations</a></h5>
+                <p>Recovering tissue information from sparsely sampled diffusion settings frees scan time to explore a wider range of diffusion weightings and times.</p>
+              </li>
+              <li>
+                <p class="study-venue">Ongoing research</p>
+                <h5>Joint k–q-space acquisition and reconstruction</h5>
+                <p>We aim to combine shared information across images and diffusion measurements to produce detailed microstructure maps with shorter scans.</p>
+                <a href="https://cai2r.net/santiago-coelho-on-diffusion-serendipity-and-underexplored-sources/">Read the research overview at CAI2R →</a>
+              </li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -258,11 +295,11 @@
           </li>
 
           <li class="pub-item">
-            <span class="pub-year">2025</span>
+            <span class="pub-year">2026</span>
             <div class="pub-body">
               <a class="pub-title" href="https://onlinelibrary.wiley.com/doi/10.1002/mrm.70144" target="_blank" rel="noopener">What if each voxel were measured with a different diffusion protocol?</a>
               <p class="pub-authors"><strong>S. Coelho</strong>, G. Lemberskiy, A. Zhu, H-H. Lee, N. Abad, T.K.F. Foo, E. Fieremans, D.S. Novikov</p>
-              <p class="pub-venue"><em>Magnetic Resonance in Medicine</em>, 2025</p>
+              <p class="pub-venue"><em>Magnetic Resonance in Medicine</em>, 95(4):2277–2290, 2026</p>
             </div>
           </li>
 

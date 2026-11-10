@@ -321,17 +321,13 @@ a.contact-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba
   display: grid;
   grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
   gap: 28px;
-  align-items: center;
-  margin-top: 28px;
+  align-items: start;
+  margin-top: 20px;
   padding: 28px;
 }
-.featured-project h3 { font-family: var(--serif); font-size: 1.9rem; line-height: 1.2; margin: 8px 0 16px; }
+.featured-project h4 { font-family: var(--serif); font-size: 1.8rem; line-height: 1.2; margin: 0 0 16px; }
 .featured-project p { color: var(--text-soft); }
-.featured-project .section-eyebrow { color: var(--accent); margin: 0; }
-.project-art { background: var(--bg-alt); border-radius: var(--radius-sm); }
-.project-art svg { display: block; width: 100%; }
 .project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-.project-links .btn { padding: 9px 15px; }
 .playground-preview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .playground-preview-card { display: flex; flex-direction: column; padding: 22px; color: var(--text); }
 .playground-preview-card:hover { color: var(--text); border-color: var(--accent); }
@@ -343,6 +339,15 @@ a.contact-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba
 .playground-preview-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 @media (max-width: 760px) {
   .featured-project { grid-template-columns: 1fr; padding: 22px; gap: 18px; }
-  .project-art { max-width: 330px; width: 100%; margin: auto; }
   .playground-preview-grid { grid-template-columns: 1fr; }
 }
+
+
+.featured-heading { font-family: var(--serif); font-size: 2rem; margin: 40px 0 0; }
+.project-summary a { font-weight: 600; }
+.project-studies { list-style: none; margin: 0; padding: 0; min-width: 0; }
+.project-studies li + li { border-top: 1px solid var(--border); padding-top: 18px; margin-top: 18px; }
+.project-studies h5 { font-size: 1rem; line-height: 1.45; margin: 4px 0 8px; }
+.project-studies p { margin: 0; font-size: .95rem; }
+.project-studies .study-venue { font-size: .82rem; font-weight: 600; }
+.project-studies li > a { display: inline-block; margin-top: 10px; }
