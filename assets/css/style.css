@@ -364,3 +364,42 @@ a.contact-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba
   .project-heading { grid-template-columns: 42px minmax(0, 1fr); gap: 10px; }
   .project-heading h4 { font-size: 1.5rem; }
 }
+
+/* Research timeline */
+.research-timeline {
+  margin-top: 2.5rem;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid #d9e1ea;
+  border-radius: 16px;
+  background: #fff;
+}
+.research-timeline h3 { margin-top: 0; }
+.timeline-key, .timeline-key span { display: flex; align-items: center; }
+.timeline-key { flex-wrap: wrap; gap: .5rem 1.4rem; font-size: .9rem; }
+.timeline-key span { gap: .5rem; }
+.record-symbol, .award-ring {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+}
+.record-symbol.paper { background: #315fa2; border-radius: 50%; }
+.record-symbol.abstract { background: #168071; border-radius: 2px; }
+.record-symbol.invited-talk { background: #825295; transform: rotate(45deg) scale(.86); }
+.record-symbol.awarded, .award-ring { outline: 2px solid #a26208; outline-offset: 2px; }
+.award-ring { border-radius: 50%; }
+.timeline-scroll { overflow-x: auto; margin: 1.25rem 0; }
+.timeline-years { display: flex; min-width: max-content; padding-bottom: .5rem; }
+.timeline-years > div { flex: 1; min-width: 76px; }
+.timeline-years h4 { font-size: 1rem; padding: .4rem; border-bottom: 2px solid #d7e0eb; margin: 0; }
+.record-points { display: grid; grid-template-columns: repeat(2, 30px); gap: 2px; padding: .4rem 2px; }
+.record-points button {
+  display: grid; place-items: center; width: 30px; height: 28px;
+  border: 1px solid transparent; background: transparent; border-radius: 5px; cursor: pointer;
+}
+.record-points button:hover, .record-points button[aria-pressed="true"] {
+  background: #ecf2fa; border-color: #7388a0;
+}
+.record-detail { border-top: 1px solid #d9e1ea; padding: 1rem 0 0; }
+.record-detail p { margin: .25rem 0; }
+.record-detail > a, .record-detail > strong { font-weight: 700; }
+.record-award { color: #885200; }

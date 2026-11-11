@@ -1,0 +1,530 @@
+[
+  {
+    "kind": "Abstract",
+    "title": "Double Diffusion Encoding vs Single Diffusion Encoding in Parameter Estimation of Biophysical Models in Diffusion-Weighted MRI",
+    "venue": "25th ISMRM Annual Meeting and Exhibition · #3383",
+    "date": "2017-04-24"
+  },
+  {
+    "kind": "Paper",
+    "title": "Local volume fraction distributions of axons, astrocytes, and myelin in deep subcortical white matter",
+    "venue": "NeuroImage",
+    "date": "2018",
+    "url": "https://doi.org/10.1016/j.neuroimage.2018.06.040"
+  },
+  {
+    "kind": "Paper",
+    "title": "Iba-1-/CD68+ microglia are a prominent feature of age-associated deep subcortical white matter lesions",
+    "venue": "PLOS ONE",
+    "date": "2019",
+    "url": "https://doi.org/10.1371/journal.pone.0210888"
+  },
+  {
+    "kind": "Paper",
+    "title": "Histological data of axons, astrocytes, and myelin in deep subcortical white matter populations",
+    "venue": "Data in Brief",
+    "date": "2019",
+    "url": "https://doi.org/10.1016/j.dib.2019.103762"
+  },
+  {
+    "kind": "Paper",
+    "title": "Resolving degeneracy in diffusion MRI biophysical model parameter estimation using double diffusion encoding",
+    "venue": "Magnetic Resonance in Medicine",
+    "date": "2019",
+    "url": "https://doi.org/10.1002/mrm.27714"
+  },
+  {
+    "kind": "Paper",
+    "title": "Quantitative histomorphometry of capillary microstructure in deep white matter",
+    "venue": "NeuroImage: Clinical",
+    "date": "2019",
+    "url": "https://doi.org/10.1016/j.nicl.2019.101839"
+  },
+  {
+    "kind": "Paper",
+    "title": "Population-based Bayesian regularization for microstructural diffusion MRI with NODDIDA",
+    "venue": "Magnetic Resonance in Medicine",
+    "date": "2019",
+    "url": "https://doi.org/10.1002/mrm.27831"
+  },
+  {
+    "kind": "Paper",
+    "title": "Optimal experimental design for biophysical modelling in multidimensional diffusion MRI",
+    "venue": "In: Medical Image Computing and Computer Assisted Intervention - MICCAI 2019. Lecture Notes in Computer Science",
+    "date": "2019",
+    "url": "https://doi.org/10.1007/978-3-030-32248-9_69"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Double diffusion encoding enables unique parameter estimation of the Standard Model in diffusion MRI",
+    "venue": "2019 ISMRM 27th Annual Meeting and Exhibition · #3542",
+    "date": "2019-05-15"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Tensorial formulation allowing to verify or falsify the microstructural standard model from multidimensional diffusion MRI",
+    "venue": "2019 ISMRM 27th Annual Meeting and Exhibition · #3560",
+    "date": "2019-05-15"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Optimal experimental design for biophysical modelling in multidimensional diffusion MRI",
+    "venue": "Medical Image Computing and Computer Assisted Intervention (MICCAI 2019) · #M-2-F-385",
+    "date": "2019-10-14"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Diffusion MRI for Well-posed and Optimal White Matter Microstructure Characterisation: Beyond Single Diffusion Encoding",
+    "venue": "Faculty of Engineering, Universidad Nacional de La Plata",
+    "date": "2019-12-05"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Optimal experimental design in multidimensional diffusion MRI for parameter estimation of biophysical tissue models",
+    "venue": "2020 ISMRM and SMRT Virtual Conference and Exhibition · #0731",
+    "date": "2020-08-12"
+  },
+  {
+    "kind": "Paper",
+    "title": "Tissue microarray (TMA) use in post mortem neuropathology",
+    "venue": "Journal of Neuroscience Methods",
+    "date": "2021",
+    "url": "https://doi.org/10.1016/j.jneumeth.2020.108963"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Diffusion: Physical Models",
+    "venue": "ISMRM Annual Meeting; Brain Microstructure course",
+    "date": "2021-05-16"
+  },
+  {
+    "kind": "Abstract",
+    "title": "How do we know we measure tissue parameters, not the prior?",
+    "venue": "2021 ISMRM and ISMRT Annual Meeting and Exhibition · #0397",
+    "date": "2021-05-18",
+    "award": "Summa Cum Laude"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Random matrix theory denoising minimizes cross-scanner,-protocol variability and maximizes repeatability of higher-order diffusion metrics",
+    "venue": "2021 ISMRM and ISMRT Annual Meeting and Exhibition · #0405",
+    "date": "2021-05-18"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Biophysical modeling of ex vivo diffusion MRI for the longitudinal characterization of axonal degeneration in the optic nerve",
+    "venue": "2021 ISMRM and ISMRT Annual Meeting and Exhibition · #2039",
+    "date": "2021-05-18"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Effect of the training set on supervised-learning parameter estimation: Application to the Standard Model of diffusion in white matter",
+    "venue": "2021 ISMRM and ISMRT Annual Meeting and Exhibition · #3421",
+    "date": "2021-05-19"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Feasibility of white matter Standard Model parameter estimation in clinical settings",
+    "venue": "2021 ISMRM and ISMRT Annual Meeting and Exhibition · #3422",
+    "date": "2021-05-19"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Brain microstructure at 1.5mm resolution via RMT reconstruction on a high-slew rate MAGNUS system",
+    "venue": "2021 ISMRM and ISMRT Annual Meeting and Exhibition · #3648",
+    "date": "2021-05-20"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Brain microstructure: biophysical models",
+    "venue": "ISMRM Diffusion Study Group Virtual Workshop",
+    "date": "2021-12-08"
+  },
+  {
+    "kind": "Paper",
+    "title": "Reproducibility of the standard model of diffusion in white matter on clinical MRI systems",
+    "venue": "NeuroImage",
+    "date": "2022",
+    "url": "https://doi.org/10.1016/j.neuroimage.2022.119290"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Gray Matter Correlates of Patient-Reported Indices of Disability in Multiple Sclerosis",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #0888",
+    "date": "2022-05-09"
+  },
+  {
+    "kind": "Abstract",
+    "title": "How to understand diffusion MRI changes in the white matter of Multiple Sclerosis patients?",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #0981",
+    "date": "2022-05-09"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Fast acquisitions for mean kurtosis and microscopic fractional anisotropy",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #0514",
+    "date": "2022-05-11",
+    "award": "Magna Cum Laude"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Validation of diffusion MRI-derived white matter microstructure metrics using 3D electron microscopy in injured rat brain",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #0521",
+    "date": "2022-05-11"
+  },
+  {
+    "kind": "Abstract",
+    "title": "MP-PCA denoising of complex imaging data for direct visualization of the dentatorubrothalamic tract using diffusion MRI at 3T",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #2105",
+    "date": "2022-05-11"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Reproducibility of white matter microstructure mapping with diffusion-relaxometry",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #0697",
+    "date": "2022-05-12"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Rotational invariants of the cumulant expansion (RICE)",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #0751",
+    "date": "2022-05-12"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Comparison of diffusion MRI models for white matter in simulations and in early human brain development",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #0767",
+    "date": "2022-05-12"
+  },
+  {
+    "kind": "Abstract",
+    "title": "A data-driven variability assessment of brain diffusion MRI preprocessing pipelines",
+    "venue": "2022 Joint Annual Meeting ISMRM-ESMRMB and ISMRT 31st Annual Meeting · #4983",
+    "date": "2022-05-12"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Diffusion Microstructure Models in the Brain",
+    "venue": "ISMRM Annual Meeting; Validation of Microstructure Mapping with Diffusion MRI course",
+    "date": "2023-06-03"
+  },
+  {
+    "kind": "Abstract",
+    "title": "What if every voxel was measured with a different diffusion protocol?",
+    "venue": "2023 ISMRM and ISMRT Annual Meeting and Exhibition · #0069",
+    "date": "2023-06-05",
+    "award": "Summa Cum Laude · AMPC Top 100"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Direct measurement of luminal diffusivity in prostate: Prostate diffusion at an echo time of 400 ms",
+    "venue": "2023 ISMRM and ISMRT Annual Meeting and Exhibition · #0319",
+    "date": "2023-06-05"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Influence of White Matter Microstructure on Interhemispheric Processing Speed After Mild Traumatic Brain Injury Using Advanced Diffusion MRI",
+    "venue": "2023 ISMRM and ISMRT Annual Meeting and Exhibition · #0461",
+    "date": "2023-06-06"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Characterization of normal appearing white matter in Multiple Sclerosis with diffusion MRI using signal representations and model parameters",
+    "venue": "2023 ISMRM and ISMRT Annual Meeting and Exhibition · #0964",
+    "date": "2023-06-07"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Zero-shell diffusion MRI: Focus on microstructure by decoupling fiber orientations",
+    "venue": "2023 ISMRM and ISMRT Annual Meeting and Exhibition · #0972",
+    "date": "2023-06-07"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Should We Harmonize or Denoise in Diffusion MRI?",
+    "venue": "2023 ISMRM and ISMRT Annual Meeting and Exhibition · #3786",
+    "date": "2023-06-07"
+  },
+  {
+    "kind": "Abstract",
+    "title": "White matter microstructure mapping using diffusion-only or diffusion-relaxation: protocol design and comparison of accuracy and precision",
+    "venue": "2023 ISMRM and ISMRT Annual Meeting and Exhibition · #4160",
+    "date": "2023-06-07"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Direct visualization of small anisotropic brain structures using high resolution, multi-shell diffusion MRI",
+    "venue": "2023 ISMRM and ISMRT Annual Meeting and Exhibition · #1125",
+    "date": "2023-06-08"
+  },
+  {
+    "kind": "Paper",
+    "title": "Mapping tissue microstructure of brain white matter in vivo in health and disease using diffusion MRI",
+    "venue": "Imaging Neuroscience",
+    "date": "2024",
+    "url": "https://doi.org/10.1162/imag_a_00102"
+  },
+  {
+    "kind": "Paper",
+    "title": "Callosal Interhemispheric Communication in Mild Traumatic Brain Injury: A Mediation Analysis on White Matter Microstructure Effects",
+    "venue": "American Journal of Neuroradiology",
+    "date": "2024",
+    "url": "https://doi.org/10.3174/ajnr.A8213"
+  },
+  {
+    "kind": "Paper",
+    "title": "Assessment of precision and accuracy of brain white matter microstructure using combined diffusion MRI and relaxometry",
+    "venue": "Human Brain Mapping",
+    "date": "2024",
+    "url": "https://doi.org/10.1002/hbm.26725"
+  },
+  {
+    "kind": "Paper",
+    "title": "Volume electron microscopy in injured rat brain validates white matter microstructure metrics from diffusion MRI",
+    "venue": "Imaging Neuroscience",
+    "date": "2024",
+    "url": "https://doi.org/10.1162/imag_a_00212"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Sticks or no sticks? White matter microstructure in multiple sclerosis from high-b scaling",
+    "venue": "2024 ISMRM and ISMRT Annual Meeting and Exhibition · #0122",
+    "date": "2024-05-06"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Cumulant tensors from the addition of angular momenta: All diffusion invariants in one abstract",
+    "venue": "2024 ISMRM and ISMRT Annual Meeting and Exhibition · #0641",
+    "date": "2024-05-07",
+    "award": "Magna Cum Laude"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Ultra-high gradient diffusion MRI on Connectome 2.0 reveals time-dependent diffusion and water exchange in human gray matter",
+    "venue": "2024 ISMRM and ISMRT Annual Meeting and Exhibition · #0644",
+    "date": "2024-05-07"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Gibbs Ringing Correction for non-Cartesian Acquisitions",
+    "venue": "2024 ISMRM and ISMRT Annual Meeting and Exhibition · #2654",
+    "date": "2024-05-07"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Tensor encoded diffusion weighting improves model parameter estimation of SMEX/NEXI",
+    "venue": "2024 ISMRM and ISMRT Annual Meeting and Exhibition · #0938",
+    "date": "2024-05-08"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Time-Dependent Standard Model of diffusion in human brain white matter evaluated in vivo on the high gradient performance Connectome 2.0 scanner",
+    "venue": "2024 ISMRM and ISMRT Annual Meeting and Exhibition · #3465",
+    "date": "2024-05-08"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Geometry of the cumulant series",
+    "venue": "Diffusion Microclub Scientific Seminars",
+    "date": "2024-10-10"
+  },
+  {
+    "kind": "Paper",
+    "title": "Denoising improves cross-scanner and cross-protocol test-retest reproducibility of diffusion tensor and kurtosis imaging",
+    "venue": "Human Brain Mapping",
+    "date": "2025",
+    "url": "https://doi.org/10.1002/hbm.70142"
+  },
+  {
+    "kind": "Paper",
+    "title": "In vivo human neurite exchange time imaging at 500 mT/m diffusion gradients",
+    "venue": "Imaging Neuroscience",
+    "date": "2025",
+    "url": "https://doi.org/10.1162/imag_a_00544"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Diffusion neuroimaging",
+    "venue": "BMEII Seminars and Lectures, BioMedical Engineering and Imaging Institute, Icahn School of Medicine at Mount Sinai",
+    "date": "2025-05-07"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Microstructure and muscle strength in older adults: a time-dependent diffusion study",
+    "venue": "2025 ISMRM and ISMRT Annual Meeting and Exhibition · #0974",
+    "date": "2025-05-14"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Microscopic kurtosis tensor invariants and DDE 4-fold angular modulation in human brain diffusion MRI",
+    "venue": "2025 ISMRM and ISMRT Annual Meeting and Exhibition · #3884",
+    "date": "2025-05-14"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Diffusion MRI and microstructure imaging",
+    "venue": "Department of Radiology, Columbia University",
+    "date": "2025-08-10"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Diffusion MRI and microstructure imaging",
+    "venue": "Institute of Imaging Science, Vanderbilt University",
+    "date": "2025-09-19"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Diffusion MRI and tissue microstructure imaging",
+    "venue": "Department of Radiology, Weill Cornell Medicine",
+    "date": "2025-10-08"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Brain microstructure imaging with diffusion MRI",
+    "venue": "BrainMap Seminars, Martinos Center, Massachusetts General Hospital and Harvard Medical School",
+    "date": "2025-10-15"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Choosing a Traditional or Non-Traditional Postdoc",
+    "venue": "What Can You Be With a PhD? · Career panel",
+    "date": "2025-10-26"
+  },
+  {
+    "kind": "Paper",
+    "title": "What if each voxel were measured with a different diffusion protocol?",
+    "venue": "Magnetic Resonance in Medicine",
+    "date": "2026",
+    "url": "https://doi.org/10.1002/mrm.70144",
+    "award": "MRM Editor’s Pick"
+  },
+  {
+    "kind": "Paper",
+    "title": "Linking Symptom Phenotypes to Patterns of White Matter Injury in Mild Traumatic Brain Injury: A Latent Class Analysis",
+    "venue": "American Journal of Neuroradiology",
+    "date": "2026",
+    "url": "https://doi.org/10.3174/ajnr.A9086"
+  },
+  {
+    "kind": "Paper",
+    "title": "Geometry of the cumulant series in diffusion MRI",
+    "venue": "Nature Communications",
+    "date": "2026",
+    "url": "https://doi.org/10.1038/s41467-026-70018-w"
+  },
+  {
+    "kind": "Paper",
+    "title": "Disentangling pontine fiber geometry and microstructure in ARSACS using advanced MRI",
+    "venue": "NeuroImage: Clinical",
+    "date": "2026",
+    "url": "https://doi.org/10.1016/j.nicl.2026.104066"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Where is Diffusion Neuroimaging Going?",
+    "venue": "CBI Science Day · NYU Grossman School of Medicine",
+    "date": "2026-02"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Quantifying Longitudinal White Matter Alterations in Mild TBI with Advanced Diffusion Modeling",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #364-03-006",
+    "date": "2026-05-11"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Fasciculation volume measured with stimulated echo diffusion-weighted MRI correlates with muscle weakness in older adults",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #366-06-004",
+    "date": "2026-05-11"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Estimation of muscle fiber diameter using time-dependent diffusion MRI in masticatory myofascial pain syndrome",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #367-03-007",
+    "date": "2026-05-11"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Axon- and glia-specific fiber orientation distributions in human white matter probed with diffusion MR spectroscopy",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #306-02-008",
+    "date": "2026-05-11"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Intravoxel incoherent motion imaging of masticatory myofascial pain syndrome in the masseter muscle",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #363-02-005",
+    "date": "2026-05-11"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Signatures of structural disorder in axons and glial processes in human white matter using time-dependent diffusion MRS",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #405-04-003 / 271-01-009",
+    "date": "2026-05-12"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Investigating the relationship between axon microstructure and sodium ion signal using 1H diffusion MRI and 23Na-MRI",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #463-04-010",
+    "date": "2026-05-12"
+  },
+  {
+    "kind": "Abstract",
+    "title": "T2 Mapping of Masseter and Temporalis Muscles in Myofascial Pain Syndrome",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #469-04-012",
+    "date": "2026-05-12"
+  },
+  {
+    "kind": "Abstract",
+    "title": "When fiber bundles are not axially symmetric: 4-dimensional fiber distributions in the human brain",
+    "venue": "2026 ISMRM-ISMRT Annual Meeting and Exhibition · #651-02-010",
+    "date": "2026-05-14"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Quantitative diffusion MRI of masticatory myofascial pain syndrome",
+    "venue": "2026 ISMRM Workshop on Musculoskeletal MRI: New Technical Advances and Unmet Needs · #202-01-013",
+    "date": "2026-09-17"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Test-Retest Repeatability and Multi-Site Reproducibility of Quantitative MRI Biomarkers in Masticatory Muscles",
+    "venue": "2026 ISMRM Workshop on Musculoskeletal MRI: New Technical Advances and Unmet Needs · #202-01-058",
+    "date": "2026-09-17"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "White matter microstructure through the lens of water diffusion",
+    "venue": "ISMRM White Matter Study Group Workshop; educational bootcamp",
+    "date": "2026-10-13"
+  },
+  {
+    "kind": "Abstract",
+    "title": "When fiber bundles are not axially symmetric: 4-dimensional fiber distributions in the human brain",
+    "venue": "2026 ISMRM Workshop on White Matter: MR Imaging and Beyond · #102-05-003 / 101-07-003",
+    "date": "2026-10-14"
+  },
+  {
+    "kind": "Abstract",
+    "title": "b0-restore: Low–b-Value Signal Correction for Robust Brain Diffusion MRI",
+    "venue": "2026 ISMRM Workshop on White Matter: MR Imaging and Beyond · #102-05-016 / 101-07-016",
+    "date": "2026-10-14"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Towards cell type-specific microstructure at ultra-short length scales: diffusion MR spectroscopy on the Connectom.X scanner",
+    "venue": "2026 ISMRM Workshop on White Matter: MR Imaging and Beyond · #101-04-002",
+    "date": "2026-10-14"
+  },
+  {
+    "kind": "Abstract",
+    "title": "Diffusion MRI of normal-appearing white matter complements structural MRI markers of disability in multiple sclerosis",
+    "venue": "2026 ISMRM Workshop on White Matter: MR Imaging and Beyond · #202-05-007 / 201-07-007",
+    "date": "2026-10-15"
+  },
+  {
+    "kind": "Invited talk",
+    "title": "Dimension Hopping Between Q-Space and K-Space",
+    "venue": "i2i Workshop, CAI2R, NYU Langone Health",
+    "date": "2026-10-22"
+  }
+]

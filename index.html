@@ -31,7 +31,7 @@
   <!-- AOS scroll animations -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20261110-project-art" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261111-timeline" />
 </head>
 <body>
 
@@ -203,7 +203,7 @@
                 <p>Combining water-motion measurements with signal relaxation helps distinguish tissue water populations and estimate their properties more accurately.</p>
               </li>
               <li>
-                <p class="study-venue">Magnetic Resonance in Medicine · 2026</p>
+                <p class="study-venue">Magnetic Resonance in Medicine · 2026 · Editor’s Pick</p>
                 <h5><a href="https://doi.org/10.1002/mrm.70144">What if each voxel were measured with a different diffusion protocol?</a></h5>
                 <p>PIPE estimates tissue properties efficiently even when the scanner’s gradients produce a different set of diffusion measurements at each location in the brain.</p>
               </li>
@@ -328,7 +328,7 @@
             <div class="pub-body">
               <a class="pub-title" href="https://onlinelibrary.wiley.com/doi/10.1002/mrm.70144" target="_blank" rel="noopener">What if each voxel were measured with a different diffusion protocol?</a>
               <p class="pub-authors"><strong>S. Coelho</strong>, G. Lemberskiy, A. Zhu, H-H. Lee, N. Abad, T.K.F. Foo, E. Fieremans, D.S. Novikov</p>
-              <p class="pub-venue"><em>Magnetic Resonance in Medicine</em>, 95(4):2277–2290, 2026</p>
+              <p class="pub-venue"><em>Magnetic Resonance in Medicine</em>, 95(4):2277–2290, 2026 · Editor’s Pick</p>
             </div>
           </li>
 
@@ -470,6 +470,21 @@
             </figure>
           </aside>
         </div><!-- /.pub-layout -->
+        <section class="research-timeline" id="research-timeline" aria-labelledby="timeline-title" hidden>
+          <h3 id="timeline-title">Research timeline</h3>
+          <p>Choose a marker to explore a paper, conference abstract, or invited talk.</p>
+          <div class="timeline-key">
+            <span><i class="record-symbol paper"></i>Papers</span>
+            <span><i class="record-symbol abstract"></i>Conference abstracts</span>
+            <span><i class="record-symbol invited-talk"></i>Invited talks</span>
+            <span><i class="award-ring"></i>Award or editor’s pick</span>
+          </div>
+          <div class="timeline-scroll" tabindex="0" role="region" aria-label="Research timeline by year">
+            <div class="timeline-years"></div>
+          </div>
+          <div class="record-detail" aria-live="polite"></div>
+        </section>
+        <script src="assets/js/research-timeline.js" defer></script>
       </div>
     </section>
 
