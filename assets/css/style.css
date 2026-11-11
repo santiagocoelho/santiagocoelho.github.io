@@ -403,3 +403,6 @@ a.contact-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba
 .record-detail p { margin: .25rem 0; }
 .record-detail > a, .record-detail > strong { font-weight: 700; }
 .record-award { color: #885200; }
+.record-award { display: inline-flex; align-items: center; gap: .45rem; }
+.record-award .medal { width: 1.6rem; height: 1.8rem; color: #e59a10; }
+.record-award .medal.silver { color: #8494a8; }

@@ -23,11 +23,21 @@ async function loadResearchTimeline() {
       const award = document.createElement('strong');
       award.className = 'record-award';
       award.textContent = record.award;
+      if (record.kind === 'Abstract') {
+        const svgNamespace = 'http://www.w3.org/2000/svg';
+        const medal = document.createElementNS(svgNamespace, 'svg');
+        medal.setAttribute('class', record.award.startsWith('Magna') ? 'medal silver' : 'medal');
+        medal.setAttribute('aria-hidden', 'true');
+        const shape = document.createElementNS(svgNamespace, 'use');
+        shape.setAttribute('href', '#abstract-medal');
+        medal.append(shape);
+        award.prepend(medal);
+      }
       detail.append(award);
     }
   }
 
-  const years = [...new Set(records.map(record => record.date.slice(0, 4)))].sort().reverse();
+  const years = [...new Set(records.map(record => record.date.slice(0, 4)))].sort();
   for (const year of years) {
     const column = document.createElement('div');
     const heading = document.createElement('h4');
@@ -45,7 +55,7 @@ async function loadResearchTimeline() {
       button.append(symbol);
       button.addEventListener('click', () => select(record, button));
       points.append(button);
-      if (!selected) select(record, button);
+      if (!selected && year === years[years.length - 1]) select(record, button);
     }
     column.append(heading, points);
     chart.append(column);
